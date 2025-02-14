@@ -11,35 +11,34 @@ df <- read_csv("/home/ubuntu/lightcast_job_postings/lightcast_job_postings.csv")
 # Preview the first few rows
 head(df)
 
+# Check for missing values
 colSums(is.na(df))
 
-threshold <- 0.5 * nrow(df)  # 50% missing threshold
+# Remove columns with excessive missing values (more than 50%)
+threshold <- 0.5 * nrow(df) 
 df_clean <- df %>% select(where(~ sum(is.na(.)) < threshold))
 
+# Filter Data Science & Business Analytics Job Postings
 df_filtered <- df_clean %>%
   filter(str_detect(TITLE_RAW, regex("data scientist|business analyst|machine learning|ML engineer|AI", ignore_case = TRUE)))
 
+# Extract common skills from the SKILLS_NAME column.
 top_skills <- df_filtered %>%
   count(SKILLS_NAME, sort = TRUE) %>%
   head(15)
-
 print(top_skills)
 
-industry_demand <- df_filtered %>%
-  count(COMPANY_NAME, sort = TRUE) %>%
-  head(10)
-
-print(industry_demand)
-
+# Ensure SKILLS_NAME is in character format
 df_filtered <- df_filtered %>% mutate(SKILLS_NAME = as.character(SKILLS_NAME))
 
+# Split SKILLS_NAME column by commas and expand into separate rows
 df_skills_split <- df_filtered %>%
   separate_rows(SKILLS_NAME, sep = ",") %>% 
   mutate(SKILLS_NAME = trimws(SKILLS_NAME)) %>%  
   count(SKILLS_NAME, sort = TRUE) %>%  
   head(15)  
 
-
+# Plot a clean bar chart
 ggplot(df_skills_split, aes(x = reorder(SKILLS_NAME, n), y = n)) +
   geom_bar(stat = "identity", fill = "skyblue") +
   coord_flip() +  
