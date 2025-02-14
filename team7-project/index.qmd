@@ -14,3 +14,5 @@ format:
 - Have job descriptions evolved in 2024 to require AI/ML expertise?
 - What industries are hiring the most data scientists and why?
 - What is the career outlook for business analytics professionals?
+
+

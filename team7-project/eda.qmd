@@ -1,0 +1,52 @@
+---
+title: "EDA"
+---
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+df <- read_csv("/home/ubuntu/lightcast_job_postings/lightcast_job_postings.csv")
+
+# Preview the first few rows
+head(df)
+
+colSums(is.na(df))
+
+threshold <- 0.5 * nrow(df)  # 50% missing threshold
+df_clean <- df %>% select(where(~ sum(is.na(.)) < threshold))
+
+df_filtered <- df_clean %>%
+  filter(str_detect(TITLE_RAW, regex("data scientist|business analyst|machine learning|ML engineer|AI", ignore_case = TRUE)))
+
+top_skills <- df_filtered %>%
+  count(SKILLS_NAME, sort = TRUE) %>%
+  head(15)
+
+print(top_skills)
+
+industry_demand <- df_filtered %>%
+  count(COMPANY_NAME, sort = TRUE) %>%
+  head(10)
+
+print(industry_demand)
+
+df_filtered <- df_filtered %>% mutate(SKILLS_NAME = as.character(SKILLS_NAME))
+
+df_skills_split <- df_filtered %>%
+  separate_rows(SKILLS_NAME, sep = ",") %>% 
+  mutate(SKILLS_NAME = trimws(SKILLS_NAME)) %>%  
+  count(SKILLS_NAME, sort = TRUE) %>%  
+  head(15)  
+
+
+ggplot(df_skills_split, aes(x = reorder(SKILLS_NAME, n), y = n)) +
+  geom_bar(stat = "identity", fill = "skyblue") +
+  coord_flip() +  
+  theme_minimal() +
+  labs(title = "Top 15 In-Demand Skills for Data Science & Business Analytics Roles",
+       x = "Skills",
+       y = "Count") +
+  theme(axis.text.y = element_text(size = 12), 
+        plot.title = element_text(hjust = 0.5, size = 14, face = "bold"))  
+```
