@@ -1,18 +1,22 @@
 ---
-title: "team7-project"
-author: "Shuyu Pan, Jiaxin Wang, Yixuan Chen, Guowei Yan"
+title: "Business Analytics, Data Science, and ML Trends in 2024"
+author: "Team 7: Shuyu Pan, Jiaxin Wang, Yixuan Chen, Guowei Yan"
 date: "2025-02-14"
-format:
-  html:
-    theme: journal
-    toc: true
+format: html
+bibliography: references.bib
+csl: csl/econometrica.csl
+toc: true
 ---
 
-# Business Analytics, Data Science, and Machine Learning Trends
+# Introduction & Research Rationale
+## Why is this topic important?
 
-- What are the most in-demand skills for data science, business analytics, and ML roles?
-- Have job descriptions evolved in 2024 to require AI/ML expertise?
-- What industries are hiring the most data scientists and why?
-- What is the career outlook for business analytics professionals?
+## What trends make this a crucial area of study in 2024?
+
+## What do you expect to find in your analysis?
+
+---
+
+# Literature Review
 
 
