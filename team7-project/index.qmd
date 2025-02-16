@@ -3,8 +3,8 @@ title: "Business Analytics, Data Science, and ML Trends in 2024"
 author: "Team 7: Shuyu Pan, Jiaxin Wang, Yixuan Chen, Guowei Yan"
 date: "2025-02-14"
 format: html
-bibliography: references.bib
-csl: csl/econometrica.csl
+bibliography: /home/ubuntu/ad688-employability-sp25A1-group7/references.bib
+csl: /home/ubuntu/ad688-employability-sp25A1-group7/csl/econometrica.csl
 toc: true
 ---
 

@@ -28,7 +28,7 @@ lightcast_cleaned <- lightcast_data %>%
          certifications = CERTIFICATIONS)
 head(lightcast_cleaned)
 # Save as CSV inside the 'data' folder
-write_csv(lightcast_cleaned, "data/lightcast_cleaned.csv")
+write_csv(lightcast_cleaned, "/home/ubuntu/ad688-employability-sp25A1-group7/data/lightcast_cleaned.csv")
 
 # Define key words
 keywords <- c("Data Scientist", "Machine Learning Engineer", "Business Analyst",
@@ -49,7 +49,7 @@ analytics_jobs <- analytics_jobs %>%
 # Convert salary to numeric
 analytics_jobs$salary <- as.numeric(analytics_jobs$salary)
 
-write_csv(analytics_jobs, "data/analytics_jobs.csv")
+write_csv(analytics_jobs, "/home/ubuntu/ad688-employability-sp25A1-group7/data/analytics_jobs.csv")
 
 # Histogram of Salaries
 ggplot(analytics_jobs, aes(x = salary)) +
@@ -59,7 +59,7 @@ ggplot(analytics_jobs, aes(x = salary)) +
        x = "Salary (USD)",
        y = "Frequency") +
   theme_minimal()
-ggsave("figures/Salary_Distribution_of_Data&Analytics_Jobs.png")
+ggsave("/home/ubuntu/ad688-employability-sp25A1-group7/figures/Salary_Distribution_of_Data&Analytics_Jobs.png")
 
 # Bar Chart for Job Counts
 analytics_jobs %>%
@@ -71,8 +71,13 @@ analytics_jobs %>%
   labs(title = "Top 10 Most Common Job Titles",
        x = "Job Title",
        y = "Count") +
-  theme_minimal()
-ggsave("figures/Top10_Most_Common_Job_Titles.png")
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 10, face = "bold", hjust = 0.5),  
+    axis.text.y = element_text(size = 8, hjust = 1),  
+    axis.text.x = element_text(size = 8, angle = 0, vjust = 1),
+    legend.position = "none")
+ggsave("/home/ubuntu/ad688-employability-sp25A1-group7/figures/Top10_Most_Common_Job_Titles.png")
 
 # Bar Chart for Top Required Skills
 analytics_jobs %>%
@@ -85,6 +90,11 @@ analytics_jobs %>%
   labs(title = "Top 10 In-Demand Skills for Analytics Jobs",
        x = "Skill",
        y = "Count") +
-  theme_minimal()
-ggsave("figures/Top10_InDemand_Skills_for_Analytics_Jobs.png")
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 10, face = "bold", hjust = 0.5),  
+    axis.text.y = element_text(size = 8, hjust = 1),  
+    axis.text.x = element_text(size = 8, angle = 0, vjust = 1),
+    legend.position = "none")
+ggsave("/home/ubuntu/ad688-employability-sp25A1-group7/figures/Top10_InDemand_Skills_for_Analytics_Jobs.png", width = 18, height = 8, dpi = 300)
 ```

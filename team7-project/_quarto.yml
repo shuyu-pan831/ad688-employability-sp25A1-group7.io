@@ -3,12 +3,14 @@ project:
 
 website:
   title: "team7-project"
+  site-url: "https://team7.github.io/ad688-employability-sp25A1-group"
   navbar:
     left:
       - href: index.qmd
-        text: Home
+        text: Introduction & Research Rationale
       - about.qmd
       - eda.qmd
+      - career_plan.qmd
 
 format:
   html:
