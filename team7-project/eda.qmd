@@ -6,46 +6,27 @@ title: "EDA"
 library(tidyverse)
 library(ggplot2)
 
-df <- read_csv("/home/ubuntu/lightcast_job_postings/lightcast_job_postings.csv")
+# Load the dataset
+lightcast_data <- read_csv("/home/ubuntu/lightcast_job_postings/lightcast_job_postings.csv")
 
 # Preview the first few rows
-head(df)
+head(lightcast_data)
 
-# Check for missing values
-colSums(is.na(df))
+# Check column names
+colnames(lightcast_data)
 
-# Remove columns with excessive missing values (more than 50%)
-threshold <- 0.5 * nrow(df) 
-df_clean <- df %>% select(where(~ sum(is.na(.)) < threshold))
-
-# Filter Data Science & Business Analytics Job Postings
-df_filtered <- df_clean %>%
-  filter(str_detect(TITLE_RAW, regex("data scientist|business analyst|machine learning|ML engineer|AI", ignore_case = TRUE)))
-
-# Extract common skills from the SKILLS_NAME column.
-top_skills <- df_filtered %>%
-  count(SKILLS_NAME, sort = TRUE) %>%
-  head(15)
-print(top_skills)
-
-# Ensure SKILLS_NAME is in character format
-df_filtered <- df_filtered %>% mutate(SKILLS_NAME = as.character(SKILLS_NAME))
-
-# Split SKILLS_NAME column by commas and expand into separate rows
-df_skills_split <- df_filtered %>%
-  separate_rows(SKILLS_NAME, sep = ",") %>% 
-  mutate(SKILLS_NAME = trimws(SKILLS_NAME)) %>%  
-  count(SKILLS_NAME, sort = TRUE) %>%  
-  head(15)  
-
-# Plot a clean bar chart
-ggplot(df_skills_split, aes(x = reorder(SKILLS_NAME, n), y = n)) +
-  geom_bar(stat = "identity", fill = "skyblue") +
-  coord_flip() +  
-  theme_minimal() +
-  labs(title = "Top 15 In-Demand Skills for Data Science & Business Analytics Roles",
-       x = "Skills",
-       y = "Count") +
-  theme(axis.text.y = element_text(size = 12), 
-        plot.title = element_text(hjust = 0.5, size = 14, face = "bold"))  
+# Only keep key fields
+lightcast_cleaned <- lightcast_data %>%
+  select(job_title = TITLE_RAW,   # Ensure column names match exactly
+         company = COMPANY,
+         location = CITY,
+         state = STATE,
+         salary = SALARY_FROM,
+         employment_type = EMPLOYMENT_TYPE,
+         posted_date = POSTED,
+         skills = SPECIALIZED_SKILLS_NAME,
+         certifications = CERTIFICATIONS)
+head(lightcast_cleaned)
+# Save as CSV inside the 'data' folder
+write_csv(lightcast_cleaned, "data/lightcast_cleaned.csv")
 ```
