@@ -29,4 +29,62 @@ lightcast_cleaned <- lightcast_data %>%
 head(lightcast_cleaned)
 # Save as CSV inside the 'data' folder
 write_csv(lightcast_cleaned, "data/lightcast_cleaned.csv")
+
+# Define key words
+keywords <- c("Data Scientist", "Machine Learning Engineer", "Business Analyst",
+              "AI Engineer", "Data Engineer", "ML Researcher", "Data Analyst")
+
+# Filter jobs with relevant titles
+analytics_jobs <- lightcast_cleaned %>%
+  filter(str_detect(job_title, paste(keywords, collapse = "|")))
+
+# View the filtered dataset
+head(analytics_jobs)
+# Check missing values
+colSums(is.na(analytics_jobs))
+# Remove rows with missing salaries or job titles
+analytics_jobs <- analytics_jobs %>%
+  filter(!is.na(salary) & !is.na(job_title))
+
+# Convert salary to numeric
+analytics_jobs$salary <- as.numeric(analytics_jobs$salary)
+
+write_csv(analytics_jobs, "data/analytics_jobs.csv")
+
+# Histogram of Salaries
+ggplot(analytics_jobs, aes(x = salary)) +
+  geom_histogram(binwidth = 10000, fill = "blue", alpha = 0.7, color = "black") +
+  scale_x_continuous(labels = scales::dollar_format()) +
+  labs(title = "Salary Distribution of Data & Analytics Jobs",
+       x = "Salary (USD)",
+       y = "Frequency") +
+  theme_minimal()
+ggsave("figures/Salary_Distribution_of_Data&Analytics_Jobs.png")
+
+# Bar Chart for Job Counts
+analytics_jobs %>%
+  count(job_title, sort = TRUE) %>%
+  top_n(10) %>%
+  ggplot(aes(x = reorder(job_title, n), y = n, fill = job_title)) +
+  geom_col() +
+  coord_flip() +
+  labs(title = "Top 10 Most Common Job Titles",
+       x = "Job Title",
+       y = "Count") +
+  theme_minimal()
+ggsave("figures/Top10_Most_Common_Job_Titles.png")
+
+# Bar Chart for Top Required Skills
+analytics_jobs %>%
+  separate_rows(skills, sep = ",") %>%  # Split multiple skills in one row
+  count(skills, sort = TRUE) %>%
+  top_n(10) %>%
+  ggplot(aes(x = reorder(skills, n), y = n, fill = skills)) +
+  geom_col() +
+  coord_flip() +
+  labs(title = "Top 10 In-Demand Skills for Analytics Jobs",
+       x = "Skill",
+       y = "Count") +
+  theme_minimal()
+ggsave("figures/Top10_InDemand_Skills_for_Analytics_Jobs.png")
 ```
