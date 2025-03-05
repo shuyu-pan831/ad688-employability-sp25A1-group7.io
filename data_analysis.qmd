@@ -1,0 +1,69 @@
+---
+title: "Data Analysis"
+subtitle: "Comprehensive Data Cleaning & Exploratory Analysis of Job Market Trends"
+author:
+  - name: Norah Jones
+    affiliations:
+      - id: bu
+        name: Boston University
+        city: Boston
+        state: MA
+  - name: John Hamm
+    affiliations:
+      - ref: bu
+bibliography: references.bib
+csl: csl/econometrica.csl
+format: 
+  html:
+    toc: true
+    number-sections: true
+    df-print: paged
+---
+
+```{python}
+import pandas as pd
+lightcast_data = pd.read_csv("/home/ubuntu/lab05-Bruce11151/lightcast_job_postings.csv")
+columns_to_drop = [
+    "ID", "URL", "ACTIVE_URLS", "DUPLICATES", "LAST_UPDATED_TIMESTAMP",
+    "NAICS2", "NAICS3", "NAICS4", "NAICS5", "NAICS6",
+    "SOC_2", "SOC_3", "SOC_5"
+]
+dlightcast_data.drop(columns=columns_to_drop, inplace=True)
+```
+#Which columns are irrelevant or redundant?
+
+#The removed columns include unique identifiers (such as ID), timestamps (LAST_UPDATED_TIMESTAMP), links (URL), duplicate markers (DUPLICATES), and overly
+ detailed industry and occupation classification codes (various levels of NAICS and SOC). These columns may have no direct impact on the analysis or be redundant,
+ so they were removed to simplify data processing.
+
+#Why are we removing multiple versions of NAICS/SOC codes?
+#The main reason for removing multiple versions of NAICS/SOC codes is to avoid data redundancy and confusion, ensuring data consistency and comparability. 
+Different versions of NAICS may lead to inconsistencies in industry classification standards, which can affect the accuracy of data analysis.
+
+#How will this improve analysis?
+#Removing multiple versions of NAIC/SOC codes can improve data consistency and comparability, preventing analysis inaccuracies caused by inconsistent industry 
+classification standards. This helps reduce data redundancy, simplify data cleaning and processing, and minimize classification errors due to version differences,
+ making the data more standardized and enhancing the quality and reliability of data analysis.
+
+ **#Handle Missing Values**
+
+```{python}
+import missingno as msno
+
+# Visualize missing data
+msno.heatmap(df)
+plt.title("Missing Values Heatmap")
+plt.show()
+
+# Drop columns with >50% missing values
+df.dropna(thresh=len(df) * 0.5, axis=1, inplace=True)
+
+# Fill missing values
+df["Salary"].fillna(df["Salary"].median(), inplace=True)
+df["Industry"].fillna("Unknown", inplace=True)
+```
+
+** #Remove Duplicates **
+```{python}
+df = df.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"], keep="first")
+```
