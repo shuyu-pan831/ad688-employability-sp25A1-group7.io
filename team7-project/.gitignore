@@ -1,4 +1,3 @@
 /.quarto/
 *.csv
-.venv/
-venv/
+/venv/
