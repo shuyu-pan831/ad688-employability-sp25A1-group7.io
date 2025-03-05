@@ -2,15 +2,10 @@
 title: "Data Analysis"
 subtitle: "Comprehensive Data Cleaning & Exploratory Analysis of Job Market Trends"
 author:
-  - name: Norah Jones
-    affiliations:
-      - id: bu
-        name: Boston University
-        city: Boston
-        state: MA
-  - name: John Hamm
-    affiliations:
-      - ref: bu
+  - name: Guowei Yan
+  - name: Jiaxin Wang
+  - name: Shuyu Pan
+  - name: Yixuan Chen
 bibliography: /home/ubuntu/ad688-employability-sp25A1-group7.io/references.bib
 csl: /home/ubuntu/ad688-employability-sp25A1-group7.io/csl/econometrica.csl
 format: 
