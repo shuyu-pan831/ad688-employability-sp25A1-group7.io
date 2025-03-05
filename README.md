@@ -2,4 +2,4 @@ python3 -m venv .venv
 
 source .venv/bin/activate
 
-pip install pandas missingno
+pip install pandas missingno pyyaml jupyter nbformat notebook
