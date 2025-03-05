@@ -17,6 +17,12 @@ format:
 
 ```{python}
 import pandas as pd
+import missingno as msno
+import matplotlib.pyplot as plt
+```
+
+
+```{python}
 lightcast_data = pd.read_csv("/home/ubuntu/lightcast_job_postings.csv")
 columns_to_drop = [
     "ID", "URL", "ACTIVE_URLS", "DUPLICATES", "LAST_UPDATED_TIMESTAMP",
@@ -39,9 +45,6 @@ Removing multiple versions of NAIC/SOC codes can improve data consistency and co
 ## **Handle Missing Values**
 
 ```{python}
-import missingno as msno
-import matplotlib.pyplot as plt
-
 # Visualize missing data
 msno.heatmap(lightcast_data)
 plt.title("Missing Values Heatmap")
