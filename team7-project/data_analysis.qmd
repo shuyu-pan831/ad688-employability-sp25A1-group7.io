@@ -43,19 +43,23 @@ Removing multiple versions of NAIC/SOC codes can improve data consistency and co
 
 ## **Handle Missing Values**
 
+```{python}
 import missingno as msno
+import matplotlib.pyplot as plt
 
 # Visualize missing data
-msno.heatmap(df)
+msno.heatmap(lightcast_data)
 plt.title("Missing Values Heatmap")
 plt.show()
+```
 
+```{python}
 # Drop columns with >50% missing values
-df.dropna(thresh=len(df) * 0.5, axis=1, inplace=True)
+lightcast_data.dropna(thresh=len(lightcast_data) * 0.5, axis=1, inplace=True)
 
 # Fill missing values
-df["Salary"].fillna(df["Salary"].median(), inplace=True)
-df["Industry"].fillna("Unknown", inplace=True)
+lightcast_data["Salary"].fillna(lightcast_data["Salary"].median(), inplace=True)
+lightcast_data["Industry"].fillna("Unknown", inplace=True)
 ```
 
 ** #Remove Duplicates **
