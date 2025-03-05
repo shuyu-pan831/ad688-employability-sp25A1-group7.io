@@ -88,6 +88,6 @@
     "href": "data_analysis.html#handle-missing-values",
     "title": "Data Analysis",
     "section": "3.1 Handle Missing Values",
-    "text": "3.1 Handle Missing Values\nimport missingno as msno"
+    "text": "3.1 Handle Missing Values\n\nimport missingno as msno\nimport matplotlib.pyplot as plt\n\n# Visualize missing data\nmsno.heatmap(lightcast_data)\nplt.title(\"Missing Values Heatmap\")\nplt.show()"
   }
 ]

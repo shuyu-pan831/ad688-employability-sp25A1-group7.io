@@ -128,6 +128,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./research_introduction.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
@@ -161,9 +165,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#handle-missing-values" id="toc-handle-missing-values" class="nav-link" data-scroll-target="#handle-missing-values"><span class="header-section-number">3.1</span> <strong>Handle Missing Values</strong></a></li>
   </ul></li>
-  <li><a href="#visualize-missing-data" id="toc-visualize-missing-data" class="nav-link" data-scroll-target="#visualize-missing-data"><span class="header-section-number">4</span> Visualize missing data</a></li>
-  <li><a href="#drop-columns-with-50-missing-values" id="toc-drop-columns-with-50-missing-values" class="nav-link" data-scroll-target="#drop-columns-with-50-missing-values"><span class="header-section-number">5</span> Drop columns with &gt;50% missing values</a></li>
-  <li><a href="#fill-missing-values" id="toc-fill-missing-values" class="nav-link" data-scroll-target="#fill-missing-values"><span class="header-section-number">6</span> Fill missing values</a></li>
+  <li><a href="#drop-columns-with-50-missing-values" id="toc-drop-columns-with-50-missing-values" class="nav-link" data-scroll-target="#drop-columns-with-50-missing-values"><span class="header-section-number">4</span> Drop columns with &gt;50% missing values</a></li>
+  <li><a href="#fill-missing-values" id="toc-fill-missing-values" class="nav-link" data-scroll-target="#fill-missing-values"><span class="header-section-number">5</span> Fill missing values</a></li>
   </ul>
 </nav>
     </div>
@@ -211,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="ffce4b62" class="cell" data-execution_count="1">
+<div id="9d7461ea" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>lightcast_data <span class="op">=</span> pd.read_csv(<span class="st">"/home/ubuntu/ad688-employability-sp25A1-group7.io/team7-project/lightcast_job_postings.csv"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
@@ -234,20 +237,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Removing multiple versions of NAIC/SOC codes can improve data consistency and comparability, preventing analysis inaccuracies caused by inconsistent industry classification standards. This helps reduce data redundancy, simplify data cleaning and processing, and minimize classification errors due to version differences,making the data more standardized and enhancing the quality and reliability of data analysis.</p>
 <section id="handle-missing-values" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="handle-missing-values"><span class="header-section-number">3.1</span> <strong>Handle Missing Values</strong></h2>
-<p>import missingno as msno</p>
+<div id="24610c40" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize missing data</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>msno.heatmap(lightcast_data)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Missing Values Heatmap"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_analysis_files/figure-html/cell-3-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
-<section id="visualize-missing-data" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Visualize missing data</h1>
-<p>msno.heatmap(df) plt.title(“Missing Values Heatmap”) plt.show()</p>
+<section id="drop-columns-with-50-missing-values" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Drop columns with &gt;50% missing values</h1>
+<p>lightcast_data.dropna(thresh=len(lightcast_data) * 0.5, axis=1, inplace=True)</p>
 </section>
-<section id="drop-columns-with-50-missing-values" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Drop columns with &gt;50% missing values</h1>
-<p>df.dropna(thresh=len(df) * 0.5, axis=1, inplace=True)</p>
-</section>
-<section id="fill-missing-values" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> Fill missing values</h1>
-<p>df[“Salary”].fillna(df[“Salary”].median(), inplace=True) df[“Industry”].fillna(“Unknown”, inplace=True) ```</p>
+<section id="fill-missing-values" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Fill missing values</h1>
+<p>lightcast_data[“Salary”].fillna(lightcast_data[“Salary”].median(), inplace=True) lightcast_data[“Industry”].fillna(“Unknown”, inplace=True)</p>
 <p>** #Remove Duplicates **</p>
 <p>df = df.drop_duplicates(subset=[“TITLE”, “COMPANY”, “LOCATION”, “POSTED”], keep=“first”)</p>
 
