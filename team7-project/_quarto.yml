@@ -8,7 +8,7 @@ website:
       - href: index.qmd
         text: Introduction & Research Rationale
       - about.qmd
-      - eda.qmd
+      - data_analysis.qmd
       - career_plan.qmd
 
 format:
