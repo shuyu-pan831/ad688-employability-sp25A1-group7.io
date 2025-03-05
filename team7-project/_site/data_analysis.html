@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Norah Jones">
+<meta name="author" content="John Hamm">
 
-<title>Job Market Analysis 2024 - Career Strategy Plan for Data Science &amp; Analytics</title>
+<title>Job Market Analysis 2024 - Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -96,11 +132,11 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./data_analysis.html"> 
+    <a class="nav-link active" href="./data_analysis.html" aria-current="page"> 
 <span class="menu-text">Data Analysis</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./career_plan.html" aria-current="page"> 
+    <a class="nav-link" href="./career_plan.html"> 
 <span class="menu-text">Career Strategy</span></a>
   </li>  
 </ul>
@@ -119,19 +155,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#career-planning-insights" id="toc-career-planning-insights" class="nav-link active" data-scroll-target="#career-planning-insights">Career Planning &amp; Insights</a>
+  <li><a href="#which-columns-are-irrelevant-or-redundant" id="toc-which-columns-are-irrelevant-or-redundant" class="nav-link active" data-scroll-target="#which-columns-are-irrelevant-or-redundant"><span class="header-section-number">1</span> Which columns are irrelevant or redundant?</a></li>
+  <li><a href="#why-are-we-removing-multiple-versions-of-naicssoc-codes" id="toc-why-are-we-removing-multiple-versions-of-naicssoc-codes" class="nav-link" data-scroll-target="#why-are-we-removing-multiple-versions-of-naicssoc-codes"><span class="header-section-number">2</span> Why are we removing multiple versions of NAICS/SOC codes?</a></li>
+  <li><a href="#how-will-this-improve-analysis" id="toc-how-will-this-improve-analysis" class="nav-link" data-scroll-target="#how-will-this-improve-analysis"><span class="header-section-number">3</span> How will this improve analysis?</a>
   <ul class="collapse">
-  <li><a href="#high-demand-job-roles" id="toc-high-demand-job-roles" class="nav-link" data-scroll-target="#high-demand-job-roles">1. High-Demand Job Roles</a></li>
-  <li><a href="#in-demand-skills" id="toc-in-demand-skills" class="nav-link" data-scroll-target="#in-demand-skills">2. In-Demand Skills</a></li>
-  <li><a href="#salary-expectations" id="toc-salary-expectations" class="nav-link" data-scroll-target="#salary-expectations">3. Salary Expectations</a></li>
-  <li><a href="#recommended-certifications" id="toc-recommended-certifications" class="nav-link" data-scroll-target="#recommended-certifications">4. Recommended Certifications</a></li>
-  <li><a href="#career-roadmap" id="toc-career-roadmap" class="nav-link" data-scroll-target="#career-roadmap">5. Career Roadmap</a>
-  <ul class="collapse">
-  <li><a href="#step-1-learn-upskill" id="toc-step-1-learn-upskill" class="nav-link" data-scroll-target="#step-1-learn-upskill"><strong>Step 1: Learn &amp; Upskill</strong></a></li>
-  <li><a href="#step-2-gain-experience" id="toc-step-2-gain-experience" class="nav-link" data-scroll-target="#step-2-gain-experience"><strong>Step 2: Gain Experience</strong></a></li>
-  <li><a href="#step-3-apply-for-jobs" id="toc-step-3-apply-for-jobs" class="nav-link" data-scroll-target="#step-3-apply-for-jobs"><strong>Step 3: Apply for Jobs</strong></a></li>
+  <li><a href="#handle-missing-values" id="toc-handle-missing-values" class="nav-link" data-scroll-target="#handle-missing-values"><span class="header-section-number">3.1</span> <strong>Handle Missing Values</strong></a></li>
   </ul></li>
-  </ul></li>
+  <li><a href="#visualize-missing-data" id="toc-visualize-missing-data" class="nav-link" data-scroll-target="#visualize-missing-data"><span class="header-section-number">4</span> Visualize missing data</a></li>
+  <li><a href="#drop-columns-with-50-missing-values" id="toc-drop-columns-with-50-missing-values" class="nav-link" data-scroll-target="#drop-columns-with-50-missing-values"><span class="header-section-number">5</span> Drop columns with &gt;50% missing values</a></li>
+  <li><a href="#fill-missing-values" id="toc-fill-missing-values" class="nav-link" data-scroll-target="#fill-missing-values"><span class="header-section-number">6</span> Fill missing values</a></li>
   </ul>
 </nav>
     </div>
@@ -140,14 +172,36 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Career Strategy Plan for Data Science &amp; Analytics</h1>
+<h1 class="title">Data Analysis</h1>
+<p class="subtitle lead">Comprehensive Data Cleaning &amp; Exploratory Analysis of Job Market Trends</p>
 </div>
 
 
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Authors</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Norah Jones </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Boston University
+          </p>
+      </div>
+    <div class="quarto-title-meta-contents">
+    <p class="author">John Hamm </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            Boston University
+          </p>
+      </div>
+  </div>
 
 <div class="quarto-title-meta">
 
-    
+      
   
     
   </div>
@@ -157,97 +211,47 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="career-planning-insights" class="level1">
-<h1>Career Planning &amp; Insights</h1>
-<section id="high-demand-job-roles" class="level2">
-<h2 class="anchored" data-anchor-id="high-demand-job-roles">1. High-Demand Job Roles</h2>
-<ul>
-<li><strong>Data Analyst</strong></li>
-<li><strong>Data Scientist</strong></li>
-<li><strong>Machine Learning Engineer</strong></li>
-<li><strong>Data Engineer</strong></li>
-</ul>
+<div id="60a6d10c" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>lightcast_data <span class="op">=</span> pd.read_csv(<span class="st">"/home/ubuntu/ad688-employability-sp25A1-group7.io/team7-project/lightcast_job_postings.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ID"</span>, <span class="st">"URL"</span>, <span class="st">"ACTIVE_URLS"</span>, <span class="st">"DUPLICATES"</span>, <span class="st">"LAST_UPDATED_TIMESTAMP"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NAICS2"</span>, <span class="st">"NAICS3"</span>, <span class="st">"NAICS4"</span>, <span class="st">"NAICS5"</span>, <span class="st">"NAICS6"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SOC_2"</span>, <span class="st">"SOC_3"</span>, <span class="st">"SOC_5"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>lightcast_data.drop(columns<span class="op">=</span>columns_to_drop, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="which-columns-are-irrelevant-or-redundant" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Which columns are irrelevant or redundant?</h1>
+<p>The removed columns include unique identifiers (such as ID), timestamps (LAST_UPDATED_TIMESTAMP), links (URL), duplicate markers (DUPLICATES), and overlydetailed industry and occupation classification codes (various levels of NAICS and SOC). These columns may have no direct impact on the analysis or be redundant, so they were removed to simplify data processing.</p>
 </section>
-<section id="in-demand-skills" class="level2">
-<h2 class="anchored" data-anchor-id="in-demand-skills">2. In-Demand Skills</h2>
-<ul>
-<li>SQL, Python, Machine Learning, Data Visualization, Cloud Computing</li>
-</ul>
+<section id="why-are-we-removing-multiple-versions-of-naicssoc-codes" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Why are we removing multiple versions of NAICS/SOC codes?</h1>
+<p>The main reason for removing multiple versions of NAICS/SOC codes is to avoid data redundancy and confusion, ensuring data consistency and comparability. Different versions of NAICS may lead to inconsistencies in industry classification standards, which can affect the accuracy of data analysis.</p>
 </section>
-<section id="salary-expectations" class="level2">
-<h2 class="anchored" data-anchor-id="salary-expectations">3. Salary Expectations</h2>
-<table class="table">
-<colgroup>
-<col style="width: 17%">
-<col style="width: 27%">
-<col style="width: 27%">
-<col style="width: 27%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Job Title</th>
-<th>Entry-Level Salary</th>
-<th>Mid-Level Salary</th>
-<th>Senior-Level Salary</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Data Analyst</td>
-<td>$50K - $70K</td>
-<td>$80K - $100K</td>
-<td>$110K - $130K</td>
-</tr>
-<tr class="even">
-<td>Data Scientist</td>
-<td>$80K - $100K</td>
-<td>$110K - $140K</td>
-<td>$150K+</td>
-</tr>
-<tr class="odd">
-<td>ML Engineer</td>
-<td>$90K - $120K</td>
-<td>$130K - $160K</td>
-<td>$170K+</td>
-</tr>
-</tbody>
-</table>
+<section id="how-will-this-improve-analysis" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> How will this improve analysis?</h1>
+<p>Removing multiple versions of NAIC/SOC codes can improve data consistency and comparability, preventing analysis inaccuracies caused by inconsistent industry classification standards. This helps reduce data redundancy, simplify data cleaning and processing, and minimize classification errors due to version differences,making the data more standardized and enhancing the quality and reliability of data analysis.</p>
+<section id="handle-missing-values" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="handle-missing-values"><span class="header-section-number">3.1</span> <strong>Handle Missing Values</strong></h2>
+<p>import missingno as msno</p>
 </section>
-<section id="recommended-certifications" class="level2">
-<h2 class="anchored" data-anchor-id="recommended-certifications">4. Recommended Certifications</h2>
-<ul>
-<li>Google Data Analytics (Beginner)</li>
-<li>Microsoft Power BI (Visualization)</li>
-<li>AWS Certified Data Analytics (Cloud)</li>
-<li>TensorFlow Developer Certificate (AI/ML)</li>
-</ul>
 </section>
-<section id="career-roadmap" class="level2">
-<h2 class="anchored" data-anchor-id="career-roadmap">5. Career Roadmap</h2>
-<section id="step-1-learn-upskill" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-learn-upskill"><strong>Step 1: Learn &amp; Upskill</strong></h3>
-<ul>
-<li>Complete online courses in SQL &amp; Python</li>
-<li>Build visualization skills (Tableau, Power BI)</li>
-</ul>
+<section id="visualize-missing-data" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Visualize missing data</h1>
+<p>msno.heatmap(df) plt.title(“Missing Values Heatmap”) plt.show()</p>
 </section>
-<section id="step-2-gain-experience" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-gain-experience"><strong>Step 2: Gain Experience</strong></h3>
-<ul>
-<li>Contribute to GitHub projects</li>
-<li>Apply for internships or freelance projects</li>
-</ul>
+<section id="drop-columns-with-50-missing-values" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Drop columns with &gt;50% missing values</h1>
+<p>df.dropna(thresh=len(df) * 0.5, axis=1, inplace=True)</p>
 </section>
-<section id="step-3-apply-for-jobs" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-apply-for-jobs"><strong>Step 3: Apply for Jobs</strong></h3>
-<ul>
-<li>Optimize resume &amp; LinkedIn</li>
-<li>Prepare for SQL &amp; Python technical interviews</li>
-</ul>
+<section id="fill-missing-values" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Fill missing values</h1>
+<p>df[“Salary”].fillna(df[“Salary”].median(), inplace=True) df[“Industry”].fillna(“Unknown”, inplace=True) ```</p>
+<p>** #Remove Duplicates **</p>
+<p>df = df.drop_duplicates(subset=[“TITLE”, “COMPANY”, “LOCATION”, “POSTED”], keep=“first”)</p>
 
 
-</section>
-</section>
 </section>
 
 </main> <!-- /main -->

@@ -11,8 +11,8 @@ author:
   - name: John Hamm
     affiliations:
       - ref: bu
-bibliography: references.bib
-csl: csl/econometrica.csl
+bibliography: /home/ubuntu/ad688-employability-sp25A1-group7.io/references.bib
+csl: /home/ubuntu/ad688-employability-sp25A1-group7.io/csl/econometrica.csl
 format: 
   html:
     toc: true
