@@ -43,7 +43,7 @@ Removing multiple versions of NAIC/SOC codes can improve data consistency and co
 
 ## **Handle Missing Values**
 
-```{python}
+
 import missingno as msno
 
 # Visualize missing data
@@ -60,6 +60,5 @@ df["Industry"].fillna("Unknown", inplace=True)
 ```
 
 ** #Remove Duplicates **
-```{python}
+
 df = df.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"], keep="first")
-```

@@ -1,0 +1,10 @@
+---
+title: "Research Introduction"
+author: "Team 7"
+date: today
+format: 
+  html:
+    bibliography: references.bib
+    csl: csl/econometrica.csl
+    toc: true
+---
