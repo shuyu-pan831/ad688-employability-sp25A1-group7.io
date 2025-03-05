@@ -32,6 +32,7 @@ columns_to_drop = [
 lightcast_data.drop(columns=columns_to_drop, inplace=True)
 ```
 
+
 # Which columns are irrelevant or redundant?
 
 The removed columns include unique identifiers (such as ID), timestamps (LAST_UPDATED_TIMESTAMP), links (URL), duplicate markers (DUPLICATES), and overlydetailed industry and occupation classification codes (various levels of NAICS and SOC). These columns may have no direct impact on the analysis or be redundant, so they were removed to simplify data processing.
@@ -42,7 +43,12 @@ The main reason for removing multiple versions of NAICS/SOC codes is to avoid da
 # How will this improve analysis?
 Removing multiple versions of NAIC/SOC codes can improve data consistency and comparability, preventing analysis inaccuracies caused by inconsistent industry classification standards. This helps reduce data redundancy, simplify data cleaning and processing, and minimize classification errors due to version differences,making the data more standardized and enhancing the quality and reliability of data analysis.
 
-## **Handle Missing Values**
+## **4.4 Handle Missing Values**
+# How should we handle missing values?
+1. Removing Missing Values (Dropping Data)
+If missing values are rare and their removal won’t significantly impact the analysis, dropping them is a simple and effective solution. This can be done by removing rows containing missing values if they make up a small percentage of the dataset. Alternatively, if an entire column has a large proportion of missing values, it may be best to drop the column entirely. 
+2. Filling Missing Values (Imputation)
+Imputation involves replacing missing values with a calculated or default value. For numerical data, common methods include filling missing values with the median (to handle skewed distributions), the mean (if the data is normally distributed), or the mode (if there is a frequently occurring value). For categorical data, missing values can be replaced with "Unknown" to retain information or with the mode if a dominant category exists. This method preserves the dataset’s size and can prevent loss of valuable information.
 
 ```{python}
 # Visualize missing data
@@ -51,18 +57,49 @@ plt.title("Missing Values Heatmap")
 plt.show()
 ```
 
+# identify numerical and categorical columns
+```{python}
+lightcast_data.head()
+# Identify numerical columns
+numerical_columns = lightcast_data.select_dtypes(include=['number']).columns
+
+# Identify categorical columns
+categorical_columns = lightcast_data.select_dtypes(include=['object', 'category']).columns
+```
+
+```{python}
+# Find columns with missing values
+missing_values = lightcast_data.isnull().sum()
+
+# Filter only columns with missing data
+missing_columns = missing_values[missing_values > 0]
+
+# Display columns with missing values and their count
+print(missing_columns)
+```
+
+# Numerical fields (e.g., Salary) are filled with the median.
+```{python}
+# Iterate over columns with missing values
+for col in missing_columns.index:
+    if col in numerical_columns:
+        # If numeric, replace missing values with the median
+        lightcast_data[col].fillna(lightcast_data[col].median(), inplace=True)
+    elif col in categorical_columns:
+        # If categorical, replace missing values with "Unknown"
+        lightcast_data[col].fillna("Unknown", inplace=True)
+
+# Verify if missing values are handled
+print(lightcast_data.isnull().sum())  # Should return 0 for all columns
+```
+
 # Drop columns with >50% missing values
 ```{python}
 lightcast_data.dropna(thresh=len(lightcast_data) * 0.5, axis=1, inplace=True)
 ```
 
-# Fill missing values
+** # Remove Duplicates **
 ```{python}
-lightcast_data["Salary"].fillna(lightcast_data["Salary"].median(), inplace=True)
-lightcast_data["Industry"].fillna("Unknown", inplace=True)
+lightcast_data = lightcast_data.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"], keep="first")
 ```
 
-
-** #Remove Duplicates **
-
-df = df.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"], keep="first")
