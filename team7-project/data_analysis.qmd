@@ -51,13 +51,16 @@ plt.title("Missing Values Heatmap")
 plt.show()
 ```
 
-
 # Drop columns with >50% missing values
+```{python}
 lightcast_data.dropna(thresh=len(lightcast_data) * 0.5, axis=1, inplace=True)
+```
 
 # Fill missing values
+```{python}
 lightcast_data["Salary"].fillna(lightcast_data["Salary"].median(), inplace=True)
 lightcast_data["Industry"].fillna("Unknown", inplace=True)
+```
 
 
 ** #Remove Duplicates **
