@@ -7,6 +7,8 @@ website:
     left:
       - href: index.qmd
         text: "Home"
+      - href: about.qmd
+        text: "About"
       - href: research_introduction.qmd
         text: "Research"
       - href: data_analysis.qmd
