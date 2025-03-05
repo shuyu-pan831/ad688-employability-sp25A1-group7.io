@@ -29,25 +29,19 @@ columns_to_drop = [
     "SOC_2", "SOC_3", "SOC_5"
 ]
 dlightcast_data.drop(columns=columns_to_drop, inplace=True)
-```
-#Which columns are irrelevant or redundant?
 
-#The removed columns include unique identifiers (such as ID), timestamps (LAST_UPDATED_TIMESTAMP), links (URL), duplicate markers (DUPLICATES), and overly
- detailed industry and occupation classification codes (various levels of NAICS and SOC). These columns may have no direct impact on the analysis or be redundant,
- so they were removed to simplify data processing.
+# Which columns are irrelevant or redundant?
+
+#The removed columns include unique identifiers (such as ID), timestamps (LAST_UPDATED_TIMESTAMP), links (URL), duplicate markers (DUPLICATES), and overlydetailed industry and occupation classification codes (various levels of NAICS and SOC). These columns may have no direct impact on the analysis or be redundant, so they were removed to simplify data processing.
 
 #Why are we removing multiple versions of NAICS/SOC codes?
-#The main reason for removing multiple versions of NAICS/SOC codes is to avoid data redundancy and confusion, ensuring data consistency and comparability. 
-Different versions of NAICS may lead to inconsistencies in industry classification standards, which can affect the accuracy of data analysis.
+#The main reason for removing multiple versions of NAICS/SOC codes is to avoid data redundancy and confusion, ensuring data consistency and comparability. Different versions of NAICS may lead to inconsistencies in industry classification standards, which can affect the accuracy of data analysis.
 
 #How will this improve analysis?
-#Removing multiple versions of NAIC/SOC codes can improve data consistency and comparability, preventing analysis inaccuracies caused by inconsistent industry 
-classification standards. This helps reduce data redundancy, simplify data cleaning and processing, and minimize classification errors due to version differences,
- making the data more standardized and enhancing the quality and reliability of data analysis.
+#Removing multiple versions of NAIC/SOC codes can improve data consistency and comparability, preventing analysis inaccuracies caused by inconsistent industry classification standards. This helps reduce data redundancy, simplify data cleaning and processing, and minimize classification errors due to version differences,making the data more standardized and enhancing the quality and reliability of data analysis.
 
  **#Handle Missing Values**
 
-```{python}
 import missingno as msno
 
 # Visualize missing data
