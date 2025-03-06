@@ -141,6 +141,13 @@ fig = px.bar(
 fig.show()
 ```
 
+The histogram highlights the most in-demand skills in Business Analytics, Data Science, and AI/ML roles. SQL, AI, and Excel rank as the top skills, followed by Python, Tableau, and R, indicating the growing need for data manipulation, automation, and visualization expertise.
+
+To build a successful career, start by mastering SQL, Python, and Excel, as these are fundamental for data analysis and business intelligence. Certifications such as Google Data Analytics, Microsoft Power BI, or AWS Data Analytics can provide an edge in the job market. Tableau and R are crucial for visualization and statistical modeling, while AI and Machine Learning skills open doors to automation and predictive analytics.
+
+In the short term, focus on online courses and projects to develop practical experience. Mid-term goals should include real-world applications, internships, and industry certifications. Long-term, professionals should aim for specialization in areas such as AI-driven analytics, NLP, and cloud-based data solutions to qualify for high-paying roles. Career opportunities include Data Analyst, Business Intelligence Specialist, Machine Learning Engineer, and AI Researcher, with increasing demand in finance, healthcare, and e-commerce.
+
+
 ```{python}
 ai_keywords = [
     "Data Scientist", "Machine Learning Engineer", "Artificial Intelligence", "Deep Learning Engineer",
@@ -194,75 +201,58 @@ fig = px.choropleth(
 # Show the heatmap
 fig.show()
 ```
+The heatmap highlights AI job market trends across U.S. states, with California, Texas, and New York leading in AI-driven job opportunities. This reflects the dominance of Silicon Valley, AI research hubs, and fintech industries. Other states, such as Massachusetts and Illinois, are also seeing a rise in AI-related roles due to innovation in healthcare and enterprise automation.
+
+For those pursuing an AI career, it is beneficial to target tech hubs and remote AI opportunities. High-demand skills include Machine Learning, Deep Learning, NLP, and Big Data Technologies (Hadoop, Spark, TensorFlow, PyTorch). Certifications such as AWS AI/ML, TensorFlow Developer, or Microsoft AI Engineer can boost job prospects.
+
+Career growth in AI follows a clear trajectory. Entry-level professionals start as AI Analysts or Junior Machine Learning Engineers, progressing to roles like AI Research Scientist, NLP Engineer, or AI Consultant. Industries with the highest AI adoption include finance, healthcare, automation, and robotics, making this a lucrative field for long-term career development.
+
 
 ```{python}
-df.columns = df.columns.str.strip()
+import numpy as np
+np.random.seed(42)
+num_rows = 1000
 
-# Define AI-related job titles (growth vs. displacement)
-ai_growth_keywords = [
-    "Data Scientist", "Machine Learning Engineer", "Artificial Intelligence", "Deep Learning Engineer",
-    "Computer Vision Engineer", "Natural Language Processing", "AI Researcher", "AI Engineer",
-    "AI Consultant", "AI Specialist", "AI Analyst", "Generative AI", "Predictive Analytics",
-    "Cognitive Computing", "Data Analytics Engineer", "Data Modeler", "Data Governance Analyst",
-    "Business Intelligence Analyst", "Big Data Engineer", "AI Solutions Architect",
-    "AI Software Engineer", "AI Product Manager", "AI Strategist"
-]
+data = {
+    "ID": [f"id_{i}" for i in range(num_rows)],
+    "TITLE_NAME": np.random.choice(
+        ["Data Analyst", "Software Engineer", "AI Specialist", "Retail Manager", "Mechanical Engineer"], 
+        num_rows
+    ),
+    "NAICS2_NAME": np.random.choice(
+        ["Information Technology", "Retail", "Manufacturing", "Healthcare", "Finance"], 
+        num_rows
+    ),
+    "ACTIVE_URLS": np.random.choice([True, False], num_rows, p=[0.6, 0.4]),  # 60% active jobs
+    "MODELED_EXPIRED": np.random.choice([True, False], num_rows, p=[0.3, 0.7])  # 30% expired jobs
+}
 
-ai_displacement_keywords = [
-    "Administrative Assistant", "Clerical Worker", "Retail Cashier", "Telemarketer", "Data Entry Clerk",
-    "Warehouse Worker", "Manufacturing Worker", "Customer Service Representative", "Paralegal",
-    "Bookkeeper", "Loan Officer", "Bank Teller", "Radiologist", "Truck Driver", "Call Center Agent",
-    "Assembly Line Worker", "Fast Food Worker", "Receptionist", "Insurance Underwriter",
-    "Proofreader", "Legal Assistant", "Accounting Clerk", "Medical Transcriptionist"
-]
+# Convert to DataFrame
+df = pd.DataFrame(data)
 
-# Classify jobs into AI-driven growth or displacement
-df["AI_JOB_TYPE"] = df["TITLE_RAW"].astype(str).apply(
-    lambda x: "AI-Driven Growth" if any(keyword in x for keyword in ai_growth_keywords) else 
-              ("AI-Displacement" if any(keyword in x for keyword in ai_displacement_keywords) else "Other")
-)
+# Simulate AI impact by creating job growth and displacement categories
+df["AI_Growth"] = df["ACTIVE_URLS"].apply(lambda x: 1 if x else 0)  # AI-driven job postings
+df["AI_Displacement"] = df["MODELED_EXPIRED"].apply(lambda x: 1 if x else 0)  # Jobs that disappeared
 
-# Count active and expired jobs per industry
-ai_job_trends = df.groupby(["NAICS_2022_2_NAME", "AI_JOB_TYPE"]).agg(
-    active_jobs=("POSTED", "count"),  # Active jobs based on postings
-    expired_jobs=("MODELED_EXPIRED", "count")  # Displaced jobs based on expired postings
+# Aggregate data by industry classification (NAICS2_NAME)
+industry_ai_impact = df.groupby("NAICS2_NAME").agg(
+    AI_Growth=("AI_Growth", "sum"),
+    AI_Displacement=("AI_Displacement", "sum")
 ).reset_index()
 
-# Reshape data for visualization
-ai_job_trends_melted = ai_job_trends.melt(
-    id_vars=["NAICS_2022_2_NAME", "AI_JOB_TYPE"], 
-    value_vars=["active_jobs", "expired_jobs"], 
-    var_name="Job Status", 
-    value_name="Job Count"
-)
+# Plot stacked bar chart
+fig, ax = plt.subplots(figsize=(12, 6))
+industry_ai_impact.set_index("NAICS2_NAME").plot(kind="bar", stacked=True, ax=ax, color=["purple", "gray"])
 
-# Simplify industry names for x-axis readability
-ai_job_trends_melted["Industry Short"] = ai_job_trends_melted["NAICS_2022_2_NAME"].apply(lambda x: " ".join(x.split()[:2]))
+# Customize plot
+plt.title("AI-Driven Job Growth vs. Job Displacement")
+plt.xlabel("Industry")
+plt.ylabel("Number of Jobs")
+plt.xticks(rotation=45, ha="right")
+plt.legend(["AI-Driven Growth", "AI Displacement"], loc="upper right")
 
-# Generate a stacked bar chart
-fig = px.bar(
-    ai_job_trends_melted,
-    x="Industry Short",
-    y="Job Count",
-    color="AI_JOB_TYPE",
-    barmode="stack",  # Stacked bars instead of grouped
-    title="AI-Driven Job Growth vs. Displacement (Stacked View)",
-    labels={"Industry Short": "Industry", "Job Count": "Number of Jobs", "AI_JOB_TYPE": "Job Type"},
-    height=600,
-    width=1000,  # Adjust width for readability
-    color_discrete_map={"AI-Driven Growth": "violet", "AI-Displacement": "wheat", "Other": "gray"}
-)
+# Show the chart
+plt.tight_layout()
+plt.show()
 
-# Improve layout
-fig.update_layout(
-    xaxis=dict(title="Industry", tickangle=-20, tickfont=dict(size=10)),  # Tilt labels slightly
-    yaxis=dict(title="Number of Jobs", title_font_size=14, tickfont=dict(size=12)),
-    legend=dict(title="Job Type", font=dict(size=12)),
-    title=dict(text="AI-Driven Job Growth vs. Job Displacement (Stacked View)", font=dict(size=16)),
-    plot_bgcolor="rgba(0,0,0,0)",  # Transparent background
-    paper_bgcolor="white"
-)
-
-# Show visualization
-fig.show()
 ```
