@@ -256,3 +256,34 @@ plt.tight_layout()
 plt.show()
 
 ```
+
+AI-Driven Job Growth (Purple Section)
+Industries such as Finance, Healthcare, and Information Technology are seeing strong AI-driven job creation. AI is revolutionizing these sectors by enabling automation, predictive analytics, and intelligent decision-making, leading to an increase in demand for professionals with expertise in machine learning, data science, and AI-enhanced business intelligence.
+
+To build a career in these high-growth industries, professionals should first focus on developing foundational skills in Machine Learning, AI, and Data Analytics. Learning Python, SQL, TensorFlow, and Power BI can provide a strong technical base, and obtaining certifications like Google Data Analytics, AWS AI/ML, or Microsoft AI Engineer can further boost career prospects. In the mid-term, gaining hands-on experience through real-world projects, internships, or Kaggle competitions will be essential. Specializing in AI-driven finance, healthcare analytics, or cybersecurity AI can help secure specialized roles.
+
+For long-term career growth, professionals should consider transitioning into senior positions such as AI Researcher, Data Scientist, or AI Product Manager. Earning advanced certifications and degrees in AI Strategy, AI for Business, or NLP will be beneficial. Networking with AI professionals, attending industry conferences, and participating in AI-focused forums will further enhance career opportunities.
+
+High-demand job roles in AI-driven industries include:
+Data Scientist
+AI Engineer
+Machine Learning Specialist
+Business Intelligence Analyst
+AI Consultant
+
+
+AI Job Displacement Risk (Gray Section)
+Industries like Manufacturing and Retail are facing significant AI-driven job displacement due to the adoption of automation and robotics. Traditional roles that involve repetitive tasks are being replaced by AI-powered process automation and robotic systems. As AI reshapes these industries, professionals must adapt by acquiring new skills that align with AI-enhanced job roles.
+
+The first step in mitigating the risk of AI displacement is understanding how AI is affecting one’s industry and identifying AI-driven career opportunities. Professionals should focus on upskilling in automation technologies, digital transformation, and data-driven decision-making. Learning AI-powered tools such as RPA (UiPath), cloud computing, and AI-driven logistics can help professionals remain relevant.
+
+In the mid-term, transitioning to AI-integrated roles such as AI-Augmented Supply Chain Management or AI-Enhanced Customer Experience Analyst can provide job security. Developing skills in predictive analytics, demand forecasting, and AI-driven operations will allow professionals to move into AI-supported roles within their existing industries.
+
+For long-term career stability, professionals should aim for leadership roles in AI-augmented operations, robotics, or AI-driven business strategy. Obtaining professional credentials in AI Strategy, Digital Leadership, and Intelligent Automation will help in securing high-paying opportunities. If necessary, transitioning to AI-dominant industries like fintech, healthcare, and cybersecurity may provide more stable career options.
+
+Recommended AI-enhanced job roles for displaced professionals include:
+AI-Augmented Operations Manager
+Robotics Engineer
+AI-Powered Marketing Analyst
+Automation Consultant
+AI-Driven Logistics Specialist
