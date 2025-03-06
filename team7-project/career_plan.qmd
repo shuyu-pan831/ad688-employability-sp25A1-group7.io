@@ -14,20 +14,13 @@ format: html
 ## 2. In-Demand Skills
 - SQL, Python, Machine Learning, Data Visualization, Cloud Computing
 
-## 3. Salary Expectations
-| Job Title | Entry-Level Salary | Mid-Level Salary | Senior-Level Salary |
-|-----------|-----------------|-----------------|-----------------|
-| Data Analyst | $50K - $70K | $80K - $100K | $110K - $130K |
-| Data Scientist | $80K - $100K | $110K - $140K | $150K+ |
-| ML Engineer | $90K - $120K | $130K - $160K | $170K+ |
-
-## 4. Recommended Certifications
+## 3. Recommended Certifications
 - Google Data Analytics (Beginner)
 - Microsoft Power BI (Visualization)
 - AWS Certified Data Analytics (Cloud)
 - TensorFlow Developer Certificate (AI/ML)
 
-## 5. Career Roadmap
+## 4. Career Roadmap
 ### **Step 1: Learn & Upskill**
 - Complete online courses in SQL & Python
 - Build visualization skills (Tableau, Power BI)
