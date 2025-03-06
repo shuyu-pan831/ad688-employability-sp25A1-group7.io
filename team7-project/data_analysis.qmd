@@ -254,7 +254,6 @@ plt.legend(["AI-Driven Growth", "AI Displacement"], loc="upper right")
 # Show the chart
 plt.tight_layout()
 plt.show()
-
 ```
 
 AI-Driven Job Growth (Purple Section)
