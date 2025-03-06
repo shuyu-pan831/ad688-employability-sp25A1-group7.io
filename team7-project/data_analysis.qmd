@@ -19,6 +19,7 @@ format:
 import pandas as pd
 import missingno as msno
 import matplotlib.pyplot as plt
+import warnings
 ```
 
 
@@ -80,6 +81,8 @@ print(missing_columns)
 
 # Numerical fields (e.g., Salary) are filled with the median.
 ```{python}
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
 # Iterate over columns with missing values
 for col in missing_columns.index:
     if col in numerical_columns:

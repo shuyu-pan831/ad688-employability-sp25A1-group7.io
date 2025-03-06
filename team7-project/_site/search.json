@@ -81,7 +81,7 @@
     "href": "data_analysis.html",
     "title": "Data Analysis",
     "section": "",
-    "text": "import pandas as pd\nimport missingno as msno\nimport matplotlib.pyplot as plt\nlightcast_data = pd.read_csv(\"/home/ubuntu/lightcast_job_postings.csv\")\ncolumns_to_drop = [\n    \"ID\", \"URL\", \"ACTIVE_URLS\", \"DUPLICATES\", \"LAST_UPDATED_TIMESTAMP\",\n    \"NAICS2\", \"NAICS3\", \"NAICS4\", \"NAICS5\", \"NAICS6\",\n    \"SOC_2\", \"SOC_3\", \"SOC_5\"\n]\nlightcast_data.drop(columns=columns_to_drop, inplace=True)"
+    "text": "import pandas as pd\nimport missingno as msno\nimport matplotlib.pyplot as plt\nimport warnings\nlightcast_data = pd.read_csv(\"/home/ubuntu/lightcast_job_postings.csv\")\ncolumns_to_drop = [\n    \"ID\", \"URL\", \"ACTIVE_URLS\", \"DUPLICATES\", \"LAST_UPDATED_TIMESTAMP\",\n    \"NAICS2\", \"NAICS3\", \"NAICS4\", \"NAICS5\", \"NAICS6\",\n    \"SOC_2\", \"SOC_3\", \"SOC_5\"\n]\nlightcast_data.drop(columns=columns_to_drop, inplace=True)"
   },
   {
     "objectID": "data_analysis.html#handle-missing-values",
