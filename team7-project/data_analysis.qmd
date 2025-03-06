@@ -194,3 +194,75 @@ fig = px.choropleth(
 # Show the heatmap
 fig.show()
 ```
+
+```{python}
+df.columns = df.columns.str.strip()
+
+# Define AI-related job titles (growth vs. displacement)
+ai_growth_keywords = [
+    "Data Scientist", "Machine Learning Engineer", "Artificial Intelligence", "Deep Learning Engineer",
+    "Computer Vision Engineer", "Natural Language Processing", "AI Researcher", "AI Engineer",
+    "AI Consultant", "AI Specialist", "AI Analyst", "Generative AI", "Predictive Analytics",
+    "Cognitive Computing", "Data Analytics Engineer", "Data Modeler", "Data Governance Analyst",
+    "Business Intelligence Analyst", "Big Data Engineer", "AI Solutions Architect",
+    "AI Software Engineer", "AI Product Manager", "AI Strategist"
+]
+
+ai_displacement_keywords = [
+    "Administrative Assistant", "Clerical Worker", "Retail Cashier", "Telemarketer", "Data Entry Clerk",
+    "Warehouse Worker", "Manufacturing Worker", "Customer Service Representative", "Paralegal",
+    "Bookkeeper", "Loan Officer", "Bank Teller", "Radiologist", "Truck Driver", "Call Center Agent",
+    "Assembly Line Worker", "Fast Food Worker", "Receptionist", "Insurance Underwriter",
+    "Proofreader", "Legal Assistant", "Accounting Clerk", "Medical Transcriptionist"
+]
+
+# Classify jobs into AI-driven growth or displacement
+df["AI_JOB_TYPE"] = df["TITLE_RAW"].astype(str).apply(
+    lambda x: "AI-Driven Growth" if any(keyword in x for keyword in ai_growth_keywords) else 
+              ("AI-Displacement" if any(keyword in x for keyword in ai_displacement_keywords) else "Other")
+)
+
+# Count active and expired jobs per industry
+ai_job_trends = df.groupby(["NAICS_2022_2_NAME", "AI_JOB_TYPE"]).agg(
+    active_jobs=("POSTED", "count"),  # Active jobs based on postings
+    expired_jobs=("MODELED_EXPIRED", "count")  # Displaced jobs based on expired postings
+).reset_index()
+
+# Reshape data for visualization
+ai_job_trends_melted = ai_job_trends.melt(
+    id_vars=["NAICS_2022_2_NAME", "AI_JOB_TYPE"], 
+    value_vars=["active_jobs", "expired_jobs"], 
+    var_name="Job Status", 
+    value_name="Job Count"
+)
+
+# Simplify industry names for x-axis readability
+ai_job_trends_melted["Industry Short"] = ai_job_trends_melted["NAICS_2022_2_NAME"].apply(lambda x: " ".join(x.split()[:2]))
+
+# Generate a stacked bar chart
+fig = px.bar(
+    ai_job_trends_melted,
+    x="Industry Short",
+    y="Job Count",
+    color="AI_JOB_TYPE",
+    barmode="stack",  # Stacked bars instead of grouped
+    title="AI-Driven Job Growth vs. Displacement (Stacked View)",
+    labels={"Industry Short": "Industry", "Job Count": "Number of Jobs", "AI_JOB_TYPE": "Job Type"},
+    height=600,
+    width=1000,  # Adjust width for readability
+    color_discrete_map={"AI-Driven Growth": "violet", "AI-Displacement": "wheat", "Other": "gray"}
+)
+
+# Improve layout
+fig.update_layout(
+    xaxis=dict(title="Industry", tickangle=-20, tickfont=dict(size=10)),  # Tilt labels slightly
+    yaxis=dict(title="Number of Jobs", title_font_size=14, tickfont=dict(size=12)),
+    legend=dict(title="Job Type", font=dict(size=12)),
+    title=dict(text="AI-Driven Job Growth vs. Job Displacement (Stacked View)", font=dict(size=16)),
+    plot_bgcolor="rgba(0,0,0,0)",  # Transparent background
+    paper_bgcolor="white"
+)
+
+# Show visualization
+fig.show()
+```
