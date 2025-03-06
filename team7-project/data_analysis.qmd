@@ -122,16 +122,14 @@ skills_keywords = [
 ]
 
 skill_counts = Counter()
-for desc in df["BODY"]:
-    words = re.findall(r'\b\w+\b', desc)  # Extract words
-    matched_skills = [word for word in words if word in skills_keywords]  # Filter keywords
+for desc in df["BODY"].dropna():  
+    words = re.findall(r'\b\w+\b', desc)
+    matched_skills = [word for word in words if word in skills_keywords]
     skill_counts.update(matched_skills)
 
-# Convert to DataFrame
 skills_df = pd.DataFrame(skill_counts.items(), columns=["Skill", "Count"]).sort_values(by="Count", ascending=False)
 
-# Create bar chart using Plotly
-fig = px.bar(
+fig1 = px.bar(
     skills_df, 
     x="Skill", 
     y="Count", 
@@ -140,9 +138,14 @@ fig = px.bar(
     text=skills_df["Count"]
 )
 
-# Show the interactive chart
-pio.show(fig)
-fig.show()
+
+pio.renderers.default = "iframe"
+
+
+fig1.write_html("plotly_skills_chart.html")
+
+fig1.show()
+
 ```
 
 The histogram highlights the most in-demand skills in Business Analytics, Data Science, and AI/ML roles. SQL, AI, and Excel rank as the top skills, followed by Python, Tableau, and R, indicating the growing need for data manipulation, automation, and visualization expertise.
@@ -153,6 +156,8 @@ In the short term, focus on online courses and projects to develop practical exp
 
 
 ```{python}
+import plotly.express as px
+
 ai_keywords = [
     "Data Scientist", "Machine Learning Engineer", "Artificial Intelligence", "Deep Learning Engineer",
     "Computer Vision Engineer", "Natural Language Processing", "AI Researcher", "AI Engineer",
@@ -163,13 +168,9 @@ ai_keywords = [
     "Data Management Analyst", "Lead Data Analyst", "Principal Architect", "Data and Reporting Analyst"
 ]
 
-# Filter AI-related job postings based on TITLE_NAME
 df["IS_AI_JOB"] = df["TITLE_NAME"].astype(str).apply(lambda x: any(keyword in x for keyword in ai_keywords))
-
-# Aggregate AI job counts by state
 state_job_counts = df[df["IS_AI_JOB"]].groupby("STATE_NAME").size().reset_index(name="AI_JOB_COUNT")
 
-# State name to abbreviation mapping
 state_abbrev = {
     "Alabama": "AL", "Alaska": "AK", "Arizona": "AZ", "Arkansas": "AR", "California": "CA",
     "Colorado": "CO", "Connecticut": "CT", "Delaware": "DE", "Florida": "FL", "Georgia": "GA",
@@ -183,28 +184,24 @@ state_abbrev = {
     "Washington": "WA", "West Virginia": "WV", "Wisconsin": "WI", "Wyoming": "WY"
 }
 
-# Convert full state names to abbreviations
 state_job_counts["STATE_ABBR"] = state_job_counts["STATE_NAME"].map(state_abbrev)
 
-# Print the state job counts to verify data
-print(state_job_counts.head()) 
-
-# Generate the heatmap using Plotly
-fig = px.choropleth(
+fig2 = px.choropleth(
     state_job_counts,
-    locations="STATE_ABBR",  # Use abbreviations instead of full names
+    locations="STATE_ABBR",
     locationmode="USA-states",
     color="AI_JOB_COUNT",
     hover_name="STATE_NAME",
     color_continuous_scale="Blues",
-    range_color=(1, state_job_counts["AI_JOB_COUNT"].max()),  # Adjust color scaling
+    range_color=(1, state_job_counts["AI_JOB_COUNT"].max()),
     title="AI Job Market Trends Across US States",
     scope="usa"
 )
 
-# Show the heatmap
-pio.show(fig)
-fig.show()
+pio.renderers.default = "iframe"
+fig2.write_html("plotly_ai_jobs_chart.html")
+fig2.show()
+
 ```
 The heatmap highlights AI job market trends across U.S. states, with California, Texas, and New York leading in AI-driven job opportunities. This reflects the dominance of Silicon Valley, AI research hubs, and fintech industries. Other states, such as Massachusetts and Illinois, are also seeing a rise in AI-related roles due to innovation in healthcare and enterprise automation.
 
@@ -253,46 +250,33 @@ industry_dropdown = Dropdown(
 )
 
 output = Output()
-
 display(VBox([industry_dropdown, output]))
 
 selected_industry = industry_dropdown.value
 filtered_data = industry_ai_impact if selected_industry == "All" else industry_ai_impact[industry_ai_impact["NAICS2_NAME"] == selected_industry]
 
-fig = go.Figure()
-fig.add_trace(go.Bar(
+fig3 = go.Figure()
+fig3.add_trace(go.Bar(
     x=filtered_data["NAICS2_NAME"],
     y=filtered_data["AI_Growth"],
     name="AI-Driven Growth",
     marker_color="purple"
 ))
-fig.add_trace(go.Bar(
+fig3.add_trace(go.Bar(
     x=filtered_data["NAICS2_NAME"],
     y=filtered_data["AI_Displacement"],
     name="AI Displacement",
     marker_color="gray"
 ))
-fig.update_layout(
+fig3.update_layout(
     title="AI Impact on Jobs by Industry",
     xaxis_title="Industry",
     yaxis_title="Number of Jobs",
     barmode="stack"
 )
 
-with output:
-    fig.show()
-pio.show(fig)
-
-industry_dropdown.observe(lambda change: exec("""
-selected_industry = change["new"]
-filtered_data = industry_ai_impact if selected_industry == "All" else industry_ai_impact[industry_ai_impact["NAICS2_NAME"] == selected_industry]
-fig.data = []
-fig.add_trace(go.Bar(x=filtered_data["NAICS2_NAME"], y=filtered_data["AI_Growth"], name="AI-Driven Growth", marker_color="purple"))
-fig.add_trace(go.Bar(x=filtered_data["NAICS2_NAME"], y=filtered_data["AI_Displacement"], name="AI Displacement", marker_color="gray"))
-with output:
-    output.clear_output()
-    fig.show()
-"""), names="value")
+fig3.write_html("plotly_industry_impact_chart.html")
+fig3.show()
 ```
 
 AI-Driven Job Growth (Purple Section)
