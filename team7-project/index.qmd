@@ -3,8 +3,8 @@ title: "Business Analytics, Data Science, and ML Trends in 2024"
 author: "Team 7: Shuyu Pan, Jiaxin Wang, Yixuan Chen, Guowei Yan"
 date: "2025-02-14"
 format: html
-bibliography: /home/ubuntu/ad688-employability-sp25A1-group7.io/references.bib
-csl: /home/ubuntu/ad688-employability-sp25A1-group7.io/csl/econometrica.csl
+bibliography: ../references.bib
+csl: ../csl/econometrica.csl
 toc: true
 ---
 
@@ -23,5 +23,5 @@ In our analysis of Business Analytics, Data Science, and Machine Learning Trends
 for decision-making across industries. Emerging technologies like Generative AI, AutoML, and Edge AI are gaining widespread adoption, making AI more accessible and efficient.
  Additionally, there is a growing focus on Ethical AI and Explainability, as businesses seek to mitigate bias and ensure fairness in machine learning models. The job market is 
  also shifting, with increasing demand for professionals skilled in AI, Python, and data analytics. Furthermore, businesses are transitioning from traditional analytics to AI-powered
- Business Intelligence, improving efficiency, personalization, and customer experience.
+ Business Intelligence, improving efficiency, personalization, and customer experience [@li2021data].
 ---
