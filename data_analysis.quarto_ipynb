@@ -21,7 +21,7 @@
         "    df-print: paged\n",
         "---"
       ],
-      "id": "9940d580"
+      "id": "5809fd45"
     },
     {
       "cell_type": "code",
@@ -40,7 +40,7 @@
         "import plotly.graph_objects as go\n",
         "from ipywidgets import Dropdown, VBox, Output"
       ],
-      "id": "97bee66e",
+      "id": "8f7b8685",
       "execution_count": null,
       "outputs": []
     },
@@ -56,7 +56,7 @@
         "]\n",
         "lightcast_data.drop(columns=columns_to_drop, inplace=True)"
       ],
-      "id": "a08fd5f2",
+      "id": "dd1a78ca",
       "execution_count": null,
       "outputs": []
     },
@@ -81,7 +81,7 @@
         "2. Filling Missing Values (Imputation)\n",
         "Imputation involves replacing missing values with a calculated or default value. For numerical data, common methods include filling missing values with the median (to handle skewed distributions), the mean (if the data is normally distributed), or the mode (if there is a frequently occurring value). For categorical data, missing values can be replaced with \"Unknown\" to retain information or with the mode if a dominant category exists. This method preserves the dataset’s size and can prevent loss of valuable information.\n"
       ],
-      "id": "70dfbe92"
+      "id": "fd0063e8"
     },
     {
       "cell_type": "code",
@@ -92,7 +92,7 @@
         "plt.title(\"Missing Values Heatmap\")\n",
         "plt.show()"
       ],
-      "id": "f6fe0eea",
+      "id": "2c2976f0",
       "execution_count": null,
       "outputs": []
     },
@@ -102,7 +102,7 @@
       "source": [
         "# identify numerical and categorical columns\n"
       ],
-      "id": "919b4e3d"
+      "id": "40d306b1"
     },
     {
       "cell_type": "code",
@@ -115,7 +115,7 @@
         "# Identify categorical columns\n",
         "categorical_columns = lightcast_data.select_dtypes(include=['object', 'category']).columns"
       ],
-      "id": "3e60bfc5",
+      "id": "52cd3d79",
       "execution_count": null,
       "outputs": []
     },
@@ -132,7 +132,7 @@
         "# Display columns with missing values and their count\n",
         "print(missing_columns)"
       ],
-      "id": "e9026125",
+      "id": "d1f3f66a",
       "execution_count": null,
       "outputs": []
     },
@@ -142,7 +142,7 @@
       "source": [
         "# Numerical fields (e.g., Salary) are filled with the median.\n"
       ],
-      "id": "f7c7af95"
+      "id": "5109088c"
     },
     {
       "cell_type": "code",
@@ -161,7 +161,7 @@
         "# Verify if missing values are handled\n",
         "print(lightcast_data.isnull().sum())  # Should return 0 for all columns"
       ],
-      "id": "dfb17577",
+      "id": "aa459af3",
       "execution_count": null,
       "outputs": []
     },
@@ -171,7 +171,7 @@
       "source": [
         "# Drop columns with >50% missing values\n"
       ],
-      "id": "45462144"
+      "id": "3d4fccf6"
     },
     {
       "cell_type": "code",
@@ -179,7 +179,7 @@
       "source": [
         "lightcast_data.dropna(thresh=len(lightcast_data) * 0.5, axis=1, inplace=True)"
       ],
-      "id": "3a19a86b",
+      "id": "f1b019b6",
       "execution_count": null,
       "outputs": []
     },
@@ -189,7 +189,7 @@
       "source": [
         "** # Remove Duplicates **\n"
       ],
-      "id": "bc009d22"
+      "id": "4855c0b1"
     },
     {
       "cell_type": "code",
@@ -197,7 +197,7 @@
       "source": [
         "lightcast_data = lightcast_data.drop_duplicates(subset=[\"TITLE\", \"COMPANY\", \"LOCATION\", \"POSTED\"], keep=\"first\")"
       ],
-      "id": "c825677e",
+      "id": "3f49a67e",
       "execution_count": null,
       "outputs": []
     },
@@ -237,7 +237,7 @@
         "\n",
         "fig1.show()"
       ],
-      "id": "436cc3f2",
+      "id": "afd24143",
       "execution_count": null,
       "outputs": []
     },
@@ -251,7 +251,7 @@
         "\n",
         "In the short term, focus on online courses and projects to develop practical experience. Mid-term goals should include real-world applications, internships, and industry certifications. Long-term, professionals should aim for specialization in areas such as AI-driven analytics, NLP, and cloud-based data solutions to qualify for high-paying roles. Career opportunities include Data Analyst, Business Intelligence Specialist, Machine Learning Engineer, and AI Researcher, with increasing demand in finance, healthcare, and e-commerce.\n"
       ],
-      "id": "bb1d8220"
+      "id": "f6f8b4c4"
     },
     {
       "cell_type": "code",
@@ -303,7 +303,7 @@
         "fig2.write_html(\"plotly_ai_jobs_chart.html\")\n",
         "fig2.show()"
       ],
-      "id": "272a67e0",
+      "id": "a591299f",
       "execution_count": null,
       "outputs": []
     },
@@ -317,7 +317,7 @@
         "\n",
         "Career growth in AI follows a clear trajectory. Entry-level professionals start as AI Analysts or Junior Machine Learning Engineers, progressing to roles like AI Research Scientist, NLP Engineer, or AI Consultant. Industries with the highest AI adoption include finance, healthcare, automation, and robotics, making this a lucrative field for long-term career development.\n"
       ],
-      "id": "3a2d2bb6"
+      "id": "f272f0b6"
     },
     {
       "cell_type": "code",
@@ -390,7 +390,7 @@
         "fig3.write_html(\"plotly_industry_impact_chart.html\")\n",
         "fig3.show()"
       ],
-      "id": "93a12a98",
+      "id": "2f8a3f5d",
       "execution_count": null,
       "outputs": []
     },
@@ -429,7 +429,7 @@
         "Automation Consultant\n",
         "AI-Driven Logistics Specialist"
       ],
-      "id": "7818282d"
+      "id": "2f49f7b1"
     }
   ],
   "metadata": {
