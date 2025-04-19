@@ -70,5 +70,6 @@ plt.tight_layout()
 plt.show()
 
 ```
+
 The heatmap reveals that while the team is relatively strong in Python and SQL, proficiency in Cloud Computing and Machine Learning is more limited. This suggests an opportunity to focus on upskilling in those areas for better alignment with industry demands.
 
