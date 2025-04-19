@@ -129,6 +129,8 @@ for desc in df["BODY"].dropna():
 
 skills_df = pd.DataFrame(skill_counts.items(), columns=["Skill", "Count"]).sort_values(by="Count", ascending=False)
 
+skills_df.to_csv("skill_counts_from_job_postings.csv", index=False)
+
 fig1 = px.bar(
     skills_df, 
     x="Skill", 

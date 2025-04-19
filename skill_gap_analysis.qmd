@@ -15,46 +15,47 @@ team:
     skills:
       Python: 2
       SQL: 4
-      Machine Learning: 3
-      Cloud Computing: 2
-      Data Visualization: 4
+      Excel: 3
+      R: 2
+      Tableau: 4
 
   - name: Shuyu Pan
     skills:
       Python: 5
       SQL: 3
-      Machine Learning: 4
-      Cloud Computing: 3
-      Data Visualization: 4
+      Excel: 4
+      R: 3
+      Tableau: 4
 
   - name: Yixuan Chen
     skills:
       Python: 3
       SQL: 2
-      Machine Learning: 4
-      Cloud Computing: 2
-      Data Visualization: 3
+      Excel: 4
+      R: 2
+      Tableau: 3
 
   - name: Guowei Yan
     skills:
       Python: 2
       SQL: 2
-      Machine Learning: 3
-      Cloud Computing: 1
-      Data Visualization: 2
+      Excel: 3
+      R: 1
+      Tableau: 2
 
 ```{python}
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from collections import Counter
 
 skills_data = {
-    "Name": ["Cathy", "Alice", "John", "Kevin"],
+    "Name": ["Jiaxin Wang", "Shuyu Pan", "Yixuan Chen", "Guowei Yan"],
     "Python": [2, 5, 3, 2],
-    "SQL": [4, 3, 2, 2],
-    "Machine Learning": [3, 4, 4, 3],
-    "Cloud Computing": [2, 3, 2, 1],
-    "Data Visualization": [4, 4, 3, 2]
+    "Sql": [4, 3, 2, 2],
+    "Excel": [3, 4, 4, 3],
+    "R": [2, 3, 2, 1],
+    "Tableau": [4, 4, 3, 2]
 }
 
 df_skills = pd.DataFrame(skills_data)
@@ -71,5 +72,40 @@ plt.show()
 
 ```
 
-The heatmap reveals that while the team is relatively strong in Python and SQL, proficiency in Cloud Computing and Machine Learning is more limited. This suggests an opportunity to focus on upskilling in those areas for better alignment with industry demands.
+The heatmap reveals that while the team is relatively strong in Python and SQL, proficiency in Excel and R is more limited. This suggests an opportunity to focus on upskilling in those areas for better alignment with industry demands.
+
+```{python}
+market_df = pd.read_csv("skill_counts_from_job_postings.csv")
+top_market_skills = market_df.sort_values(by="Count", ascending=False).head(10)["Skill"].str.title().tolist()
+
+for skill in top_market_skills:
+    if skill not in df_skills.columns:
+        df_skills[skill] = 0
+
+df_compare = df_skills[top_market_skills]
+
+plt.figure(figsize=(10, 6))
+sns.heatmap(df_compare, annot=True, cmap="coolwarm", linewidths=0.5, fmt='d')
+plt.title("Team Skills vs. Top In-Demand Skills from Job Postings")
+plt.tight_layout()
+plt.show()
+```
+
+We compared our team’s skills with the top in-demand skills from job postings, including Python, SQL, Excel, Tableau, R, and advanced topics like Java, NLP, Hadoop, and TensorFlow. While the team shows strong proficiency in core tools like Python, SQL, and Excel, we lack exposure to newer or more specialized technologies. Most members have no experience in AI, NLP, Java, or TensorFlow—highlighting clear opportunities for targeted upskilling to better align with market needs.
+
+## Propose an improvement plan
+### Which skills should each member prioritize learning?
+Jiaxin Wang should focus on AI, NLP, and TensorFlow, as they currently lack exposure to these emerging areas. Enhancing proficiency in R will also boost analytical versatility.
+
+Shuyu Pan demonstrates strong skills across the board but could benefit from foundational knowledge in AI and NLP to support more advanced ML tasks.
+
+Yixuan Chen should continue building on Python and Tableau skills while expanding into Java and cloud tools like Hadoop.
+
+Guowei Yan should strengthen fundamentals in Python, R, and data frameworks like Hadoop and TensorFlow, while reinforcing communication by collaborating on technical presentations.
+
+### What courses or resources can help?
+To support skill development, we recommend the IBM Data Science Certificate on Coursera for building strong foundations in Python, SQL, and data analysis. For AI and deep learning, the fast.ai course is practical and beginner-friendly. Those interested in cloud tools and TensorFlow can benefit from Google Cloud Skills Boost. Additionally, Kaggle Learn offers short, hands-on modules in NLP, visualization, and machine learning, ideal for flexible, self-paced learning.
+
+### How can the team collaborate to bridge skill gaps?
+To close skill gaps effectively, the team can organize weekly peer learning sessions where members with stronger skills mentor others through mini-projects or coding exercises. Collaborative work on shared datasets—such as building dashboards, running models, or exploring NLP—can reinforce learning through practice. Additionally, rotating “skill spotlight” sessions where one member presents a new tool or concept will help foster continuous knowledge sharing and keep everyone engaged.
 
