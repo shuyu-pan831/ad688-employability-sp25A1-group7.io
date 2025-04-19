@@ -16,6 +16,8 @@ website:
         text: "Data Analysis"
       - href: career_plan.qmd
         text: "Career Strategy"
+      - href: skill_gap_analysis.qmd/ipynb
+        text: "Skill Gap Analysis"
 format:
   html:
     theme: cosmo
