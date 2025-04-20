@@ -52,7 +52,7 @@ The main reason for removing multiple versions of NAICS/SOC codes is to avoid da
 # How will this improve analysis?
 Removing multiple versions of NAIC/SOC codes can improve data consistency and comparability, preventing analysis inaccuracies caused by inconsistent industry classification standards. This helps reduce data redundancy, simplify data cleaning and processing, and minimize classification errors due to version differences,making the data more standardized and enhancing the quality and reliability of data analysis.
 
-## **4.4 Handle Missing Values**
+## 4.4 Handle Missing Values**
 # How should we handle missing values?
 1. Removing Missing Values (Dropping Data)
 If missing values are rare and their removal won’t significantly impact the analysis, dropping them is a simple and effective solution. This can be done by removing rows containing missing values if they make up a small percentage of the dataset. Alternatively, if an entire column has a large proportion of missing values, it may be best to drop the column entirely. 
@@ -108,7 +108,8 @@ print(lightcast_data.isnull().sum())  # Should return 0 for all columns
 lightcast_data.dropna(thresh=len(lightcast_data) * 0.5, axis=1, inplace=True)
 ```
 
-** # Remove Duplicates **
+## **Remove Duplicates** 
+
 ```{python}
 lightcast_data = lightcast_data.drop_duplicates(subset=["TITLE", "COMPANY", "LOCATION", "POSTED"], keep="first")
 ```
