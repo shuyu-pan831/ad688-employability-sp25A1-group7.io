@@ -1,7 +1,6 @@
 ## 🧹 Extracting Insights from Job Descriptions Using NLP Methods
 
 ### 📊 Most In-Demand Technical Skills in Data Science and AI Roles
-
 The chart below, based on NLP analysis of job descriptions, highlights the most frequently requested technical skills. **SQL** dominates as the top-mentioned skill, appearing in over 42,000 postings, followed by **AI**, **Excel**, **Python**, and **Tableau**.
 
 Foundational tools like SQL and Excel remain essential across data roles, while programming languages such as Python and R offer flexibility for data manipulation and modeling. Visualization tools like Tableau and Power BI are increasingly valued. Advanced AI tools such as TensorFlow, PyTorch, and NLP appear less often, indicating their growing relevance in specialized roles.
@@ -53,8 +52,11 @@ Based on job descriptions analyzed through NLP, we outline a growth-oriented lea
 - Goal: Explore analytics and visualization workflows
 
 **3. AI/ML Specialization (Advanced)**
+
 - Skills: TensorFlow, PyTorch, NLP, Big Data (Hadoop, Spark)
+
 - Certifications: AWS AI/ML, TensorFlow Developer, Microsoft AI Engineer
+
 - Goal: Focus on automation, predictive modeling, and cloud AI platforms
 
 **Career Roles by Level:**
@@ -70,6 +72,7 @@ Based on job descriptions analyzed through NLP, we outline a growth-oriented lea
 ---
 
 ### 🧭 Strategic Takeaway
+
 To align with market demands:
 
 - Focus learning on **SQL, Python, and Excel** early.
@@ -110,6 +113,7 @@ Industries such as **Finance**, **Healthcare**, and **Information Technology** a
 - Data Analytics
 
 **Recommended Certifications:**
+
 - Google Data Analytics
 
 - AWS AI/ML
@@ -155,6 +159,7 @@ Sectors such as **Manufacturing** and **Retail** are undergoing significant tran
 - Credentials: AI Strategy, Digital Leadership, Intelligent Automation
 
 **AI-Resilient Career Paths:**
+
 - Robotics Engineer
 
 - Automation Consultant
@@ -167,6 +172,7 @@ Sectors such as **Manufacturing** and **Retail** are undergoing significant tran
 
 ### 🔍 NLP Takeaway
 NLP techniques revealed strong emphasis on:
+
 - AI + industry-specific expertise
 
 - Certifiable skills
