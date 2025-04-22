@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.43">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -73,10 +73,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-43cca21aad45666adafe157d63efa7d5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -150,6 +150,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">Skill Gap Analysis</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./ml_methods.html"> 
+<span class="menu-text">ML Methods</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./nlp_methods.html"> 
 <span class="menu-text">NLP Methods</span></a>
   </li>  
@@ -217,7 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="f3264326" class="cell" data-execution_count="1">
+<div id="0cc0a0b8" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -231,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ipywidgets <span class="im">import</span> Dropdown, VBox, Output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="600197d7" class="cell" data-execution_count="2">
+<div id="c932f82c" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lightcast_data <span class="op">=</span> pd.read_csv(<span class="st">"lightcast_job_postings.csv"</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ID"</span>, <span class="st">"URL"</span>, <span class="st">"ACTIVE_URLS"</span>, <span class="st">"DUPLICATES"</span>, <span class="st">"LAST_UPDATED_TIMESTAMP"</span>,</span>
@@ -240,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>lightcast_data.drop(columns<span class="op">=</span>columns_to_drop, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_10336/2811029010.py:1: DtypeWarning:
+<pre><code>/var/folders/1s/0kz43lv50zzcywvpxqbzqz380000gn/T/ipykernel_16253/2811029010.py:1: DtypeWarning:
 
 Columns (19,30) have mixed types. Specify dtype option on import or set low_memory=False.
 </code></pre>
@@ -267,7 +271,7 @@ Columns (19,30) have mixed types. Specify dtype option on import or set low_memo
 <li>Removing Missing Values (Dropping Data) If missing values are rare and their removal won’t significantly impact the analysis, dropping them is a simple and effective solution. This can be done by removing rows containing missing values if they make up a small percentage of the dataset. Alternatively, if an entire column has a large proportion of missing values, it may be best to drop the column entirely.</li>
 <li>Filling Missing Values (Imputation) Imputation involves replacing missing values with a calculated or default value. For numerical data, common methods include filling missing values with the median (to handle skewed distributions), the mean (if the data is normally distributed), or the mode (if there is a frequently occurring value). For categorical data, missing values can be replaced with “Unknown” to retain information or with the mode if a dominant category exists. This method preserves the dataset’s size and can prevent loss of valuable information.</li>
 </ol>
-<div id="38473778" class="cell" data-execution_count="3">
+<div id="5d5cfb9e" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>msno.heatmap(lightcast_data,  </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>             fontsize<span class="op">=</span><span class="dv">8</span>,</span>
@@ -283,7 +287,7 @@ Columns (19,30) have mixed types. Specify dtype option on import or set low_memo
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="data_analysis_files/figure-html/cell-4-output-2.png" class="img-fluid figure-img"></p>
+<p><img src="data_analysis_files/figure-html/cell-4-output-2.png" width="1758" height="1144" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -291,7 +295,7 @@ Columns (19,30) have mixed types. Specify dtype option on import or set low_memo
 </section>
 <section id="identify-numerical-and-categorical-columns" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> identify numerical and categorical columns</h1>
-<div id="fce918ce" class="cell" data-execution_count="4">
+<div id="b38ae8b2" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lightcast_data.head()</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify numerical columns</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>numerical_columns <span class="op">=</span> lightcast_data.select_dtypes(include<span class="op">=</span>[<span class="st">'number'</span>]).columns</span>
@@ -299,7 +303,7 @@ Columns (19,30) have mixed types. Specify dtype option on import or set low_memo
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify categorical columns</span></span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>categorical_columns <span class="op">=</span> lightcast_data.select_dtypes(include<span class="op">=</span>[<span class="st">'object'</span>, <span class="st">'category'</span>]).columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="6ac2f47f" class="cell" data-execution_count="5">
+<div id="0ec8a83a" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find columns with missing values</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>missing_values <span class="op">=</span> lightcast_data.isnull().<span class="bu">sum</span>()</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -326,7 +330,7 @@ Length: 118, dtype: int64</code></pre>
 </section>
 <section id="numerical-fields-e.g.-salary-are-filled-with-the-median." class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Numerical fields (e.g., Salary) are filled with the median.</h1>
-<div id="139ae294" class="cell" data-execution_count="6">
+<div id="da0b3cc3" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>warnings.simplefilter(action<span class="op">=</span><span class="st">'ignore'</span>, category<span class="op">=</span><span class="pp">FutureWarning</span>) </span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over columns with missing values</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> missing_columns.index:</span>
@@ -357,15 +361,15 @@ Length: 118, dtype: int64</code></pre>
 </section>
 <section id="drop-columns-with-50-missing-values" class="level1" data-number="7">
 <h1 data-number="7"><span class="header-section-number">7</span> Drop columns with &gt;50% missing values</h1>
-<div id="4e00d744" class="cell" data-execution_count="7">
+<div id="7bd08559" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>lightcast_data.dropna(thresh<span class="op">=</span><span class="bu">len</span>(lightcast_data) <span class="op">*</span> <span class="fl">0.5</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="remove-duplicates" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="remove-duplicates"><span class="header-section-number">7.1</span> <strong>Remove Duplicates</strong></h2>
-<div id="a190481c" class="cell" data-execution_count="8">
+<div id="308547bb" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lightcast_data <span class="op">=</span> lightcast_data.drop_duplicates(subset<span class="op">=</span>[<span class="st">"TITLE"</span>, <span class="st">"COMPANY"</span>, <span class="st">"LOCATION"</span>, <span class="st">"POSTED"</span>], keep<span class="op">=</span><span class="st">"first"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="d6d4f203" class="cell" data-execution_count="9">
+<div id="e1096d8e" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(lightcast_data)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>skills_keywords <span class="op">=</span> [</span>
@@ -406,7 +410,7 @@ Length: 118, dtype: int64</code></pre>
 <p>The histogram highlights the most in-demand skills in Business Analytics, Data Science, and AI/ML roles. SQL, AI, and Excel rank as the top skills, followed by Python, Tableau, and R, indicating the growing need for data manipulation, automation, and visualization expertise.</p>
 <p>To build a successful career, start by mastering SQL, Python, and Excel, as these are fundamental for data analysis and business intelligence. Certifications such as Google Data Analytics, Microsoft Power BI, or AWS Data Analytics can provide an edge in the job market. Tableau and R are crucial for visualization and statistical modeling, while AI and Machine Learning skills open doors to automation and predictive analytics.</p>
 <p>In the short term, focus on online courses and projects to develop practical experience. Mid-term goals should include real-world applications, internships, and industry certifications. Long-term, professionals should aim for specialization in areas such as AI-driven analytics, NLP, and cloud-based data solutions to qualify for high-paying roles. Career opportunities include Data Analyst, Business Intelligence Specialist, Machine Learning Engineer, and AI Researcher, with increasing demand in finance, healthcare, and e-commerce.</p>
-<div id="797d2d73" class="cell" data-execution_count="10">
+<div id="e0b54655" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>ai_keywords <span class="op">=</span> [</span>
@@ -459,7 +463,7 @@ Length: 118, dtype: int64</code></pre>
 <p>The heatmap highlights AI job market trends across U.S. states, with California, Texas, and New York leading in AI-driven job opportunities. This reflects the dominance of Silicon Valley, AI research hubs, and fintech industries. Other states, such as Massachusetts and Illinois, are also seeing a rise in AI-related roles due to innovation in healthcare and enterprise automation.</p>
 <p>For those pursuing an AI career, it is beneficial to target tech hubs and remote AI opportunities. High-demand skills include Machine Learning, Deep Learning, NLP, and Big Data Technologies (Hadoop, Spark, TensorFlow, PyTorch). Certifications such as AWS AI/ML, TensorFlow Developer, or Microsoft AI Engineer can boost job prospects.</p>
 <p>Career growth in AI follows a clear trajectory. Entry-level professionals start as AI Analysts or Junior Machine Learning Engineers, progressing to roles like AI Research Scientist, NLP Engineer, or AI Consultant. Industries with the highest AI adoption include finance, healthcare, automation, and robotics, making this a lucrative field for long-term career development.</p>
-<div id="3d481d2f" class="cell" data-execution_count="11">
+<div id="513a650d" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate synthetic data</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>num_rows <span class="op">=</span> <span class="dv">1000</span></span>
@@ -528,7 +532,7 @@ Length: 118, dtype: int64</code></pre>
 <span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a>fig3.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"bae038bc0a6c44a8aafd76bd6244168a","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"51bbcc46ecd54c61ac81587040620425","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 <div class="cell-output cell-output-display">
@@ -551,7 +555,7 @@ Length: 118, dtype: int64</code></pre>
 
 </main> <!-- /main -->
 <script type="application/vnd.jupyter.widget-state+json">
-{"state":{"1ec76a896e944d4a8f0ec51c805ce971":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"DropdownModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"DropdownModel","_options_labels":["All","Finance","Healthcare","Information Technology","Manufacturing","Retail"],"_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"DropdownView","description":"Industry:","description_allow_html":false,"disabled":false,"index":0,"layout":"IPY_MODEL_f05569ddbc5e4ef983a9a86ddf5060ed","style":"IPY_MODEL_5fadb9a0bd1049f5adb1e43a78097b2e","tabbable":null,"tooltip":null}},"521a2a9d67df427aa0987c5bae12ba37":{"model_module":"@jupyter-widgets/output","model_module_version":"1.0.0","model_name":"OutputModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/output","_model_module_version":"1.0.0","_model_name":"OutputModel","_view_count":null,"_view_module":"@jupyter-widgets/output","_view_module_version":"1.0.0","_view_name":"OutputView","layout":"IPY_MODEL_cc407ab90d114b70ad3dbf5681109dfe","msg_id":"","outputs":[],"tabbable":null,"tooltip":null}},"5fadb9a0bd1049f5adb1e43a78097b2e":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","description_width":"initial"}},"bae038bc0a6c44a8aafd76bd6244168a":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"VBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"VBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"VBoxView","box_style":"","children":["IPY_MODEL_1ec76a896e944d4a8f0ec51c805ce971","IPY_MODEL_521a2a9d67df427aa0987c5bae12ba37"],"layout":"IPY_MODEL_fd9a9dc4cf384a458558bf8fee076311","tabbable":null,"tooltip":null}},"cc407ab90d114b70ad3dbf5681109dfe":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"f05569ddbc5e4ef983a9a86ddf5060ed":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"fd9a9dc4cf384a458558bf8fee076311":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}}},"version_major":2,"version_minor":0}
+{"state":{"0c890933052e463782d049d943004351":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"DropdownModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"DropdownModel","_options_labels":["All","Finance","Healthcare","Information Technology","Manufacturing","Retail"],"_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"DropdownView","description":"Industry:","description_allow_html":false,"disabled":false,"index":0,"layout":"IPY_MODEL_a321c295faa64f368f015fd7b928b082","style":"IPY_MODEL_8adab9d0c25341d6a9ae22fe1097c797","tabbable":null,"tooltip":null}},"51bbcc46ecd54c61ac81587040620425":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"VBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"VBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"VBoxView","box_style":"","children":["IPY_MODEL_0c890933052e463782d049d943004351","IPY_MODEL_a6589ae6c48d4c148625db058eeee8ef"],"layout":"IPY_MODEL_aa949dbf31ba4b7aab2a40cb9b04501c","tabbable":null,"tooltip":null}},"8adab9d0c25341d6a9ae22fe1097c797":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","description_width":"initial"}},"a321c295faa64f368f015fd7b928b082":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"a6589ae6c48d4c148625db058eeee8ef":{"model_module":"@jupyter-widgets/output","model_module_version":"1.0.0","model_name":"OutputModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/output","_model_module_version":"1.0.0","_model_name":"OutputModel","_view_count":null,"_view_module":"@jupyter-widgets/output","_view_module_version":"1.0.0","_view_name":"OutputView","layout":"IPY_MODEL_bd1425d333f243718e06ad46e73ba996","msg_id":"","outputs":[],"tabbable":null,"tooltip":null}},"aa949dbf31ba4b7aab2a40cb9b04501c":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"bd1425d333f243718e06ad46e73ba996":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}}},"version_major":2,"version_minor":0}
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
