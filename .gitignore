@@ -3,3 +3,4 @@
 _site/
 lightcast_job_postings.csv
 quarto-linux-amd64.deb
+quarto-linux-arm64.deb
