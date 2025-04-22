@@ -59,10 +59,16 @@ If missing values are rare and their removal won’t significantly impact the an
 2. Filling Missing Values (Imputation)
 Imputation involves replacing missing values with a calculated or default value. For numerical data, common methods include filling missing values with the median (to handle skewed distributions), the mean (if the data is normally distributed), or the mode (if there is a frequently occurring value). For categorical data, missing values can be replaced with "Unknown" to retain information or with the mode if a dominant category exists. This method preserves the dataset’s size and can prevent loss of valuable information.
 
+
 ```{python}
-# Visualize missing data
-msno.heatmap(lightcast_data)
-plt.title("Missing Values Heatmap")
+plt.figure(figsize=(12, 10))
+msno.heatmap(lightcast_data,  
+             fontsize=8,
+             sort='ascending')
+plt.title("Missing Values Heatmap", fontsize=14, fontweight='bold')
+plt.xticks(rotation=90, ha='center')
+plt.yticks(rotation=0)
+plt.tight_layout()
 plt.show()
 ```
 

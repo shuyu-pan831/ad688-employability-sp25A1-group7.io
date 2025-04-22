@@ -62,14 +62,23 @@ df_skills = pd.DataFrame(skills_data)
 df_skills.set_index("Name", inplace=True)
 df_skills
 
+plt.figure(figsize=(10, 6))
+sns.heatmap(
+    df_skills,
+    annot=True,
+    cmap="YlGnBu",             # More polished blue-green gradient
+    linewidths=1,              # Stronger separation
+    linecolor='white',         # Clean gridlines
+    fmt='d',                   # Integer formatting
+    cbar_kws={'label': 'Skill Level'}  # Add color bar label
+)
 
-
-plt.figure(figsize=(9, 6))
-sns.heatmap(df_skills, annot=True, cmap="coolwarm", linewidths=0.5, fmt='d')
-plt.title("Team Skill Levels Heatmap")
+plt.title("💼 Team Skill Levels by Tool", fontsize=16, fontweight='bold')
+plt.xlabel("Technical Skill", fontsize=12)
+plt.ylabel("Team Member", fontsize=12)
+plt.yticks(rotation=0)
 plt.tight_layout()
 plt.show()
-
 ```
 
 The heatmap reveals that while the team is relatively strong in Python and SQL, proficiency in Excel and R is more limited. This suggests an opportunity to focus on upskilling in those areas for better alignment with industry demands.
@@ -84,11 +93,12 @@ for skill in top_market_skills:
 
 df_compare = df_skills[top_market_skills]
 
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(12, 6))
 sns.heatmap(df_compare, annot=True, cmap="coolwarm", linewidths=0.5, fmt='d')
 plt.title("Team Skills vs. Top In-Demand Skills from Job Postings")
 plt.tight_layout()
 plt.show()
+
 ```
 
 We compared our team’s skills with the top in-demand skills from job postings, including Python, SQL, Excel, Tableau, R, and advanced topics like Java, NLP, Hadoop, and TensorFlow. While the team shows strong proficiency in core tools like Python, SQL, and Excel, we lack exposure to newer or more specialized technologies. Most members have no experience in AI, NLP, Java, or TensorFlow—highlighting clear opportunities for targeted upskilling to better align with market needs.
