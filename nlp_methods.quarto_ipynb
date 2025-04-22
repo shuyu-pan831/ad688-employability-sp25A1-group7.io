@@ -1,0 +1,198 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## 📊 NLP Methods: Extracting Insights from Job Descriptions\n",
+        "\n",
+        "### 1. Irrelevant or Redundant Columns\n",
+        "To prepare the dataset, we removed several unnecessary columns:\n",
+        "- **Unique identifiers** like `ID`\n",
+        "- **URLs** and tracking fields\n",
+        "- **Timestamps** such as `LAST_UPDATED_TIMESTAMP`\n",
+        "- **Detailed NAICS/SOC codes** (multiple levels)\n",
+        "\n",
+        "These fields either added redundancy, complexity, or had no meaningful impact on text-based analysis. Removing them simplifies the data and avoids clutter.\n",
+        "\n",
+        "---\n",
+        "\n",
+        "### 2. Why Remove Multiple Versions of NAICS/SOC Codes?\n",
+        "Different versions of NAICS/SOC codes can lead to inconsistent classification. Removing them ensures:\n",
+        "- Better **comparability**\n",
+        "- **Standardized categories**\n",
+        "- Fewer **classification mismatches** across industries\n",
+        "\n",
+        "---\n",
+        "\n",
+        "### 3. Analytical Improvements\n",
+        "By removing redundant fields and harmonizing the structure:\n",
+        "- We reduce noise in modeling\n",
+        "- Improve accuracy of classification\n",
+        "- Enable more reliable and meaningful text analysis\n",
+        "\n",
+        "This streamlining helps focus our NLP work on relevant information.\n",
+        "\n",
+        "---\n",
+        "\n",
+        "### 4. Handling Missing Values\n",
+        "#### Strategy:\n",
+        "1. **Drop rows or columns** with excessive missing values.\n",
+        "2. **Fill missing values** using:\n",
+        "   - Median for **numerical** columns\n",
+        "   - \"Unknown\" for **categorical** columns\n"
+      ],
+      "id": "9a12e21c"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Visualize missing values\n",
+        "msno.heatmap(lightcast_data)\n",
+        "plt.title(\"Missing Values Heatmap\")\n",
+        "plt.show()\n",
+        "\n",
+        "# Fill missing values\n",
+        "for col in missing_columns.index:\n",
+        "    if col in numerical_columns:\n",
+        "        lightcast_data[col].fillna(lightcast_data[col].median(), inplace=True)\n",
+        "    elif col in categorical_columns:\n",
+        "        lightcast_data[col].fillna(\"Unknown\", inplace=True)\n",
+        "\n",
+        "# Drop columns with >50% missing\n",
+        "lightcast_data.dropna(thresh=len(lightcast_data) * 0.5, axis=1, inplace=True)"
+      ],
+      "id": "b48ed6cb",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "### 5. NLP Skill Extraction from Job Descriptions\n",
+        "Using a list of predefined skills (e.g., Python, SQL, AI), we parsed job descriptions to extract mentions.\n"
+      ],
+      "id": "6bb6b05b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "df = pd.DataFrame(lightcast_data)\n",
+        "\n",
+        "from collections import Counter\n",
+        "import re  # Also required if you're using re.findall\n",
+        "skills_keywords = [\n",
+        "    \"Python\", \"SQL\", \"Machine Learning\", \"Deep Learning\", \"AI\", \"TensorFlow\", \"PyTorch\", \n",
+        "    \"Excel\", \"Tableau\", \"Power BI\", \"NLP\", \"Big Data\", \"Hadoop\", \"R\", \"Java\", \"C++\"\n",
+        "]\n",
+        "\n",
+        "# Extract and count keyword mentions in job descriptions\n",
+        "skill_counts = Counter()\n",
+        "for desc in df[\"BODY\"].dropna():\n",
+        "    words = re.findall(r'\\\\b\\\\w+\\\\b', desc)\n",
+        "    matched_skills = [word for word in words if word in skills_keywords]\n",
+        "    skill_counts.update(matched_skills)\n",
+        "\n",
+        "skills_df = pd.DataFrame(skill_counts.items(), columns=[\"Skill\", \"Count\"]).sort_values(by=\"Count\", ascending=False)"
+      ],
+      "id": "9ec817a4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "**Top skills found:** SQL, AI, Excel, Python, Tableau, and R.\n",
+        "\n",
+        "These skills represent a strong demand for analytical, automation, and visualization expertise.\n",
+        "\n",
+        "---\n",
+        "\n",
+        "### 6. Geographic Trends in AI Job Titles\n",
+        "By scanning job titles for AI-related roles, we created a choropleth map showing AI job distribution across U.S. states.\n"
+      ],
+      "id": "f157a594"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "fig2 = px.choropleth(\n",
+        "    state_job_counts,\n",
+        "    locations=\"STATE_ABBR\",\n",
+        "    locationmode=\"USA-states\",\n",
+        "    color=\"AI_JOB_COUNT\",\n",
+        "    hover_name=\"STATE_NAME\",\n",
+        "    color_continuous_scale=\"Blues\",\n",
+        "    title=\"AI Job Market Trends Across US States\",\n",
+        "    scope=\"usa\"\n",
+        ")\n",
+        "fig2.show()"
+      ],
+      "id": "cb021f52",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "**Result**: California, Texas, and New York dominate AI hiring, aligned with key tech hubs.\n",
+        "\n",
+        "---\n",
+        "\n",
+        "### 7. AI Growth vs Displacement by Industry\n",
+        "We simulated industry-level impact of AI, highlighting:\n",
+        "- Growth in **Finance, IT, Healthcare**\n",
+        "- Displacement in **Retail and Manufacturing**\n"
+      ],
+      "id": "89304bb8"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "fig3 = go.Figure()\n",
+        "fig3.add_trace(go.Bar(x=filtered_data[\"NAICS2_NAME\"], y=filtered_data[\"AI_Growth\"], name=\"AI-Driven Growth\", marker_color=\"purple\"))\n",
+        "fig3.add_trace(go.Bar(x=filtered_data[\"NAICS2_NAME\"], y=filtered_data[\"AI_Displacement\"], name=\"AI Displacement\", marker_color=\"gray\"))\n",
+        "fig3.update_layout(title=\"AI Impact on Jobs by Industry\", barmode=\"stack\")\n",
+        "fig3.show()"
+      ],
+      "id": "5251ec85",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "\n",
+        "### 🎯 Final Takeaways\n",
+        "- Use NLP to extract skill trends from job text\n",
+        "- Visualize role demand by geography and sector\n",
+        "- Align upskilling paths with in-demand roles and tools (e.g., SQL, AI, Tableau)\n",
+        "- Guide career pivots using AI’s industry impact data\n",
+        "\n",
+        "This type of analysis empowers both job seekers and workforce planners to make smarter, data-informed decisions."
+      ],
+      "id": "66345702"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/usr/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
