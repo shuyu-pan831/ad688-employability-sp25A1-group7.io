@@ -1,0 +1,76 @@
+---
+title: "ML Methods"
+format: html
+---
+Goal: Use unsupervised machine learning (clustering) to identify patterns or groupings in the job postings dataset, based on variables such as required skills,job tittle, and salary.
+
+
+```{python}
+import plotly.express as px
+from pyspark.ml.clustering import KMeans
+from pyspark.ml.feature import VectorAssembler, StandardScaler
+from pyspark.ml import Pipeline
+from pyspark.sql import SparkSession
+import pandas as pd
+import plotly.express as px
+import plotly.io as pio
+```
+
+##Step 1: Load Data and Select Features
+```{python}
+#| echo: true
+#| eval: true
+# Initialize Spark Session
+spark = SparkSession.builder.appName("LightcastData").getOrCreate()
+spark.sparkContext.setLogLevel("ERROR")
+# Load Data
+df = spark.read.option("header", "true").option("inferSchema", "true").option("multiLine","true").option("escape", "\"").csv("lightcast_job_postings.csv")
+```
+Step 3: Clean Dataload data
+```{python}
+from pyspark.sql.functions import trim,col
+df = df.dropna(subset=["TITLE_RAW", "SKILLS_NAME", "SALARY"])
+df = df.filter(trim(col("TITLE_RAW")) != "")
+```
+
+Step 4:Encode Job Titles (StringIndexer + OneHotEncoder)
+```{python}
+from pyspark.ml.feature import StringIndexer, OneHotEncoder
+title_indexer = StringIndexer(inputCol="TITLE_RAW", outputCol="TITLE_IDX")
+title_encoder = OneHotEncoder(inputCol="TITLE_IDX", outputCol="TITLE_VEC")
+```
+
+Step 5: Extract Key Skills into Binary Flags
+```{python}
+from pyspark.sql.functions import col
+common_skills = ["SQL", "Python", "Excel", "Tableau", "Communication"]
+for skill in common_skills:
+    df = df.withColumn(f"SKILL_{skill}", col("SKILLS_NAME").contains(skill).cast("int"))
+```
+Step 6: Assemble Features for Clustering
+```{python}
+assembler = VectorAssembler(
+    inputCols=["SALARY", "TITLE_VEC"] + [f"SKILL_{s}" for s in common_skills],
+    outputCol="features"
+)
+```
+Step 7: Run KMeans Clustering Pipeline
+```{python}
+kmeans = KMeans(k=3, featuresCol="features", predictionCol="cluster")
+pipeline = Pipeline(stages=[title_indexer, title_encoder, assembler, kmeans])
+model = pipeline.fit(df)
+df_clustered = model.transform(df)
+df_clustered.select("TITLE_RAW", "SALARY", "SKILLS_NAME", "cluster").show()
+```
+
+Step 8: Visualize Salary Distribution by Cluster
+```{python}
+#| echo: false
+#| fig-cap: "Salary Distribution by Cluster"
+plot_df = df_clustered.select("SALARY", "cluster").limit(1000).toPandas()
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.boxplot(x="cluster", y="SALARY", data=plot_df)
+plt.title("Salary Distribution by Cluster")
+plt.show()
+```

@@ -16,6 +16,8 @@ website:
         text: "Career Strategy"
       - href: skill_gap_analysis.qmd
         text: "Skill Gap Analysis"
+      - href: ml_methods.qmd/ipynb
+        text: "ML Methods"
       - href: nlp_methods.qmd
         text: "NLP Methods"
 format:
