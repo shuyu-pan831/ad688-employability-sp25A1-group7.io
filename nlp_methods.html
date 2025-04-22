@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.6.43">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>About – Job Market Analysis 2024</title>
+<title>NLH METHOD – Job Market Analysis 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -35,10 +35,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-43cca21aad45666adafe157d63efa7d5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -92,12 +92,8 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
-<span class="menu-text">About</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./research_introduction.html"> 
-<span class="menu-text">Research</span></a>
+    <a class="nav-link" href="./Introduction.html"> 
+<span class="menu-text">Introduction</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./data_analysis.html"> 
@@ -108,8 +104,12 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Career Strategy</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./skill_gap_analysis.qmd/ipynb"> 
+    <a class="nav-link" href="./skill_gap_analysis.html"> 
 <span class="menu-text">Skill Gap Analysis</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./nlp_methods.html" aria-current="page"> 
+<span class="menu-text">NLP Methods</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -122,15 +122,31 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#extracting-insights-from-job-descriptions-using-nlp-methods" id="toc-extracting-insights-from-job-descriptions-using-nlp-methods" class="nav-link active" data-scroll-target="#extracting-insights-from-job-descriptions-using-nlp-methods">🧹 Extracting Insights from Job Descriptions Using NLP Methods</a>
+  <ul class="collapse">
+  <li><a href="#most-in-demand-technical-skills-in-data-science-and-ai-roles" id="toc-most-in-demand-technical-skills-in-data-science-and-ai-roles" class="nav-link" data-scroll-target="#most-in-demand-technical-skills-in-data-science-and-ai-roles">📊 Most In-Demand Technical Skills in Data Science and AI Roles</a></li>
+  <li><a href="#ai-job-market-trends-across-u.s.-states" id="toc-ai-job-market-trends-across-u.s.-states" class="nav-link" data-scroll-target="#ai-job-market-trends-across-u.s.-states">🌎 AI Job Market Trends Across U.S. States</a></li>
+  <li><a href="#career-pathway-from-fundamentals-to-specialization" id="toc-career-pathway-from-fundamentals-to-specialization" class="nav-link" data-scroll-target="#career-pathway-from-fundamentals-to-specialization">💡 Career Pathway: From Fundamentals to Specialization</a></li>
+  <li><a href="#strategic-takeaway" id="toc-strategic-takeaway" class="nav-link" data-scroll-target="#strategic-takeaway">🧭 Strategic Takeaway</a></li>
+  <li><a href="#ai-impact-on-jobs-by-industry" id="toc-ai-impact-on-jobs-by-industry" class="nav-link" data-scroll-target="#ai-impact-on-jobs-by-industry">🤖 AI Impact on Jobs by Industry</a></li>
+  <li><a href="#ai-driven-job-growth" id="toc-ai-driven-job-growth" class="nav-link" data-scroll-target="#ai-driven-job-growth">📈 AI-Driven Job Growth</a></li>
+  <li><a href="#ai-driven-job-displacement" id="toc-ai-driven-job-displacement" class="nav-link" data-scroll-target="#ai-driven-job-displacement">⚠️ AI-Driven Job Displacement</a></li>
+  <li><a href="#nlp-takeaway" id="toc-nlp-takeaway" class="nav-link" data-scroll-target="#nlp-takeaway">🔍 NLP Takeaway</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">NLH METHOD</h1>
 </div>
 
 
@@ -147,12 +163,152 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><strong>Most in-demand Skills for Data science, Business Analytics, and ML Roles</strong> Based on the study analyzing 786 job postings, the most in-demand skills for Data Science, Business Analytics, and Machine Learning roles can be categorized into technical skills, analytical skills, and soft skills. The study highlights that Excel (84%), Tableau (71%), SPSS (70%), Python (70%), and SQL (68%) are among the most frequently required tools, emphasizing the importance of data manipulation, analysis, and visualization. Additionally, Power BI (61%) and R (67%) remain valuable for business analytics and statistical modeling. Analytical skills such as data visualization (91%), data cleaning (88%), and data extraction (78%) are critical, demonstrating the need for professionals who can preprocess and interpret data effectively. Employers also seek candidates with experience in script programming (41%) and neural networks (18%), particularly for advanced machine learning roles. Beyond technical expertise, soft skills like communication (100%), problem-solving (92%), teamwork (91%), and presentation abilities (79%) are equally vital. These skills help professionals convey insights to stakeholders and collaborate effectively. For business analysts, strong Excel, SQL, and storytelling skills are crucial, while data scientists and ML engineers require deep expertise in statistics, Python, and predictive modeling. The findings reinforce that a blend of technical proficiency and interpersonal skills is essential for career success.</p>
-<p><strong>Job Descriptions Evolved in 2024 to Require AI/ML Expertise</strong> Job descriptions in 2024 have evolved significantly to incorporate AI/ML expertise, reflecting the increasing integration of artificial intelligence in recruitment and workforce management. Companies are now utilizing AI-based recommender systems to match employee profiles with job roles, reducing human bias and improving efficiency in hiring and talent management. A key trend in job descriptions is the greater emphasis on AI and ML proficiency. Even for roles outside traditional tech fields, employers are prioritizing candidates with automation, predictive analytics, and AI-enhanced decision-making skills. Many organizations expect job applicants to have at least a foundational understanding of machine learning tools, data analysis, and cloud-based AI solutions. Another major shift is the use of AI-driven profile matching, where machine learning models assess historical performance, skills, and industry trends to suggest job candidates. AI is also helping reduce human bias in hiring by offering objective, data-driven recommendations. However, challenges remain, such as algorithmic fairness and ethical concerns in AI-driven recruitment. Additionally, job descriptions have become more personalized and dynamic, as AI enables real-time role adjustments based on employee potential and company needs. Overall, AI and ML expertise are now essential components of modern job descriptions, reflecting the digital transformation across industries.</p>
-<p><strong>The Future of Business Analytics: Demand, Skills, and Career Growth</strong> The career outlook for business analytics professionals is highly promising, driven by the increasing reliance on data-driven decision-making across industries. Organizations in finance, healthcare, retail, technology, and energy are actively seeking skilled analysts who can interpret complex data, develop predictive models, and provide actionable insights. With the rapid advancements in artificial intelligence and machine learning, professionals who can integrate these technologies into business strategies will be in high demand. Additionally, as companies prioritize efficiency, risk management, and customer experience, business analytics roles are expected to expand, offering competitive salaries and diverse career opportunities. Those who invest in upskilling in areas such as data visualization, forecasting, and AI-driven analytics will be well-positioned for success in this evolving job market.</p>
-<p><strong>Industries with the Highest Demand for Data Scientists and the Factors Driving Their Growth</strong> As of 2025, data scientists are in high demand across various industries, with technology (35%), financial services (22%), healthcare (18%), e-commerce (15%), and manufacturing/IoT (10%) leading the way. The technology sector dominates due to rapid advancements in artificial intelligence (AI) and machine learning (ML), requiring data scientists to develop and optimize predictive models. Financial institutions leverage data science for risk assessment, fraud detection, and algorithmic trading, ensuring efficient decision-making and regulatory compliance. In healthcare, the integration of AI in patient diagnosis, drug discovery, and medical imaging has significantly increased the need for data analytics professionals. E-commerce and retail businesses rely on data-driven insights to enhance customer experiences, optimize inventory, and implement dynamic pricing strategies. Meanwhile, manufacturing and IoT use predictive analytics to improve operational efficiency, reduce downtime, and enhance automation. The surge in AI adoption, automation, and big data analytics across industries is driving this demand, making data science a critical and highly sought-after profession in the modern workforce. Companies increasingly recognize the value of data-driven decision-making, ensuring that data scientists remain at the forefront of innovation and business transformation.</p>
+<section id="extracting-insights-from-job-descriptions-using-nlp-methods" class="level2">
+<h2 class="anchored" data-anchor-id="extracting-insights-from-job-descriptions-using-nlp-methods">🧹 Extracting Insights from Job Descriptions Using NLP Methods</h2>
+<section id="most-in-demand-technical-skills-in-data-science-and-ai-roles" class="level3">
+<h3 class="anchored" data-anchor-id="most-in-demand-technical-skills-in-data-science-and-ai-roles">📊 Most In-Demand Technical Skills in Data Science and AI Roles</h3>
+<p>The chart below, based on NLP analysis of job descriptions, highlights the most frequently requested technical skills. <strong>SQL</strong> dominates as the top-mentioned skill, appearing in over 42,000 postings, followed by <strong>AI</strong>, <strong>Excel</strong>, <strong>Python</strong>, and <strong>Tableau</strong>.</p>
+<p>Foundational tools like SQL and Excel remain essential across data roles, while programming languages such as Python and R offer flexibility for data manipulation and modeling. Visualization tools like Tableau and Power BI are increasingly valued. Advanced AI tools such as TensorFlow, PyTorch, and NLP appear less often, indicating their growing relevance in specialized roles.</p>
+<p><strong>Key Takeaways:</strong></p>
+<ul>
+<li><p><strong>Foundational:</strong> SQL, Excel, and AI are baseline requirements.</p></li>
+<li><p><strong>Versatile Skills:</strong> Python and Tableau support a range of data workflows.</p></li>
+<li><p><strong>Backend/Technical Tools:</strong> R, Java, Hadoop are critical for infrastructure-heavy roles.</p></li>
+<li><p><strong>Emerging Specializations:</strong> Low mentions of TensorFlow, PyTorch, and NLP suggest niche applications or advanced role targeting.</p></li>
+</ul>
+<hr>
+</section>
+<section id="ai-job-market-trends-across-u.s.-states" class="level3">
+<h3 class="anchored" data-anchor-id="ai-job-market-trends-across-u.s.-states">🌎 AI Job Market Trends Across U.S. States</h3>
+<p>A geographic heatmap of AI-related job postings reveals major hubs in <strong>California</strong>, <strong>Texas</strong>, and <strong>New York</strong>—driven by the influence of tech ecosystems, fintech, and innovation centers. <strong>Massachusetts</strong>, <strong>Illinois</strong>, and <strong>Washington</strong> also show strong demand due to their leadership in healthcare analytics, research, and enterprise AI adoption.</p>
+<p><strong>Regional Insights:</strong></p>
+<ul>
+<li><p><strong>Top States:</strong> California, Texas, New York</p></li>
+<li><p><strong>Emerging Hubs:</strong> Massachusetts, Florida, Illinois, Washington</p></li>
+<li><p><strong>Low Activity:</strong> Central/rural states, though remote AI opportunities still exist</p></li>
+</ul>
+<p>These insights guide professionals on where to concentrate job searches or remote networking efforts.</p>
+<hr>
+</section>
+<section id="career-pathway-from-fundamentals-to-specialization" class="level3">
+<h3 class="anchored" data-anchor-id="career-pathway-from-fundamentals-to-specialization">💡 Career Pathway: From Fundamentals to Specialization</h3>
+<p>Based on job descriptions analyzed through NLP, we outline a growth-oriented learning track:</p>
+<p><strong>1. Foundational Skills (Beginner)</strong></p>
+<ul>
+<li><p>Tools: SQL, Excel, Python</p></li>
+<li><p>Goal: Build core competency in data querying, spreadsheets, and scripting</p></li>
+</ul>
+<p><strong>2. Versatility &amp; Visualization (Intermediate)</strong></p>
+<ul>
+<li><p>Tools: Tableau, Power BI, R</p></li>
+<li><p>Certifications: Google Data Analytics, Microsoft Power BI</p></li>
+<li><p>Goal: Explore analytics and visualization workflows</p></li>
+</ul>
+<p><strong>3. AI/ML Specialization (Advanced)</strong></p>
+<ul>
+<li><p>Skills: TensorFlow, PyTorch, NLP, Big Data (Hadoop, Spark)</p></li>
+<li><p>Certifications: AWS AI/ML, TensorFlow Developer, Microsoft AI Engineer</p></li>
+<li><p>Goal: Focus on automation, predictive modeling, and cloud AI platforms</p></li>
+</ul>
+<p><strong>Career Roles by Level:</strong></p>
+<ul>
+<li><p><strong>Entry-Level:</strong> Data Analyst, BI Specialist, Junior ML Engineer</p></li>
+<li><p><strong>Mid-Level:</strong> NLP Engineer, AI Product Manager</p></li>
+<li><p><strong>Advanced:</strong> AI Research Scientist, Lead Data Scientist, Automation Consultant</p></li>
+</ul>
+<p><strong>High-Demand Industries:</strong> Finance, Healthcare, E-commerce, Cloud Tech</p>
+<hr>
+</section>
+<section id="strategic-takeaway" class="level3">
+<h3 class="anchored" data-anchor-id="strategic-takeaway">🧭 Strategic Takeaway</h3>
+<p>To align with market demands:</p>
+<ul>
+<li><p>Focus learning on <strong>SQL, Python, and Excel</strong> early.</p></li>
+<li><p>Target <strong>AI job hubs</strong> or seek remote roles in active states.</p></li>
+<li><p>Build a portfolio with <strong>projects</strong>, <strong>internships</strong>, or <strong>competitions</strong>.</p></li>
+<li><p>Earn certifications to validate expertise in cloud, analytics, and AI.</p></li>
+</ul>
+<p>These steps can help aspiring professionals or career switchers navigate toward high-growth opportunities in the AI and data analytics landscape.</p>
+</section>
+<section id="ai-impact-on-jobs-by-industry" class="level3">
+<h3 class="anchored" data-anchor-id="ai-impact-on-jobs-by-industry">🤖 AI Impact on Jobs by Industry</h3>
+<p>Using Natural Language Processing (NLP) to analyze job descriptions and industry narratives, we can extract clear trends on how AI is both creating and displacing jobs across different sectors.</p>
+<hr>
+</section>
+<section id="ai-driven-job-growth" class="level3">
+<h3 class="anchored" data-anchor-id="ai-driven-job-growth">📈 AI-Driven Job Growth</h3>
+<p>Industries such as <strong>Finance</strong>, <strong>Healthcare</strong>, and <strong>Information Technology</strong> are experiencing strong AI-fueled growth. AI enables <strong>automation</strong>, <strong>predictive analytics</strong>, and <strong>smart decision-making</strong>, increasing demand for:</p>
+<ul>
+<li><p><strong>Machine Learning</strong></p></li>
+<li><p><strong>AI-enhanced analytics</strong></p></li>
+<li><p><strong>Data science and business intelligence roles</strong></p></li>
+</ul>
+<p><strong>Top Skills Identified:</strong> - Python</p>
+<ul>
+<li><p>SQL</p></li>
+<li><p>TensorFlow</p></li>
+<li><p>Power BI</p></li>
+<li><p>Data Analytics</p></li>
+</ul>
+<p><strong>Recommended Certifications:</strong></p>
+<ul>
+<li><p>Google Data Analytics</p></li>
+<li><p>AWS AI/ML</p></li>
+<li><p>Microsoft AI Engineer</p></li>
+</ul>
+<p><strong>Career Trajectory:</strong></p>
+<ul>
+<li><p>Entry-level: Practical experience via internships or Kaggle</p></li>
+<li><p>Mid-level: Specialization in AI-finance, healthcare analytics, cybersecurity</p></li>
+<li><p>Senior roles: AI Researcher, Data Scientist, AI Product Manager</p></li>
+</ul>
+<hr>
+</section>
+<section id="ai-driven-job-displacement" class="level3">
+<h3 class="anchored" data-anchor-id="ai-driven-job-displacement">⚠️ AI-Driven Job Displacement</h3>
+<p>Sectors such as <strong>Manufacturing</strong> and <strong>Retail</strong> are undergoing significant transformation. Repetitive jobs are increasingly being replaced by <strong>AI-powered automation</strong> and <strong>robotic systems</strong>.</p>
+<p><strong>Risks Identified:</strong></p>
+<ul>
+<li>Workforce displacement in traditional, process-heavy roles</li>
+</ul>
+<p><strong>Adaptive Strategies (via NLP-extracted keywords):</strong></p>
+<ul>
+<li><p>Upskilling in RPA tools (e.g., UiPath)</p></li>
+<li><p>Cloud computing platforms</p></li>
+<li><p>AI-driven logistics and supply chains</p></li>
+</ul>
+<p><strong>Mid-Term Transitions:</strong></p>
+<ul>
+<li><p>AI-Augmented Supply Chain Manager</p></li>
+<li><p>AI-Enhanced Customer Experience Analyst</p></li>
+</ul>
+<p><strong>Long-Term Strategies:</strong></p>
+<ul>
+<li><p>Develop leadership in AI-augmented operations and strategy</p></li>
+<li><p>Credentials: AI Strategy, Digital Leadership, Intelligent Automation</p></li>
+</ul>
+<p><strong>AI-Resilient Career Paths:</strong></p>
+<ul>
+<li><p>Robotics Engineer</p></li>
+<li><p>Automation Consultant</p></li>
+<li><p>AI-Powered Marketing Analyst</p></li>
+<li><p>AI-Driven Logistics Specialist</p></li>
+</ul>
+<hr>
+</section>
+<section id="nlp-takeaway" class="level3">
+<h3 class="anchored" data-anchor-id="nlp-takeaway">🔍 NLP Takeaway</h3>
+<p>NLP techniques revealed strong emphasis on:</p>
+<ul>
+<li><p>AI + industry-specific expertise</p></li>
+<li><p>Certifiable skills</p></li>
+<li><p>Experience-driven learning (e.g., internships, competitions)</p></li>
+</ul>
+<p>The AI transformation isn’t just technical—it’s strategic. Professionals must align their learning paths with evolving AI trends to secure long-term relevance.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -245,7 +401,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/shuyu-pan831\.github\.io\/ad688-employability-sp25A1-group7\.io\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
