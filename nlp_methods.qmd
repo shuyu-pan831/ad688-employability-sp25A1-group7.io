@@ -1,3 +1,8 @@
+---
+title: "NLH METHOD"
+format: html
+---
+
 ## 🧹 Extracting Insights from Job Descriptions Using NLP Methods
 
 ### 📊 Most In-Demand Technical Skills in Data Science and AI Roles
