@@ -73,6 +73,7 @@ import matplotlib.pyplot as plt
 sns.boxplot(x="cluster", y="SALARY", data=plot_df)
 plt.title("Salary Distribution by Cluster")
 plt.show()
+plt.savefig("iframe_figures/salary_by_cluster.png", dpi=300)
 ```
 
 Cluster 0 represents the highest-paying group among the three clusters. The median salary is around $180,000, and most values fall between $160,000 and $200,000. There are also several high outliers, with some positions exceeding $300,000. This cluster likely includes executive-level or highly technical roles, such as senior data scientists, lead data analysts, or enterprise architects, where specialized skills and extensive experience are required.
@@ -80,3 +81,12 @@ Cluster 0 represents the highest-paying group among the three clusters. The medi
 Cluster 1 is the lowest-paying group, with salaries concentrated between $60,000 and $100,000. The median is around $80,000, and the distribution is relatively tight compared to the other clusters. This group probably corresponds to entry-level or support roles, such as junior analysts, administrative data roles, or positions that require fewer years of experience and basic technical skills.
 
 Cluster 2 falls between the other two in terms of salary, with most values ranging from $110,000 to $150,000. The median salary is approximately $130,000. This group likely represents mid-level professionals — positions requiring a balance of technical proficiency and industry experience. Common roles in this cluster might include mid-level data analysts, business intelligence specialists, or consultants with niche skill sets.
+
+
+**Key Insights**
+
+The salary clustering reveals three distinct tiers that correspond closely to career progression in business analytics and data science. The entry-level cluster (Cluster 1) shows a tight salary range of $60 K–$100 K (median ≈$80 K), indicating homogeneous roles with similar skill requirements. The mid-level cluster (Cluster 2) spans $110 K–$150 K (median ≈$130 K), reflecting professionals who combine technical proficiency with domain experience. The senior/executive cluster (Cluster 0) has a median around $180 K and a wide interquartile range, with outliers above $300 K—highlighting the premium placed on leadership, specialized machine-learning expertise, and high-impact strategic roles. Increasing dispersion at higher levels underscores that advanced specializations and demonstrated impact drive outsized compensation in this field.
+
+**Recommendations**
+
+For those entering the field, focus on mastering core tools (Python/R, SQL) and building a portfolio of projects—internships, Kaggle competitions, or open-source contributions—to stand out within the $60 K–$100 K band. Mid-career professionals should deepen domain knowledge (e.g., finance, healthcare, supply chain) and acquire advanced ML and MLOps skills to advance into the $110 K–$150 K range. Aspiring senior leaders must cultivate niche expertise (deep learning architectures, AI ethics, data engineering at scale) and demonstrate leadership through cross-functional project ownership or team management to access the high-variance $160 K+ opportunities. Earning recognized certifications (AWS/GCP ML, CAP) and staying current with emerging trends will further accelerate progression across these clusters.
