@@ -1,0 +1,24 @@
+---
+title: "Business Analytics, Data Science, and ML Trends in 2024"
+subtitle: "Final Report"
+author:
+- name: Shuyu Pan, Jiaxin Wang, Yixuan Chen, Guowei Yan
+affiliations:
+  - id: bu
+    name: Boston University
+    city: Boston
+    state: MA
+
+date: today
+date-modified: today
+date-format: long
+format:
+  docx: default
+---
+{{< include index.qmd >}}
+{{< include Introduction.qmd >}}
+{{< include data_analysis.qmd >}}
+{{< include career_plan.qmd >}}
+{{< include skill_gap_analysis.qmd >}}
+{{< include ml_methods.qmd >}}
+{{< include nlp_methods.qmd >}}
