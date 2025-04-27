@@ -14,6 +14,7 @@ date-modified: today
 date-format: long
 format:
   docx: default
+  pptx: default
 ---
 {{< include index.qmd >}}
 {{< include Introduction.qmd >}}
