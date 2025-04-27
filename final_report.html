@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data Analysis – Job Market Analysis 2024</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Job Market Analysis 2024</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./Introduction.html"> 
+<span class="menu-text">Introduction</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./data_analysis.html"> 
+<span class="menu-text">Data Analysis</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./career_plan.html"> 
+<span class="menu-text">Career Strategy</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./skill_gap_analysis.html"> 
+<span class="menu-text">Skill Gap Analysis</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./ml_methods.html"> 
+<span class="menu-text">ML Methods</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./nlp_methods.html"> 
+<span class="menu-text">NLP Methods</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-research-rationale" id="toc-introduction-research-rationale" class="nav-link active" data-scroll-target="#introduction-research-rationale">Introduction &amp; Research Rationale</a>
+  <ul class="collapse">
+  <li><a href="#why-is-this-topic-important" id="toc-why-is-this-topic-important" class="nav-link" data-scroll-target="#why-is-this-topic-important">Why is this topic important?</a></li>
+  <li><a href="#what-trends-make-this-a-crucial-area-of-study-in-2024" id="toc-what-trends-make-this-a-crucial-area-of-study-in-2024" class="nav-link" data-scroll-target="#what-trends-make-this-a-crucial-area-of-study-in-2024">What trends make this a crucial area of study in 2024?</a></li>
+  <li><a href="#what-do-you-expect-to-find-in-your-analysis" id="toc-what-do-you-expect-to-find-in-your-analysis" class="nav-link" data-scroll-target="#what-do-you-expect-to-find-in-your-analysis">What do you expect to find in your analysis?</a></li>
+  </ul></li>
+  <li><a href="#about" id="toc-about" class="nav-link" data-scroll-target="#about">About</a></li>
+  <li><a href="#research-literature-review" id="toc-research-literature-review" class="nav-link" data-scroll-target="#research-literature-review">Research &amp; Literature Review</a></li>
+  <li><a href="#which-columns-are-irrelevant-or-redundant" id="toc-which-columns-are-irrelevant-or-redundant" class="nav-link" data-scroll-target="#which-columns-are-irrelevant-or-redundant">Which columns are irrelevant or redundant?</a></li>
+  <li><a href="#why-are-we-removing-multiple-versions-of-naicssoc-codes" id="toc-why-are-we-removing-multiple-versions-of-naicssoc-codes" class="nav-link" data-scroll-target="#why-are-we-removing-multiple-versions-of-naicssoc-codes">Why are we removing multiple versions of NAICS/SOC codes?</a></li>
+  <li><a href="#how-will-this-improve-analysis" id="toc-how-will-this-improve-analysis" class="nav-link" data-scroll-target="#how-will-this-improve-analysis">How will this improve analysis?</a>
+  <ul class="collapse">
+  <li><a href="#handle-missing-values" id="toc-handle-missing-values" class="nav-link" data-scroll-target="#handle-missing-values">4.4 Handle Missing Values**</a></li>
+  </ul></li>
+  <li><a href="#how-should-we-handle-missing-values" id="toc-how-should-we-handle-missing-values" class="nav-link" data-scroll-target="#how-should-we-handle-missing-values">How should we handle missing values?</a></li>
+  <li><a href="#identify-numerical-and-categorical-columns" id="toc-identify-numerical-and-categorical-columns" class="nav-link" data-scroll-target="#identify-numerical-and-categorical-columns">identify numerical and categorical columns</a></li>
+  <li><a href="#numerical-fields-e.g.-salary-are-filled-with-the-median." id="toc-numerical-fields-e.g.-salary-are-filled-with-the-median." class="nav-link" data-scroll-target="#numerical-fields-e.g.-salary-are-filled-with-the-median.">Numerical fields (e.g., Salary) are filled with the median.</a></li>
+  <li><a href="#drop-columns-with-50-missing-values" id="toc-drop-columns-with-50-missing-values" class="nav-link" data-scroll-target="#drop-columns-with-50-missing-values">Drop columns with &gt;50% missing values</a>
+  <ul class="collapse">
+  <li><a href="#remove-duplicates" id="toc-remove-duplicates" class="nav-link" data-scroll-target="#remove-duplicates"><strong>Remove Duplicates</strong></a></li>
+  </ul></li>
+  <li><a href="#career-planning-insights" id="toc-career-planning-insights" class="nav-link" data-scroll-target="#career-planning-insights">Career Planning &amp; Insights</a>
+  <ul class="collapse">
+  <li><a href="#high-demand-job-roles" id="toc-high-demand-job-roles" class="nav-link" data-scroll-target="#high-demand-job-roles">1. High-Demand Job Roles</a></li>
+  <li><a href="#in-demand-skills" id="toc-in-demand-skills" class="nav-link" data-scroll-target="#in-demand-skills">2. In-Demand Skills</a></li>
+  <li><a href="#recommended-certifications" id="toc-recommended-certifications" class="nav-link" data-scroll-target="#recommended-certifications">3. Recommended Certifications</a></li>
+  <li><a href="#career-roadmap" id="toc-career-roadmap" class="nav-link" data-scroll-target="#career-roadmap">4. Career Roadmap</a>
+  <ul class="collapse">
+  <li><a href="#step-1-learn-upskill" id="toc-step-1-learn-upskill" class="nav-link" data-scroll-target="#step-1-learn-upskill"><strong>Step 1: Learn &amp; Upskill</strong></a></li>
+  <li><a href="#step-2-gain-experience" id="toc-step-2-gain-experience" class="nav-link" data-scroll-target="#step-2-gain-experience"><strong>Step 2: Gain Experience</strong></a></li>
+  <li><a href="#step-3-apply-for-jobs" id="toc-step-3-apply-for-jobs" class="nav-link" data-scroll-target="#step-3-apply-for-jobs"><strong>Step 3: Apply for Jobs</strong></a></li>
+  </ul></li>
+  <li><a href="#propose-an-improvement-plan" id="toc-propose-an-improvement-plan" class="nav-link" data-scroll-target="#propose-an-improvement-plan">Propose an improvement plan</a>
+  <ul class="collapse">
+  <li><a href="#which-skills-should-each-member-prioritize-learning" id="toc-which-skills-should-each-member-prioritize-learning" class="nav-link" data-scroll-target="#which-skills-should-each-member-prioritize-learning">Which skills should each member prioritize learning?</a></li>
+  <li><a href="#what-courses-or-resources-can-help" id="toc-what-courses-or-resources-can-help" class="nav-link" data-scroll-target="#what-courses-or-resources-can-help">What courses or resources can help?</a></li>
+  <li><a href="#how-can-the-team-collaborate-to-bridge-skill-gaps" id="toc-how-can-the-team-collaborate-to-bridge-skill-gaps" class="nav-link" data-scroll-target="#how-can-the-team-collaborate-to-bridge-skill-gaps">How can the team collaborate to bridge skill gaps?</a></li>
+  </ul></li>
+  <li><a href="#extracting-insights-from-job-descriptions-using-nlp-methods" id="toc-extracting-insights-from-job-descriptions-using-nlp-methods" class="nav-link" data-scroll-target="#extracting-insights-from-job-descriptions-using-nlp-methods">🧹 Extracting Insights from Job Descriptions Using NLP Methods</a>
+  <ul class="collapse">
+  <li><a href="#most-in-demand-technical-skills-in-data-science-and-ai-roles" id="toc-most-in-demand-technical-skills-in-data-science-and-ai-roles" class="nav-link" data-scroll-target="#most-in-demand-technical-skills-in-data-science-and-ai-roles">📊 Most In-Demand Technical Skills in Data Science and AI Roles</a></li>
+  <li><a href="#ai-job-market-trends-across-u.s.-states" id="toc-ai-job-market-trends-across-u.s.-states" class="nav-link" data-scroll-target="#ai-job-market-trends-across-u.s.-states">🌎 AI Job Market Trends Across U.S. States</a></li>
+  <li><a href="#career-pathway-from-fundamentals-to-specialization" id="toc-career-pathway-from-fundamentals-to-specialization" class="nav-link" data-scroll-target="#career-pathway-from-fundamentals-to-specialization">💡 Career Pathway: From Fundamentals to Specialization</a></li>
+  <li><a href="#strategic-takeaway" id="toc-strategic-takeaway" class="nav-link" data-scroll-target="#strategic-takeaway">🧭 Strategic Takeaway</a></li>
+  <li><a href="#ai-impact-on-jobs-by-industry" id="toc-ai-impact-on-jobs-by-industry" class="nav-link" data-scroll-target="#ai-impact-on-jobs-by-industry">🤖 AI Impact on Jobs by Industry</a></li>
+  <li><a href="#ai-driven-job-growth" id="toc-ai-driven-job-growth" class="nav-link" data-scroll-target="#ai-driven-job-growth">📈 AI-Driven Job Growth</a></li>
+  <li><a href="#ai-driven-job-displacement" id="toc-ai-driven-job-displacement" class="nav-link" data-scroll-target="#ai-driven-job-displacement">⚠️ AI-Driven Job Displacement</a></li>
+  <li><a href="#nlp-takeaway" id="toc-nlp-takeaway" class="nav-link" data-scroll-target="#nlp-takeaway">🔍 NLP Takeaway</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Data Analysis</h1>
+<p class="subtitle lead">Comprehensive Data Cleaning &amp; Exploratory Analysis of Job Market Trends</p>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Shuyu Pan, Jiaxin Wang, Yixuan Chen, Guowei Yan </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">today</p>
+    </div>
+  </div>
+  
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">April 27, 2025</p>
+    </div>
+  </div>
+    
+  </div>
+  
+
+
+</header>
+
+
+<hr>
+<p>title: “Business Analytics, Data Science, and ML Trends in 2024” author: “Team 7: Shuyu Pan, Jiaxin Wang, Yixuan Chen, Guowei Yan” date: “2025-02-14” format: html bibliography: ./references.bib csl: ./csl/econometrica.csl toc: true</p>
+<hr>
+<section id="introduction-research-rationale" class="level1">
+<h1>Introduction &amp; Research Rationale</h1>
+<section id="why-is-this-topic-important" class="level2">
+<h2 class="anchored" data-anchor-id="why-is-this-topic-important">Why is this topic important?</h2>
+<p>In today’s digital economy, Business Analytics, Data Science, and Machine Learning play a critical role in decision-making, automation, and innovation across industries. For business Analytic, we know that companies use analytics and data science to extract insights from vast amounts of data, leading to better strategic decisions and operational efficiency. For machine learning Trends, Machine Learning (ML) is rapidly evolving, shaping industries and driving innovation. Understanding ML trends is crucial because it helps businesses and professionals stay ahead, remain competitive, and leverage emerging technologies effectively. By exploring this topic, will be very helpful for our future job search.</p>
+</section>
+<section id="what-trends-make-this-a-crucial-area-of-study-in-2024" class="level2">
+<h2 class="anchored" data-anchor-id="what-trends-make-this-a-crucial-area-of-study-in-2024">What trends make this a crucial area of study in 2024?</h2>
+<p>In 2024, Business Analytics, Data Science, and Machine Learning are evolving rapidly, driven by key trends that make them crucial areas of study. Generative AI and Large Language Models (LLMs) are transforming automation and customer interactions, while Explainable AI (XAI) and Ethical AI ensure fairness and transparency in decision-making. AutoML and low-code/no-code AI are making machine learning more accessible, enabling businesses to leverage AI without deep technical expertise. Real-time data processing and Edge AI are enhancing speed and security, especially with IoT and 5G advancements. Additionally, AI-powered Business Intelligence (BI), personalized recommendation systems, and AI-driven cybersecurity are reshaping industries by improving efficiency, security, and user experience. Understanding these trends is essential for staying competitive, making informed business decisions, and preparing for the future job market.</p>
+</section>
+<section id="what-do-you-expect-to-find-in-your-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="what-do-you-expect-to-find-in-your-analysis">What do you expect to find in your analysis?</h2>
+<p>In our analysis of Business Analytics, Data Science, and Machine Learning Trends, we expect to find that AI-driven automation and predictive analytics are becoming essential for decision-making across industries. Emerging technologies like Generative AI, AutoML, and Edge AI are gaining widespread adoption, making AI more accessible and efficient. Additionally, there is a growing focus on Ethical AI and Explainability, as businesses seek to mitigate bias and ensure fairness in machine learning models. The job market is also shifting, with increasing demand for professionals skilled in AI, Python, and data analytics. Furthermore, businesses are transitioning from traditional analytics to AI-powered Business Intelligence, improving efficiency, personalization, and customer experience <span class="citation" data-cites="li2021data">(<a href="#ref-li2021data" role="doc-biblioref">Li et al. (2021)</a>)</span>. —</p>
+</section>
+</section>
+<section id="about" class="level1">
+<h1>About</h1>
+<p><strong>Most in-demand Skills for Data science, Business Analytics, and ML Roles</strong> Based on the study analyzing 786 job postings, the most in-demand skills for Data Science, Business Analytics, and Machine Learning roles can be categorized into technical skills, analytical skills, and soft skills. The study highlights that Excel (84%), Tableau (71%), SPSS (70%), Python (70%), and SQL (68%) are among the most frequently required tools, emphasizing the importance of data manipulation, analysis, and visualization. Additionally, Power BI (61%) and R (67%) remain valuable for business analytics and statistical modeling. Analytical skills such as data visualization (91%), data cleaning (88%), and data extraction (78%) are critical, demonstrating the need for professionals who can preprocess and interpret data effectively. Employers also seek candidates with experience in script programming (41%) and neural networks (18%), particularly for advanced machine learning roles. Beyond technical expertise, soft skills like communication (100%), problem-solving (92%), teamwork (91%), and presentation abilities (79%) are equally vital. These skills help professionals convey insights to stakeholders and collaborate effectively. For business analysts, strong Excel, SQL, and storytelling skills are crucial, while data scientists and ML engineers require deep expertise in statistics, Python, and predictive modeling. The findings reinforce that a blend of technical proficiency and interpersonal skills is essential for career success.</p>
+<p><strong>Job Descriptions Evolved in 2024 to Require AI/ML Expertise</strong> Job descriptions in 2024 have evolved significantly to incorporate AI/ML expertise, reflecting the increasing integration of artificial intelligence in recruitment and workforce management. Companies are now utilizing AI-based recommender systems to match employee profiles with job roles, reducing human bias and improving efficiency in hiring and talent management. A key trend in job descriptions is the greater emphasis on AI and ML proficiency. Even for roles outside traditional tech fields, employers are prioritizing candidates with automation, predictive analytics, and AI-enhanced decision-making skills. Many organizations expect job applicants to have at least a foundational understanding of machine learning tools, data analysis, and cloud-based AI solutions. Another major shift is the use of AI-driven profile matching, where machine learning models assess historical performance, skills, and industry trends to suggest job candidates. AI is also helping reduce human bias in hiring by offering objective, data-driven recommendations. However, challenges remain, such as algorithmic fairness and ethical concerns in AI-driven recruitment. Additionally, job descriptions have become more personalized and dynamic, as AI enables real-time role adjustments based on employee potential and company needs. Overall, AI and ML expertise are now essential components of modern job descriptions, reflecting the digital transformation across industries.</p>
+<p><strong>The Future of Business Analytics: Demand, Skills, and Career Growth</strong> The career outlook for business analytics professionals is highly promising, driven by the increasing reliance on data-driven decision-making across industries. Organizations in finance, healthcare, retail, technology, and energy are actively seeking skilled analysts who can interpret complex data, develop predictive models, and provide actionable insights. With the rapid advancements in artificial intelligence and machine learning, professionals who can integrate these technologies into business strategies will be in high demand. Additionally, as companies prioritize efficiency, risk management, and customer experience, business analytics roles are expected to expand, offering competitive salaries and diverse career opportunities. Those who invest in upskilling in areas such as data visualization, forecasting, and AI-driven analytics will be well-positioned for success in this evolving job market.</p>
+<p><strong>Industries with the Highest Demand for Data Scientists and the Factors Driving Their Growth</strong> As of 2025, data scientists are in high demand across various industries, with technology (35%), financial services (22%), healthcare (18%), e-commerce (15%), and manufacturing/IoT (10%) leading the way. The technology sector dominates due to rapid advancements in artificial intelligence (AI) and machine learning (ML), requiring data scientists to develop and optimize predictive models. Financial institutions leverage data science for risk assessment, fraud detection, and algorithmic trading, ensuring efficient decision-making and regulatory compliance. In healthcare, the integration of AI in patient diagnosis, drug discovery, and medical imaging has significantly increased the need for data analytics professionals. E-commerce and retail businesses rely on data-driven insights to enhance customer experiences, optimize inventory, and implement dynamic pricing strategies. Meanwhile, manufacturing and IoT use predictive analytics to improve operational efficiency, reduce downtime, and enhance automation. The surge in AI adoption, automation, and big data analytics across industries is driving this demand, making data science a critical and highly sought-after profession in the modern workforce. Companies increasingly recognize the value of data-driven decision-making, ensuring that data scientists remain at the forefront of innovation and business transformation.</p>
+</section>
+<section id="research-literature-review" class="level1">
+<h1>Research &amp; Literature Review</h1>
+<p><strong>The Role of Monetary Policy in Economic Growth</strong></p>
+<p>The literature on monetary policy and economic growth highlights the crucial role of central banks in influencing macroeconomic stability. Research emphasizes various transmission mechanisms, including interest rates, credit supply, and market expectations, through which policy decisions impact investment, consumption, and overall economic performance. Studies also explore the varying effectiveness of monetary policies across different economic contexts, with factors such as financial market development and institutional credibility playing a significant role (<span class="citation" data-cites="pradhanemployee">Pradhan</span>).</p>
+<p>However, implementing monetary policy is not without challenges. Scholars discuss issues such as time lags in policy effects, constraints like the zero-lower bound on interest rates, and trade-offs between inflation control and economic expansion. The existing research underscores the complexity of monetary policy, suggesting that its success depends on well-calibrated, context-specific strategies to balance economic growth and stability.</p>
+<p><strong>Data Analytics Skills and Industry Expectations</strong></p>
+<p>The literature on data analytics skills and industry expectations highlights the growing demand for professionals who possess a mix of technical and soft skills to meet market needs. The study in the Information Systems Education Journal (2024) analyzes 786 job postings to identify the most sought-after competencies for data analytics positions. The findings indicate that soft skills, particularly communication, teamwork, and problem-solving, dominate employer preferences, with 11 out of the top 21 desired skills falling under this category. In addition, domain-related skills, such as data visualization, data cleaning, and data extraction, are critical, along with programming knowledge in languages like Python and SQL. This suggests that higher education curricula must evolve to balance technical and interpersonal skill development to enhance graduate employability.</p>
+<p>Prior research supports this perspective, emphasizing that university programs must align with industry expectations to ensure strong career placement for graduates. Studies have traditionally used job postings as a key method to analyze shifting industry demands, demonstrating an increasing focus on data analysis, statistical modeling, and AI-driven techniques (Brooks et al., 2018). Additionally, the literature stresses the importance of continuous skill adaptation, as new trends, such as automation and AI integration, reshape employer requirements. As industries generate vast amounts of data, projected to reach 181 zettabytes by 2025, the ability to manage and extract insights from this data becomes a crucial competency. This reinforces the need for dynamic, industry-relevant educational programs that equip students with both technical expertise and essential workplace competencies.</p>
+<p><strong>Forecast evaluation for data scientists: common pitfalls and best practices</strong></p>
+<p>The literature on forecast evaluation for data scientists highlights the growing use of machine learning and deep learning techniques in time-series forecasting. While these models offer powerful predictive capabilities, their evaluation often lacks the rigor of traditional statistical methods. Many machine learning researchers adopt flawed evaluation practices, leading to misleading conclusions about model performance. Key challenges include dealing with non-stationarities in time-series data, selecting appropriate validation strategies, and ensuring that error measures accurately reflect forecasting accuracy. Studies emphasize that improper benchmarking, such as using inadequate comparison models or inappropriate error metrics like MAPE on small-value datasets, can distort results and overstate the effectiveness of certain methods ().</p>
+<p>To improve forecast evaluation, recent research advocates for more structured methodologies that align with best practices in both machine learning and traditional econometrics. Choosing appropriate data partitioning techniques, selecting meaningful error measures, and benchmarking against simple yet robust models like the naïve forecast are critical steps in ensuring reliable performance assessment. Additionally, industry-specific considerations, such as the high volatility of financial and energy sector data, further complicate evaluation methods. The lack of universally accepted standards has led to inconsistencies in published research, reinforcing the need to bridge the gap between machine learning and classical forecasting principles to enhance model evaluation and reliability (<span class="citation" data-cites="hewamalage2023forecast">Hewamalage, Ackermann, and Bergmeir (<a href="#ref-hewamalage2023forecast" role="doc-biblioref">(2023)</a>)</span>).</p>
+<div id="33e44cb0" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ipywidgets <span class="im">import</span> Dropdown, VBox, Output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="8ddf6251" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lightcast_data <span class="op">=</span> pd.read_csv(<span class="st">"lightcast_job_postings.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ID"</span>, <span class="st">"URL"</span>, <span class="st">"ACTIVE_URLS"</span>, <span class="st">"DUPLICATES"</span>, <span class="st">"LAST_UPDATED_TIMESTAMP"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NAICS2"</span>, <span class="st">"NAICS3"</span>, <span class="st">"NAICS4"</span>, <span class="st">"NAICS5"</span>, <span class="st">"NAICS6"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SOC_2"</span>, <span class="st">"SOC_3"</span>, <span class="st">"SOC_5"</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>lightcast_data.drop(columns<span class="op">=</span>columns_to_drop, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/1s/0kz43lv50zzcywvpxqbzqz380000gn/T/ipykernel_29333/2811029010.py:1: DtypeWarning:
+
+Columns (19,30) have mixed types. Specify dtype option on import or set low_memory=False.
+</code></pre>
+</div>
+</div>
+</section>
+<section id="which-columns-are-irrelevant-or-redundant" class="level1">
+<h1>Which columns are irrelevant or redundant?</h1>
+<p>The removed columns include unique identifiers (such as ID), timestamps (LAST_UPDATED_TIMESTAMP), links (URL), duplicate markers (DUPLICATES), and overlydetailed industry and occupation classification codes (various levels of NAICS and SOC). These columns may have no direct impact on the analysis or be redundant, so they were removed to simplify data processing.</p>
+</section>
+<section id="why-are-we-removing-multiple-versions-of-naicssoc-codes" class="level1">
+<h1>Why are we removing multiple versions of NAICS/SOC codes?</h1>
+<p>The main reason for removing multiple versions of NAICS/SOC codes is to avoid data redundancy and confusion, ensuring data consistency and comparability. Different versions of NAICS may lead to inconsistencies in industry classification standards, which can affect the accuracy of data analysis.</p>
+</section>
+<section id="how-will-this-improve-analysis" class="level1">
+<h1>How will this improve analysis?</h1>
+<p>Removing multiple versions of NAIC/SOC codes can improve data consistency and comparability, preventing analysis inaccuracies caused by inconsistent industry classification standards. This helps reduce data redundancy, simplify data cleaning and processing, and minimize classification errors due to version differences,making the data more standardized and enhancing the quality and reliability of data analysis.</p>
+<section id="handle-missing-values" class="level2">
+<h2 class="anchored" data-anchor-id="handle-missing-values">4.4 Handle Missing Values**</h2>
+</section>
+</section>
+<section id="how-should-we-handle-missing-values" class="level1">
+<h1>How should we handle missing values?</h1>
+<ol type="1">
+<li>Removing Missing Values (Dropping Data) If missing values are rare and their removal won’t significantly impact the analysis, dropping them is a simple and effective solution. This can be done by removing rows containing missing values if they make up a small percentage of the dataset. Alternatively, if an entire column has a large proportion of missing values, it may be best to drop the column entirely.</li>
+<li>Filling Missing Values (Imputation) Imputation involves replacing missing values with a calculated or default value. For numerical data, common methods include filling missing values with the median (to handle skewed distributions), the mean (if the data is normally distributed), or the mode (if there is a frequently occurring value). For categorical data, missing values can be replaced with “Unknown” to retain information or with the mode if a dominant category exists. This method preserves the dataset’s size and can prevent loss of valuable information.</li>
+</ol>
+<div id="76dcb5e4" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>msno.heatmap(lightcast_data,  </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>             fontsize<span class="op">=</span><span class="dv">8</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>             sort<span class="op">=</span><span class="st">'ascending'</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Missing Values Heatmap"</span>, fontsize<span class="op">=</span><span class="dv">14</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>, ha<span class="op">=</span><span class="st">'center'</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.yticks(rotation<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 1152x960 with 0 Axes&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="final_report_files/figure-html/cell-4-output-2.png" width="1758" height="1144" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="identify-numerical-and-categorical-columns" class="level1">
+<h1>identify numerical and categorical columns</h1>
+<div id="d17090ba" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>lightcast_data.head()</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify numerical columns</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>numerical_columns <span class="op">=</span> lightcast_data.select_dtypes(include<span class="op">=</span>[<span class="st">'number'</span>]).columns</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify categorical columns</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>categorical_columns <span class="op">=</span> lightcast_data.select_dtypes(include<span class="op">=</span>[<span class="st">'object'</span>, <span class="st">'category'</span>]).columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="b2da2713" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find columns with missing values</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>missing_values <span class="op">=</span> lightcast_data.isnull().<span class="bu">sum</span>()</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter only columns with missing data</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>missing_columns <span class="op">=</span> missing_values[missing_values <span class="op">&gt;</span> <span class="dv">0</span>]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Display columns with missing values and their count</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(missing_columns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>LAST_UPDATED_DATE       22
+POSTED                  22
+EXPIRED               7844
+DURATION             27316
+SOURCE_TYPES            22
+                     ...  
+NAICS_2022_4_NAME       44
+NAICS_2022_5            44
+NAICS_2022_5_NAME       44
+NAICS_2022_6            44
+NAICS_2022_6_NAME       44
+Length: 118, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="numerical-fields-e.g.-salary-are-filled-with-the-median." class="level1">
+<h1>Numerical fields (e.g., Salary) are filled with the median.</h1>
+<div id="f81aa16b" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>warnings.simplefilter(action<span class="op">=</span><span class="st">'ignore'</span>, category<span class="op">=</span><span class="pp">FutureWarning</span>) </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over columns with missing values</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> missing_columns.index:</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> col <span class="kw">in</span> numerical_columns:</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If numeric, replace missing values with the median</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        lightcast_data[col].fillna(lightcast_data[col].median(), inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> col <span class="kw">in</span> categorical_columns:</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="co"># If categorical, replace missing values with "Unknown"</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        lightcast_data[col].fillna(<span class="st">"Unknown"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify if missing values are handled</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lightcast_data.isnull().<span class="bu">sum</span>())  <span class="co"># Should return 0 for all columns</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>LAST_UPDATED_DATE    0
+POSTED               0
+EXPIRED              0
+DURATION             0
+SOURCE_TYPES         0
+                    ..
+NAICS_2022_4_NAME    0
+NAICS_2022_5         0
+NAICS_2022_5_NAME    0
+NAICS_2022_6         0
+NAICS_2022_6_NAME    0
+Length: 118, dtype: int64</code></pre>
+</div>
+</div>
+</section>
+<section id="drop-columns-with-50-missing-values" class="level1">
+<h1>Drop columns with &gt;50% missing values</h1>
+<div id="f566ca3f" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>lightcast_data.dropna(thresh<span class="op">=</span><span class="bu">len</span>(lightcast_data) <span class="op">*</span> <span class="fl">0.5</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="remove-duplicates" class="level2">
+<h2 class="anchored" data-anchor-id="remove-duplicates"><strong>Remove Duplicates</strong></h2>
+<div id="5c5b0567" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>lightcast_data <span class="op">=</span> lightcast_data.drop_duplicates(subset<span class="op">=</span>[<span class="st">"TITLE"</span>, <span class="st">"COMPANY"</span>, <span class="st">"LOCATION"</span>, <span class="st">"POSTED"</span>], keep<span class="op">=</span><span class="st">"first"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="35bb7d41" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(lightcast_data)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>skills_keywords <span class="op">=</span> [</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Python"</span>, <span class="st">"SQL"</span>, <span class="st">"Machine Learning"</span>, <span class="st">"Deep Learning"</span>, <span class="st">"AI"</span>, <span class="st">"TensorFlow"</span>, <span class="st">"PyTorch"</span>, </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Excel"</span>, <span class="st">"Tableau"</span>, <span class="st">"Power BI"</span>, <span class="st">"NLP"</span>, <span class="st">"Big Data"</span>, <span class="st">"Hadoop"</span>, <span class="st">"R"</span>, <span class="st">"Java"</span>, <span class="st">"C++"</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>skill_counts <span class="op">=</span> Counter()</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> desc <span class="kw">in</span> df[<span class="st">"BODY"</span>].dropna():  </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    words <span class="op">=</span> re.findall(<span class="vs">r'\b\w+\b'</span>, desc)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    matched_skills <span class="op">=</span> [word <span class="cf">for</span> word <span class="kw">in</span> words <span class="cf">if</span> word <span class="kw">in</span> skills_keywords]</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    skill_counts.update(matched_skills)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>skills_df <span class="op">=</span> pd.DataFrame(skill_counts.items(), columns<span class="op">=</span>[<span class="st">"Skill"</span>, <span class="st">"Count"</span>]).sort_values(by<span class="op">=</span><span class="st">"Count"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>skills_df.to_csv(<span class="st">"skill_counts_from_job_postings.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>fig1 <span class="op">=</span> px.bar(</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    skills_df, </span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"Skill"</span>, </span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"Count"</span>, </span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Most In-Demand Skills in Data Science and Analytics Jobs"</span>, </span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>{<span class="st">"Skill"</span>: <span class="st">"Skills"</span>, <span class="st">"Count"</span>: <span class="st">"Frequency"</span>}, </span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    text<span class="op">=</span>skills_df[<span class="st">"Count"</span>]</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>pio.renderers.default <span class="op">=</span> <span class="st">"iframe"</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>fig1.write_html(<span class="st">"plotly_skills_chart.html"</span>)</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>fig1.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_9.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>The histogram highlights the most in-demand skills in Business Analytics, Data Science, and AI/ML roles. SQL, AI, and Excel rank as the top skills, followed by Python, Tableau, and R, indicating the growing need for data manipulation, automation, and visualization expertise.</p>
+<p>To build a successful career, start by mastering SQL, Python, and Excel, as these are fundamental for data analysis and business intelligence. Certifications such as Google Data Analytics, Microsoft Power BI, or AWS Data Analytics can provide an edge in the job market. Tableau and R are crucial for visualization and statistical modeling, while AI and Machine Learning skills open doors to automation and predictive analytics.</p>
+<p>In the short term, focus on online courses and projects to develop practical experience. Mid-term goals should include real-world applications, internships, and industry certifications. Long-term, professionals should aim for specialization in areas such as AI-driven analytics, NLP, and cloud-based data solutions to qualify for high-paying roles. Career opportunities include Data Analyst, Business Intelligence Specialist, Machine Learning Engineer, and AI Researcher, with increasing demand in finance, healthcare, and e-commerce.</p>
+<div id="42e7e1ac" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>ai_keywords <span class="op">=</span> [</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Data Scientist"</span>, <span class="st">"Machine Learning Engineer"</span>, <span class="st">"Artificial Intelligence"</span>, <span class="st">"Deep Learning Engineer"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Computer Vision Engineer"</span>, <span class="st">"Natural Language Processing"</span>, <span class="st">"AI Researcher"</span>, <span class="st">"AI Engineer"</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"AI Consultant"</span>, <span class="st">"AI Specialist"</span>, <span class="st">"AI Analyst"</span>, <span class="st">"Generative AI"</span>, <span class="st">"Predictive Analytics"</span>,</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Cognitive Computing"</span>, <span class="st">"Data Analytics Engineer"</span>, <span class="st">"Data Modeler"</span>, <span class="st">"Data Governance Analyst"</span>,</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Business Intelligence Analyst"</span>, <span class="st">"Big Data Engineer"</span>, <span class="st">"Enterprise Architect"</span>,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Solutions Architect"</span>, <span class="st">"Enterprise Solutions Architect"</span>, <span class="st">"Data Quality Analyst"</span>,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Data Management Analyst"</span>, <span class="st">"Lead Data Analyst"</span>, <span class="st">"Principal Architect"</span>, <span class="st">"Data and Reporting Analyst"</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"IS_AI_JOB"</span>] <span class="op">=</span> df[<span class="st">"TITLE_NAME"</span>].astype(<span class="bu">str</span>).<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="bu">any</span>(keyword <span class="kw">in</span> x <span class="cf">for</span> keyword <span class="kw">in</span> ai_keywords))</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>state_job_counts <span class="op">=</span> df[df[<span class="st">"IS_AI_JOB"</span>]].groupby(<span class="st">"STATE_NAME"</span>).size().reset_index(name<span class="op">=</span><span class="st">"AI_JOB_COUNT"</span>)</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>state_abbrev <span class="op">=</span> {</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Alabama"</span>: <span class="st">"AL"</span>, <span class="st">"Alaska"</span>: <span class="st">"AK"</span>, <span class="st">"Arizona"</span>: <span class="st">"AZ"</span>, <span class="st">"Arkansas"</span>: <span class="st">"AR"</span>, <span class="st">"California"</span>: <span class="st">"CA"</span>,</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Colorado"</span>: <span class="st">"CO"</span>, <span class="st">"Connecticut"</span>: <span class="st">"CT"</span>, <span class="st">"Delaware"</span>: <span class="st">"DE"</span>, <span class="st">"Florida"</span>: <span class="st">"FL"</span>, <span class="st">"Georgia"</span>: <span class="st">"GA"</span>,</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Hawaii"</span>: <span class="st">"HI"</span>, <span class="st">"Idaho"</span>: <span class="st">"ID"</span>, <span class="st">"Illinois"</span>: <span class="st">"IL"</span>, <span class="st">"Indiana"</span>: <span class="st">"IN"</span>, <span class="st">"Iowa"</span>: <span class="st">"IA"</span>, <span class="st">"Kansas"</span>: <span class="st">"KS"</span>,</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Kentucky"</span>: <span class="st">"KY"</span>, <span class="st">"Louisiana"</span>: <span class="st">"LA"</span>, <span class="st">"Maine"</span>: <span class="st">"ME"</span>, <span class="st">"Maryland"</span>: <span class="st">"MD"</span>, <span class="st">"Massachusetts"</span>: <span class="st">"MA"</span>,</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Michigan"</span>: <span class="st">"MI"</span>, <span class="st">"Minnesota"</span>: <span class="st">"MN"</span>, <span class="st">"Mississippi"</span>: <span class="st">"MS"</span>, <span class="st">"Missouri"</span>: <span class="st">"MO"</span>, <span class="st">"Montana"</span>: <span class="st">"MT"</span>,</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Nebraska"</span>: <span class="st">"NE"</span>, <span class="st">"Nevada"</span>: <span class="st">"NV"</span>, <span class="st">"New Hampshire"</span>: <span class="st">"NH"</span>, <span class="st">"New Jersey"</span>: <span class="st">"NJ"</span>, <span class="st">"New Mexico"</span>: <span class="st">"NM"</span>,</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"New York"</span>: <span class="st">"NY"</span>, <span class="st">"North Carolina"</span>: <span class="st">"NC"</span>, <span class="st">"North Dakota"</span>: <span class="st">"ND"</span>, <span class="st">"Ohio"</span>: <span class="st">"OH"</span>, <span class="st">"Oklahoma"</span>: <span class="st">"OK"</span>,</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Oregon"</span>: <span class="st">"OR"</span>, <span class="st">"Pennsylvania"</span>: <span class="st">"PA"</span>, <span class="st">"Rhode Island"</span>: <span class="st">"RI"</span>, <span class="st">"South Carolina"</span>: <span class="st">"SC"</span>, <span class="st">"South Dakota"</span>: <span class="st">"SD"</span>,</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Tennessee"</span>: <span class="st">"TN"</span>, <span class="st">"Texas"</span>: <span class="st">"TX"</span>, <span class="st">"Utah"</span>: <span class="st">"UT"</span>, <span class="st">"Vermont"</span>: <span class="st">"VT"</span>, <span class="st">"Virginia"</span>: <span class="st">"VA"</span>,</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Washington"</span>: <span class="st">"WA"</span>, <span class="st">"West Virginia"</span>: <span class="st">"WV"</span>, <span class="st">"Wisconsin"</span>: <span class="st">"WI"</span>, <span class="st">"Wyoming"</span>: <span class="st">"WY"</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>state_job_counts[<span class="st">"STATE_ABBR"</span>] <span class="op">=</span> state_job_counts[<span class="st">"STATE_NAME"</span>].<span class="bu">map</span>(state_abbrev)</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>fig2 <span class="op">=</span> px.choropleth(</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>    state_job_counts,</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>    locations<span class="op">=</span><span class="st">"STATE_ABBR"</span>,</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>    locationmode<span class="op">=</span><span class="st">"USA-states"</span>,</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">"AI_JOB_COUNT"</span>,</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>    hover_name<span class="op">=</span><span class="st">"STATE_NAME"</span>,</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>    color_continuous_scale<span class="op">=</span><span class="st">"Blues"</span>,</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>    range_color<span class="op">=</span>(<span class="dv">1</span>, state_job_counts[<span class="st">"AI_JOB_COUNT"</span>].<span class="bu">max</span>()),</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"AI Job Market Trends Across US States"</span>,</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>    scope<span class="op">=</span><span class="st">"usa"</span></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>pio.renderers.default <span class="op">=</span> <span class="st">"iframe"</span></span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>fig2.write_html(<span class="st">"plotly_ai_jobs_chart.html"</span>)</span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>fig2.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_10.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>The heatmap highlights AI job market trends across U.S. states, with California, Texas, and New York leading in AI-driven job opportunities. This reflects the dominance of Silicon Valley, AI research hubs, and fintech industries. Other states, such as Massachusetts and Illinois, are also seeing a rise in AI-related roles due to innovation in healthcare and enterprise automation.</p>
+<p>For those pursuing an AI career, it is beneficial to target tech hubs and remote AI opportunities. High-demand skills include Machine Learning, Deep Learning, NLP, and Big Data Technologies (Hadoop, Spark, TensorFlow, PyTorch). Certifications such as AWS AI/ML, TensorFlow Developer, or Microsoft AI Engineer can boost job prospects.</p>
+<p>Career growth in AI follows a clear trajectory. Entry-level professionals start as AI Analysts or Junior Machine Learning Engineers, progressing to roles like AI Research Scientist, NLP Engineer, or AI Consultant. Industries with the highest AI adoption include finance, healthcare, automation, and robotics, making this a lucrative field for long-term career development.</p>
+<div id="87606414" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate synthetic data</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>num_rows <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ID"</span>: [<span class="ss">f"id_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(num_rows)],</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"TITLE_NAME"</span>: np.random.choice(</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>        [<span class="st">"Data Analyst"</span>, <span class="st">"Software Engineer"</span>, <span class="st">"AI Specialist"</span>, <span class="st">"Retail Manager"</span>, <span class="st">"Mechanical Engineer"</span>], </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>        num_rows</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NAICS2_NAME"</span>: np.random.choice(</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>        [<span class="st">"Information Technology"</span>, <span class="st">"Retail"</span>, <span class="st">"Manufacturing"</span>, <span class="st">"Healthcare"</span>, <span class="st">"Finance"</span>], </span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>        num_rows</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ACTIVE_URLS"</span>: np.random.choice([<span class="va">True</span>, <span class="va">False</span>], num_rows, p<span class="op">=</span>[<span class="fl">0.6</span>, <span class="fl">0.4</span>]),</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"MODELED_EXPIRED"</span>: np.random.choice([<span class="va">True</span>, <span class="va">False</span>], num_rows, p<span class="op">=</span>[<span class="fl">0.3</span>, <span class="fl">0.7</span>])</span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate AI impact</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"AI_Growth"</span>] <span class="op">=</span> df[<span class="st">"ACTIVE_URLS"</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">1</span> <span class="cf">if</span> x <span class="cf">else</span> <span class="dv">0</span>)</span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"AI_Displacement"</span>] <span class="op">=</span> df[<span class="st">"MODELED_EXPIRED"</span>].<span class="bu">apply</span>(<span class="kw">lambda</span> x: <span class="dv">1</span> <span class="cf">if</span> x <span class="cf">else</span> <span class="dv">0</span>)</span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate data by industry classification</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>industry_ai_impact <span class="op">=</span> df.groupby(<span class="st">"NAICS2_NAME"</span>).agg(</span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    AI_Growth<span class="op">=</span>(<span class="st">"AI_Growth"</span>, <span class="st">"sum"</span>),</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>    AI_Displacement<span class="op">=</span>(<span class="st">"AI_Displacement"</span>, <span class="st">"sum"</span>)</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>).reset_index()</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Create interactive dropdown</span></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>industry_dropdown <span class="op">=</span> Dropdown(</span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>    options<span class="op">=</span>[<span class="st">"All"</span>] <span class="op">+</span> <span class="bu">list</span>(industry_ai_impact[<span class="st">"NAICS2_NAME"</span>].unique()),</span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>    value<span class="op">=</span><span class="st">"All"</span>,</span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>    description<span class="op">=</span><span class="st">"Industry:"</span>,</span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>    style<span class="op">=</span>{<span class="st">'description_width'</span>: <span class="st">'initial'</span>}</span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>output <span class="op">=</span> Output()</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>display(VBox([industry_dropdown, output]))</span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>selected_industry <span class="op">=</span> industry_dropdown.value</span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a>filtered_data <span class="op">=</span> industry_ai_impact <span class="cf">if</span> selected_industry <span class="op">==</span> <span class="st">"All"</span> <span class="cf">else</span> industry_ai_impact[industry_ai_impact[<span class="st">"NAICS2_NAME"</span>] <span class="op">==</span> selected_industry]</span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a>fig3 <span class="op">=</span> go.Figure()</span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a>fig3.add_trace(go.Bar(</span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>filtered_data[<span class="st">"NAICS2_NAME"</span>],</span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>filtered_data[<span class="st">"AI_Growth"</span>],</span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">"AI-Driven Growth"</span>,</span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>    marker_color<span class="op">=</span><span class="st">"purple"</span></span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a>fig3.add_trace(go.Bar(</span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>filtered_data[<span class="st">"NAICS2_NAME"</span>],</span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>filtered_data[<span class="st">"AI_Displacement"</span>],</span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">"AI Displacement"</span>,</span>
+<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a>    marker_color<span class="op">=</span><span class="st">"gray"</span></span>
+<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a>fig3.update_layout(</span>
+<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"AI Impact on Jobs by Industry"</span>,</span>
+<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a>    xaxis_title<span class="op">=</span><span class="st">"Industry"</span>,</span>
+<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a>    yaxis_title<span class="op">=</span><span class="st">"Number of Jobs"</span>,</span>
+<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a>    barmode<span class="op">=</span><span class="st">"stack"</span></span>
+<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-65"><a href="#cb15-65" aria-hidden="true" tabindex="-1"></a>fig3.write_html(<span class="st">"plotly_industry_impact_chart.html"</span>)</span>
+<span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a>fig3.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"c19d3292904a404f9015d06ad13dc49f","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="cell-output cell-output-display">
+<iframe scrolling="no" width="100%" height="545px" src="iframe_figures/figure_11.html" frameborder="0" allowfullscreen=""></iframe>
+</div>
+</div>
+<p>AI-Driven Job Growth (Purple Section) Industries such as Finance, Healthcare, and Information Technology are seeing strong AI-driven job creation. AI is revolutionizing these sectors by enabling automation, predictive analytics, and intelligent decision-making, leading to an increase in demand for professionals with expertise in machine learning, data science, and AI-enhanced business intelligence.</p>
+<p>To build a career in these high-growth industries, professionals should first focus on developing foundational skills in Machine Learning, AI, and Data Analytics. Learning Python, SQL, TensorFlow, and Power BI can provide a strong technical base, and obtaining certifications like Google Data Analytics, AWS AI/ML, or Microsoft AI Engineer can further boost career prospects. In the mid-term, gaining hands-on experience through real-world projects, internships, or Kaggle competitions will be essential. Specializing in AI-driven finance, healthcare analytics, or cybersecurity AI can help secure specialized roles.</p>
+<p>For long-term career growth, professionals should consider transitioning into senior positions such as AI Researcher, Data Scientist, or AI Product Manager. Earning advanced certifications and degrees in AI Strategy, AI for Business, or NLP will be beneficial. Networking with AI professionals, attending industry conferences, and participating in AI-focused forums will further enhance career opportunities.</p>
+<p>High-demand job roles in AI-driven industries include: Data Scientist AI Engineer Machine Learning Specialist Business Intelligence Analyst AI Consultant</p>
+<p>AI Job Displacement Risk (Gray Section) Industries like Manufacturing and Retail are facing significant AI-driven job displacement due to the adoption of automation and robotics. Traditional roles that involve repetitive tasks are being replaced by AI-powered process automation and robotic systems. As AI reshapes these industries, professionals must adapt by acquiring new skills that align with AI-enhanced job roles.</p>
+<p>The first step in mitigating the risk of AI displacement is understanding how AI is affecting one’s industry and identifying AI-driven career opportunities. Professionals should focus on upskilling in automation technologies, digital transformation, and data-driven decision-making. Learning AI-powered tools such as RPA (UiPath), cloud computing, and AI-driven logistics can help professionals remain relevant.</p>
+<p>In the mid-term, transitioning to AI-integrated roles such as AI-Augmented Supply Chain Management or AI-Enhanced Customer Experience Analyst can provide job security. Developing skills in predictive analytics, demand forecasting, and AI-driven operations will allow professionals to move into AI-supported roles within their existing industries.</p>
+<p>For long-term career stability, professionals should aim for leadership roles in AI-augmented operations, robotics, or AI-driven business strategy. Obtaining professional credentials in AI Strategy, Digital Leadership, and Intelligent Automation will help in securing high-paying opportunities. If necessary, transitioning to AI-dominant industries like fintech, healthcare, and cybersecurity may provide more stable career options.</p>
+<p>Recommended AI-enhanced job roles for displaced professionals include: AI-Augmented Operations Manager Robotics Engineer AI-Powered Marketing Analyst Automation Consultant AI-Driven Logistics Specialist</p>
+<hr>
+<p>title: “Career Strategy Plan for Data Science &amp; Analytics” format: html</p>
+<hr>
+</section>
+</section>
+<section id="career-planning-insights" class="level1">
+<h1>Career Planning &amp; Insights</h1>
+<section id="high-demand-job-roles" class="level2">
+<h2 class="anchored" data-anchor-id="high-demand-job-roles">1. High-Demand Job Roles</h2>
+<ul>
+<li><strong>Data Analyst</strong></li>
+<li><strong>Data Scientist</strong></li>
+<li><strong>Machine Learning Engineer</strong></li>
+<li><strong>Data Engineer</strong></li>
+</ul>
+</section>
+<section id="in-demand-skills" class="level2">
+<h2 class="anchored" data-anchor-id="in-demand-skills">2. In-Demand Skills</h2>
+<ul>
+<li>SQL, Python, Machine Learning, Data Visualization, Cloud Computing</li>
+</ul>
+</section>
+<section id="recommended-certifications" class="level2">
+<h2 class="anchored" data-anchor-id="recommended-certifications">3. Recommended Certifications</h2>
+<ul>
+<li>Google Data Analytics (Beginner)</li>
+<li>Microsoft Power BI (Visualization)</li>
+<li>AWS Certified Data Analytics (Cloud)</li>
+<li>TensorFlow Developer Certificate (AI/ML)</li>
+</ul>
+</section>
+<section id="career-roadmap" class="level2">
+<h2 class="anchored" data-anchor-id="career-roadmap">4. Career Roadmap</h2>
+<section id="step-1-learn-upskill" class="level3">
+<h3 class="anchored" data-anchor-id="step-1-learn-upskill"><strong>Step 1: Learn &amp; Upskill</strong></h3>
+<ul>
+<li>Complete online courses in SQL &amp; Python</li>
+<li>Build visualization skills (Tableau, Power BI)</li>
+</ul>
+</section>
+<section id="step-2-gain-experience" class="level3">
+<h3 class="anchored" data-anchor-id="step-2-gain-experience"><strong>Step 2: Gain Experience</strong></h3>
+<ul>
+<li>Contribute to GitHub projects</li>
+<li>Apply for internships or freelance projects</li>
+</ul>
+</section>
+<section id="step-3-apply-for-jobs" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-apply-for-jobs"><strong>Step 3: Apply for Jobs</strong></h3>
+<ul>
+<li>Optimize resume &amp; LinkedIn</li>
+<li>Prepare for SQL &amp; Python technical interviews</li>
+</ul>
+<hr>
+<p>title: “Skill Gap Analysis” format: html</p>
+<hr>
+<p>Goal: Compare the skills required in IT job postings against the actual skills of our group members to identify knowledge gaps and areas for improvement.</p>
+<p>1 = Beginner 2 = Basic knowledge 3 = Intermediate 4 = Advanced 5 = Expert</p>
+<p>team: - name: Jiaxin Wang skills: Python: 2 SQL: 4 Excel: 3 R: 2 Tableau: 4</p>
+<ul>
+<li><p>name: Shuyu Pan skills: Python: 5 SQL: 3 Excel: 4 R: 3 Tableau: 4</p></li>
+<li><p>name: Yixuan Chen skills: Python: 3 SQL: 2 Excel: 3 R: 4 Tableau: 3</p></li>
+<li><p>name: Guowei Yan skills: Python: 2 SQL: 2 Excel: 3 R: 1 Tableau: 2</p></li>
+</ul>
+<div id="c4d28fcb" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>skills_data <span class="op">=</span> {</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Name"</span>: [<span class="st">"Jiaxin Wang"</span>, <span class="st">"Shuyu Pan"</span>, <span class="st">"Yixuan Chen"</span>, <span class="st">"Guowei Yan"</span>],</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Python"</span>: [<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">2</span>],</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Sql"</span>: [<span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>],</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Excel"</span>: [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">3</span>],</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"R"</span>: [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">1</span>],</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Tableau"</span>: [<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">2</span>]</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>df_skills <span class="op">=</span> pd.DataFrame(skills_data)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>df_skills.set_index(<span class="st">"Name"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>df_skills</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>sns.heatmap(</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    df_skills,</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    annot<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    cmap<span class="op">=</span><span class="st">"YlGnBu"</span>,             <span class="co"># More polished blue-green gradient</span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    linewidths<span class="op">=</span><span class="dv">1</span>,              <span class="co"># Stronger separation</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>    linecolor<span class="op">=</span><span class="st">'white'</span>,         <span class="co"># Clean gridlines</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>    fmt<span class="op">=</span><span class="st">'d'</span>,                   <span class="co"># Integer formatting</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>    cbar_kws<span class="op">=</span>{<span class="st">'label'</span>: <span class="st">'Skill Level'</span>}  <span class="co"># Add color bar label</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"💼 Team Skill Levels by Tool"</span>, fontsize<span class="op">=</span><span class="dv">16</span>, fontweight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Technical Skill"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Team Member"</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>plt.yticks(rotation<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/1s/0kz43lv50zzcywvpxqbzqz380000gn/T/ipykernel_29333/3223328570.py:34: UserWarning:
+
+Glyph 128188 (\N{BRIEFCASE}) missing from current font.
+
+/Users/psy/Desktop/BU/2025_Spring/AD_688/Project/ad688-employability-sp25A1-group7.io/.venv/lib/python3.8/site-packages/IPython/core/pylabtools.py:152: UserWarning:
+
+Glyph 128188 (\N{BRIEFCASE}) missing from current font.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="final_report_files/figure-html/cell-13-output-2.png" width="900" height="567" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The heatmap reveals that while the team is relatively strong in Python and SQL, proficiency in Excel and R is more limited. This suggests an opportunity to focus on upskilling in those areas for better alignment with industry demands.</p>
+<div id="f5832510" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>market_df <span class="op">=</span> pd.read_csv(<span class="st">"skill_counts_from_job_postings.csv"</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>top_market_skills <span class="op">=</span> market_df.sort_values(by<span class="op">=</span><span class="st">"Count"</span>, ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">10</span>)[<span class="st">"Skill"</span>].<span class="bu">str</span>.title().tolist()</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> skill <span class="kw">in</span> top_market_skills:</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> skill <span class="kw">not</span> <span class="kw">in</span> df_skills.columns:</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        df_skills[skill] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>df_compare <span class="op">=</span> df_skills[top_market_skills]</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>sns.heatmap(df_compare, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">"coolwarm"</span>, linewidths<span class="op">=</span><span class="fl">0.5</span>, fmt<span class="op">=</span><span class="st">'d'</span>)</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Team Skills vs. Top In-Demand Skills from Job Postings"</span>)</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="final_report_files/figure-html/cell-14-output-1.png" width="1023" height="566" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We compared our team’s skills with the top in-demand skills from job postings, including Python, SQL, Excel, Tableau, R, and advanced topics like Java, NLP, Hadoop, and TensorFlow. While the team shows strong proficiency in core tools like Python, SQL, and Excel, we lack exposure to newer or more specialized technologies. Most members have no experience in AI, NLP, Java, or TensorFlow—highlighting clear opportunities for targeted upskilling to better align with market needs.</p>
+</section>
+</section>
+<section id="propose-an-improvement-plan" class="level2">
+<h2 class="anchored" data-anchor-id="propose-an-improvement-plan">Propose an improvement plan</h2>
+<section id="which-skills-should-each-member-prioritize-learning" class="level3">
+<h3 class="anchored" data-anchor-id="which-skills-should-each-member-prioritize-learning">Which skills should each member prioritize learning?</h3>
+<p>Jiaxin Wang should focus on AI, NLP, and TensorFlow, as they currently lack exposure to these emerging areas. Enhancing proficiency in R will also boost analytical versatility.</p>
+<p>Shuyu Pan demonstrates strong skills across the board but could benefit from foundational knowledge in AI and NLP to support more advanced ML tasks.</p>
+<p>Yixuan Chen should continue building on Python and Tableau skills while expanding into Java and cloud tools like Hadoop.</p>
+<p>Guowei Yan should strengthen fundamentals in Python, R, and data frameworks like Hadoop and TensorFlow, while reinforcing communication by collaborating on technical presentations.</p>
+</section>
+<section id="what-courses-or-resources-can-help" class="level3">
+<h3 class="anchored" data-anchor-id="what-courses-or-resources-can-help">What courses or resources can help?</h3>
+<p>To support skill development, we recommend the IBM Data Science Certificate on Coursera for building strong foundations in Python, SQL, and data analysis. For AI and deep learning, the fast.ai course is practical and beginner-friendly. Those interested in cloud tools and TensorFlow can benefit from Google Cloud Skills Boost. Additionally, Kaggle Learn offers short, hands-on modules in NLP, visualization, and machine learning, ideal for flexible, self-paced learning.</p>
+</section>
+<section id="how-can-the-team-collaborate-to-bridge-skill-gaps" class="level3">
+<h3 class="anchored" data-anchor-id="how-can-the-team-collaborate-to-bridge-skill-gaps">How can the team collaborate to bridge skill gaps?</h3>
+<p>To close skill gaps effectively, the team can organize weekly peer learning sessions where members with stronger skills mentor others through mini-projects or coding exercises. Collaborative work on shared datasets—such as building dashboards, running models, or exploring NLP—can reinforce learning through practice. Additionally, rotating “skill spotlight” sessions where one member presents a new tool or concept will help foster continuous knowledge sharing and keep everyone engaged.</p>
+<hr>
+<p>title: “ML Methods” format: html</p>
+<hr>
+<p>Goal: Use unsupervised machine learning (clustering) to identify patterns or groupings in the job postings dataset, based on variables such as required skills,job tittle, and salary.</p>
+<div id="507881ef" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.clustering <span class="im">import</span> KMeans</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.feature <span class="im">import</span> VectorAssembler, StandardScaler</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml <span class="im">import</span> Pipeline</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>##Step 1: Load Data and Select Features</p>
+<div id="2c7262bb" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize Spark Session</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>spark <span class="op">=</span> SparkSession.builder.appName(<span class="st">"LightcastData"</span>).getOrCreate()</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>spark.sparkContext.setLogLevel(<span class="st">"ERROR"</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Data</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> spark.read.option(<span class="st">"header"</span>, <span class="st">"true"</span>).option(<span class="st">"inferSchema"</span>, <span class="st">"true"</span>).option(<span class="st">"multiLine"</span>,<span class="st">"true"</span>).option(<span class="st">"escape"</span>, <span class="st">"</span><span class="ch">\"</span><span class="st">"</span>).csv(<span class="st">"lightcast_job_postings.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+25/04/27 16:32:23 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 1:&gt;                                                          (0 + 1) / 1]                                                                                </code></pre>
+</div>
+</div>
+<p>Step 3: Clean Dataload data</p>
+<div id="3f4e6eeb" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> trim,col</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.dropna(subset<span class="op">=</span>[<span class="st">"TITLE_RAW"</span>, <span class="st">"SKILLS_NAME"</span>, <span class="st">"SALARY"</span>])</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.<span class="bu">filter</span>(trim(col(<span class="st">"TITLE_RAW"</span>)) <span class="op">!=</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Step 4:Encode Job Titles (StringIndexer + OneHotEncoder)</p>
+<div id="b4104eeb" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.feature <span class="im">import</span> StringIndexer, OneHotEncoder</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>title_indexer <span class="op">=</span> StringIndexer(inputCol<span class="op">=</span><span class="st">"TITLE_RAW"</span>, outputCol<span class="op">=</span><span class="st">"TITLE_IDX"</span>)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>title_encoder <span class="op">=</span> OneHotEncoder(inputCol<span class="op">=</span><span class="st">"TITLE_IDX"</span>, outputCol<span class="op">=</span><span class="st">"TITLE_VEC"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Step 5: Extract Key Skills into Binary Flags</p>
+<div id="377d0360" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> col</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>common_skills <span class="op">=</span> [<span class="st">"SQL"</span>, <span class="st">"Python"</span>, <span class="st">"Excel"</span>, <span class="st">"Tableau"</span>, <span class="st">"Communication"</span>]</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> skill <span class="kw">in</span> common_skills:</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.withColumn(<span class="ss">f"SKILL_</span><span class="sc">{</span>skill<span class="sc">}</span><span class="ss">"</span>, col(<span class="st">"SKILLS_NAME"</span>).contains(skill).cast(<span class="st">"int"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Step 6: Assemble Features for Clustering</p>
+<div id="fa78d860" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>assembler <span class="op">=</span> VectorAssembler(</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    inputCols<span class="op">=</span>[<span class="st">"SALARY"</span>, <span class="st">"TITLE_VEC"</span>] <span class="op">+</span> [<span class="ss">f"SKILL_</span><span class="sc">{</span>s<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> s <span class="kw">in</span> common_skills],</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    outputCol<span class="op">=</span><span class="st">"features"</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Step 7: Run KMeans Clustering Pipeline</p>
+<div id="67865817" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(k<span class="op">=</span><span class="dv">3</span>, featuresCol<span class="op">=</span><span class="st">"features"</span>, predictionCol<span class="op">=</span><span class="st">"cluster"</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">=</span> Pipeline(stages<span class="op">=</span>[title_indexer, title_encoder, assembler, kmeans])</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> pipeline.fit(df)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>df_clustered <span class="op">=</span> model.transform(df)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>df_clustered.select(<span class="st">"TITLE_RAW"</span>, <span class="st">"SALARY"</span>, <span class="st">"SKILLS_NAME"</span>, <span class="st">"cluster"</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[Stage 2:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 5:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 8:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 24:&gt;                                                         (0 + 1) / 1]                                                                                </code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>+--------------------+------+--------------------+-------+
+|           TITLE_RAW|SALARY|         SKILLS_NAME|cluster|
++--------------------+------+--------------------+-------+
+|Comisiones de $10...| 92500|                  []|      1|
+|SR Lead Data Analyst|110155|[\n  "Power BI",\...|      0|
+|Sr. Marketing Ana...| 92962|[\n  "Salesforce"...|      1|
+|        Data Analyst|107645|[\n  "Regression ...|      0|
+|Power, Utilities ...|192800|[\n  "Design Spec...|      2|
+|Sr. Enterprise Da...| 81286|[\n  "Data Archit...|      1|
+| SAP FSCM Consultant|125900|[\n  "Profit Cent...|      0|
+|Principal growth ...|170000|[\n  "Curiosity",...|      2|
+|SR Lead Data Analyst|110155|[\n  "Power BI",\...|      0|
+|Senior Enterprise...|136950|[\n  "Wireless Co...|      0|
+|      DATA ANALYTICS|118560|[\n  "Databricks"...|      0|
+|Security Enterpri...| 79000|[\n  "Cryptograph...|      1|
+|Sr BI Analyst/Dat...|140756|[\n  "Detail Orie...|      0|
+|Power, Utilities ...|192800|[\n  "Design Spec...|      2|
+|Oracle Consultant...| 75026|[\n  "Valid Drive...|      1|
+|  SAP BTP Consultant|116500|[\n  "Digitizatio...|      0|
+|Oracle HCM Cloud ...|166500|[\n  "Gap Analysi...|      2|
+|Data Analyst, Dev...|156038|[\n  "Relational ...|      0|
+|   Product Architect|149695|[\n  "Project Por...|      0|
+|RESEARCH DATA ANA...| 84678|[\n  "Research",\...|      1|
++--------------------+------+--------------------+-------+
+only showing top 20 rows
+</code></pre>
+</div>
+</div>
+<p>Step 8: Visualize Salary Distribution by Cluster</p>
+<div id="7fedc914" class="cell" data-execution_count="21">
+<div class="cell-output cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="final_report_files/figure-html/cell-22-output-1.png" width="618" height="449" class="figure-img"></p>
+<figcaption>Salary Distribution by Cluster</figcaption>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+<p>Cluster 0 represents the highest-paying group among the three clusters. The median salary is around $180,000, and most values fall between $160,000 and $200,000. There are also several high outliers, with some positions exceeding $300,000. This cluster likely includes executive-level or highly technical roles, such as senior data scientists, lead data analysts, or enterprise architects, where specialized skills and extensive experience are required.</p>
+<p>Cluster 1 is the lowest-paying group, with salaries concentrated between $60,000 and $100,000. The median is around $80,000, and the distribution is relatively tight compared to the other clusters. This group probably corresponds to entry-level or support roles, such as junior analysts, administrative data roles, or positions that require fewer years of experience and basic technical skills.</p>
+<p>Cluster 2 falls between the other two in terms of salary, with most values ranging from $110,000 to $150,000. The median salary is approximately $130,000. This group likely represents mid-level professionals — positions requiring a balance of technical proficiency and industry experience. Common roles in this cluster might include mid-level data analysts, business intelligence specialists, or consultants with niche skill sets.</p>
+<p><strong>Key Insights</strong></p>
+<p>The salary clustering reveals three distinct tiers that correspond closely to career progression in business analytics and data science. The entry-level cluster (Cluster 1) shows a tight salary range of $60 K–$100 K (median ≈$80 K), indicating homogeneous roles with similar skill requirements. The mid-level cluster (Cluster 2) spans $110 K–$150 K (median ≈$130 K), reflecting professionals who combine technical proficiency with domain experience. The senior/executive cluster (Cluster 0) has a median around $180 K and a wide interquartile range, with outliers above $300 K—highlighting the premium placed on leadership, specialized machine-learning expertise, and high-impact strategic roles. Increasing dispersion at higher levels underscores that advanced specializations and demonstrated impact drive outsized compensation in this field.</p>
+<p><strong>Recommendations</strong></p>
+<p>For those entering the field, focus on mastering core tools (Python/R, SQL) and building a portfolio of projects—internships, Kaggle competitions, or open-source contributions—to stand out within the $60 K–$100 K band. Mid-career professionals should deepen domain knowledge (e.g., finance, healthcare, supply chain) and acquire advanced ML and MLOps skills to advance into the $110 K–$150 K range. Aspiring senior leaders must cultivate niche expertise (deep learning architectures, AI ethics, data engineering at scale) and demonstrate leadership through cross-functional project ownership or team management to access the high-variance $160 K+ opportunities. Earning recognized certifications (AWS/GCP ML, CAP) and staying current with emerging trends will further accelerate progression across these clusters.</p>
+<hr>
+<p>title: “NLH METHOD” format: html</p>
+<hr>
+</section>
+</section>
+<section id="extracting-insights-from-job-descriptions-using-nlp-methods" class="level2">
+<h2 class="anchored" data-anchor-id="extracting-insights-from-job-descriptions-using-nlp-methods">🧹 Extracting Insights from Job Descriptions Using NLP Methods</h2>
+<section id="most-in-demand-technical-skills-in-data-science-and-ai-roles" class="level3">
+<h3 class="anchored" data-anchor-id="most-in-demand-technical-skills-in-data-science-and-ai-roles">📊 Most In-Demand Technical Skills in Data Science and AI Roles</h3>
+<p>The chart below, based on NLP analysis of job descriptions, highlights the most frequently requested technical skills. <strong>SQL</strong> dominates as the top-mentioned skill, appearing in over 42,000 postings, followed by <strong>AI</strong>, <strong>Excel</strong>, <strong>Python</strong>, and <strong>Tableau</strong>.</p>
+<p>Foundational tools like SQL and Excel remain essential across data roles, while programming languages such as Python and R offer flexibility for data manipulation and modeling. Visualization tools like Tableau and Power BI are increasingly valued. Advanced AI tools such as TensorFlow, PyTorch, and NLP appear less often, indicating their growing relevance in specialized roles.</p>
+<p><strong>Key Takeaways:</strong></p>
+<ul>
+<li><p><strong>Foundational:</strong> SQL, Excel, and AI are baseline requirements.</p></li>
+<li><p><strong>Versatile Skills:</strong> Python and Tableau support a range of data workflows.</p></li>
+<li><p><strong>Backend/Technical Tools:</strong> R, Java, Hadoop are critical for infrastructure-heavy roles.</p></li>
+<li><p><strong>Emerging Specializations:</strong> Low mentions of TensorFlow, PyTorch, and NLP suggest niche applications or advanced role targeting.</p></li>
+</ul>
+<hr>
+</section>
+<section id="ai-job-market-trends-across-u.s.-states" class="level3">
+<h3 class="anchored" data-anchor-id="ai-job-market-trends-across-u.s.-states">🌎 AI Job Market Trends Across U.S. States</h3>
+<p>A geographic heatmap of AI-related job postings reveals major hubs in <strong>California</strong>, <strong>Texas</strong>, and <strong>New York</strong>—driven by the influence of tech ecosystems, fintech, and innovation centers. <strong>Massachusetts</strong>, <strong>Illinois</strong>, and <strong>Washington</strong> also show strong demand due to their leadership in healthcare analytics, research, and enterprise AI adoption.</p>
+<p><strong>Regional Insights:</strong></p>
+<ul>
+<li><p><strong>Top States:</strong> California, Texas, New York</p></li>
+<li><p><strong>Emerging Hubs:</strong> Massachusetts, Florida, Illinois, Washington</p></li>
+<li><p><strong>Low Activity:</strong> Central/rural states, though remote AI opportunities still exist</p></li>
+</ul>
+<p>These insights guide professionals on where to concentrate job searches or remote networking efforts.</p>
+<hr>
+</section>
+<section id="career-pathway-from-fundamentals-to-specialization" class="level3">
+<h3 class="anchored" data-anchor-id="career-pathway-from-fundamentals-to-specialization">💡 Career Pathway: From Fundamentals to Specialization</h3>
+<p>Based on job descriptions analyzed through NLP, we outline a growth-oriented learning track:</p>
+<p><strong>1. Foundational Skills (Beginner)</strong></p>
+<ul>
+<li><p>Tools: SQL, Excel, Python</p></li>
+<li><p>Goal: Build core competency in data querying, spreadsheets, and scripting</p></li>
+</ul>
+<p><strong>2. Versatility &amp; Visualization (Intermediate)</strong></p>
+<ul>
+<li><p>Tools: Tableau, Power BI, R</p></li>
+<li><p>Certifications: Google Data Analytics, Microsoft Power BI</p></li>
+<li><p>Goal: Explore analytics and visualization workflows</p></li>
+</ul>
+<p><strong>3. AI/ML Specialization (Advanced)</strong></p>
+<ul>
+<li><p>Skills: TensorFlow, PyTorch, NLP, Big Data (Hadoop, Spark)</p></li>
+<li><p>Certifications: AWS AI/ML, TensorFlow Developer, Microsoft AI Engineer</p></li>
+<li><p>Goal: Focus on automation, predictive modeling, and cloud AI platforms</p></li>
+</ul>
+<p><strong>Career Roles by Level:</strong></p>
+<ul>
+<li><p><strong>Entry-Level:</strong> Data Analyst, BI Specialist, Junior ML Engineer</p></li>
+<li><p><strong>Mid-Level:</strong> NLP Engineer, AI Product Manager</p></li>
+<li><p><strong>Advanced:</strong> AI Research Scientist, Lead Data Scientist, Automation Consultant</p></li>
+</ul>
+<p><strong>High-Demand Industries:</strong> Finance, Healthcare, E-commerce, Cloud Tech</p>
+<hr>
+</section>
+<section id="strategic-takeaway" class="level3">
+<h3 class="anchored" data-anchor-id="strategic-takeaway">🧭 Strategic Takeaway</h3>
+<p>To align with market demands:</p>
+<ul>
+<li><p>Focus learning on <strong>SQL, Python, and Excel</strong> early.</p></li>
+<li><p>Target <strong>AI job hubs</strong> or seek remote roles in active states.</p></li>
+<li><p>Build a portfolio with <strong>projects</strong>, <strong>internships</strong>, or <strong>competitions</strong>.</p></li>
+<li><p>Earn certifications to validate expertise in cloud, analytics, and AI.</p></li>
+</ul>
+<p>These steps can help aspiring professionals or career switchers navigate toward high-growth opportunities in the AI and data analytics landscape.</p>
+</section>
+<section id="ai-impact-on-jobs-by-industry" class="level3">
+<h3 class="anchored" data-anchor-id="ai-impact-on-jobs-by-industry">🤖 AI Impact on Jobs by Industry</h3>
+<p>Using Natural Language Processing (NLP) to analyze job descriptions and industry narratives, we can extract clear trends on how AI is both creating and displacing jobs across different sectors.</p>
+<hr>
+</section>
+<section id="ai-driven-job-growth" class="level3">
+<h3 class="anchored" data-anchor-id="ai-driven-job-growth">📈 AI-Driven Job Growth</h3>
+<p>Industries such as <strong>Finance</strong>, <strong>Healthcare</strong>, and <strong>Information Technology</strong> are experiencing strong AI-fueled growth. AI enables <strong>automation</strong>, <strong>predictive analytics</strong>, and <strong>smart decision-making</strong>, increasing demand for:</p>
+<ul>
+<li><p><strong>Machine Learning</strong></p></li>
+<li><p><strong>AI-enhanced analytics</strong></p></li>
+<li><p><strong>Data science and business intelligence roles</strong></p></li>
+</ul>
+<p><strong>Top Skills Identified:</strong> - Python</p>
+<ul>
+<li><p>SQL</p></li>
+<li><p>TensorFlow</p></li>
+<li><p>Power BI</p></li>
+<li><p>Data Analytics</p></li>
+</ul>
+<p><strong>Recommended Certifications:</strong></p>
+<ul>
+<li><p>Google Data Analytics</p></li>
+<li><p>AWS AI/ML</p></li>
+<li><p>Microsoft AI Engineer</p></li>
+</ul>
+<p><strong>Career Trajectory:</strong></p>
+<ul>
+<li><p>Entry-level: Practical experience via internships or Kaggle</p></li>
+<li><p>Mid-level: Specialization in AI-finance, healthcare analytics, cybersecurity</p></li>
+<li><p>Senior roles: AI Researcher, Data Scientist, AI Product Manager</p></li>
+</ul>
+<hr>
+</section>
+<section id="ai-driven-job-displacement" class="level3">
+<h3 class="anchored" data-anchor-id="ai-driven-job-displacement">⚠️ AI-Driven Job Displacement</h3>
+<p>Sectors such as <strong>Manufacturing</strong> and <strong>Retail</strong> are undergoing significant transformation. Repetitive jobs are increasingly being replaced by <strong>AI-powered automation</strong> and <strong>robotic systems</strong>.</p>
+<p><strong>Risks Identified:</strong></p>
+<ul>
+<li>Workforce displacement in traditional, process-heavy roles</li>
+</ul>
+<p><strong>Adaptive Strategies (via NLP-extracted keywords):</strong></p>
+<ul>
+<li><p>Upskilling in RPA tools (e.g., UiPath)</p></li>
+<li><p>Cloud computing platforms</p></li>
+<li><p>AI-driven logistics and supply chains</p></li>
+</ul>
+<p><strong>Mid-Term Transitions:</strong></p>
+<ul>
+<li><p>AI-Augmented Supply Chain Manager</p></li>
+<li><p>AI-Enhanced Customer Experience Analyst</p></li>
+</ul>
+<p><strong>Long-Term Strategies:</strong></p>
+<ul>
+<li><p>Develop leadership in AI-augmented operations and strategy</p></li>
+<li><p>Credentials: AI Strategy, Digital Leadership, Intelligent Automation</p></li>
+</ul>
+<p><strong>AI-Resilient Career Paths:</strong></p>
+<ul>
+<li><p>Robotics Engineer</p></li>
+<li><p>Automation Consultant</p></li>
+<li><p>AI-Powered Marketing Analyst</p></li>
+<li><p>AI-Driven Logistics Specialist</p></li>
+</ul>
+<hr>
+</section>
+<section id="nlp-takeaway" class="level3">
+<h3 class="anchored" data-anchor-id="nlp-takeaway">🔍 NLP Takeaway</h3>
+<p>NLP techniques revealed strong emphasis on:</p>
+<ul>
+<li><p>AI + industry-specific expertise</p></li>
+<li><p>Certifiable skills</p></li>
+<li><p>Experience-driven learning (e.g., internships, competitions)</p></li>
+</ul>
+<p>The AI transformation isn’t just technical—it’s strategic. Professionals must align their learning paths with evolving AI trends to secure long-term relevance.</p>
+
+
+
+</section>
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-hewamalage2023forecast" class="csl-entry" role="listitem">
+<span class="smallcaps">Hewamalage, H., K. Ackermann, and C. Bergmeir</span>. (2023): <span>“Forecast evaluation for data scientists: Common pitfalls and best practices,”</span> <em>Data Mining and Knowledge Discovery</em>, 37, 788–832.
+</div>
+<div id="ref-li2021data" class="csl-entry" role="listitem">
+<span class="smallcaps">Li, G., C. Yuan, S. Kamarthi, M. Moghaddam, and X. Jin</span>. (2021): <span>“Data science skills and domain knowledge requirements in the manufacturing industry: A gap analysis,”</span> <em>Journal of Manufacturing Systems</em>, 60, 692–706.
+</div>
+<div id="ref-pradhanemployee" class="csl-entry" role="listitem">
+<span class="smallcaps">Pradhan, A.</span> <span>“Employee–Job Profile Matching Challenges: AI/ML-Based Recommender Systems Solutions for Knowledge Workers,”</span>Macquarie University.
+</div>
+</div></section></div></main> <!-- /main -->
+<script type="application/vnd.jupyter.widget-state+json">
+{"state":{"0cdac27cc8aa426e81657b73c7082ad3":{"model_module":"@jupyter-widgets/output","model_module_version":"1.0.0","model_name":"OutputModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/output","_model_module_version":"1.0.0","_model_name":"OutputModel","_view_count":null,"_view_module":"@jupyter-widgets/output","_view_module_version":"1.0.0","_view_name":"OutputView","layout":"IPY_MODEL_e660260111d04882af120d9cbf1ca1a8","msg_id":"","outputs":[],"tabbable":null,"tooltip":null}},"1295d6f286494f128ccb4746b6fe13fa":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"DescriptionStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"DescriptionStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","description_width":"initial"}},"3585340a0c834688ac91d335221e5bf6":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"DropdownModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"DropdownModel","_options_labels":["All","Finance","Healthcare","Information Technology","Manufacturing","Retail"],"_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"DropdownView","description":"Industry:","description_allow_html":false,"disabled":false,"index":0,"layout":"IPY_MODEL_3796a3b74d214b88967d3c0d1356e20f","style":"IPY_MODEL_1295d6f286494f128ccb4746b6fe13fa","tabbable":null,"tooltip":null}},"3796a3b74d214b88967d3c0d1356e20f":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"6b23b6b549be4a5d98a87958c539cf43":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"c19d3292904a404f9015d06ad13dc49f":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"VBoxModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"VBoxModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"VBoxView","box_style":"","children":["IPY_MODEL_3585340a0c834688ac91d335221e5bf6","IPY_MODEL_0cdac27cc8aa426e81657b73c7082ad3"],"layout":"IPY_MODEL_6b23b6b549be4a5d98a87958c539cf43","tabbable":null,"tooltip":null}},"e660260111d04882af120d9cbf1ca1a8":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}}},"version_major":2,"version_minor":0}
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/shuyu-pan831\.github\.io\/ad688-employability-sp25A1-group7\.io\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

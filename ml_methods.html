@@ -186,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Goal: Use unsupervised machine learning (clustering) to identify patterns or groupings in the job postings dataset, based on variables such as required skills,job tittle, and salary.</p>
-<div id="f55d9974" class="cell" data-execution_count="1">
+<div id="0a19b286" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.clustering <span class="im">import</span> KMeans</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.feature <span class="im">import</span> VectorAssembler, StandardScaler</span>
@@ -197,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>##Step 1: Load Data and Select Features</p>
-<div id="70ab8415" class="cell" data-execution_count="2">
+<div id="36f52b3f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize Spark Session</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>spark <span class="op">=</span> SparkSession.builder.appName(<span class="st">"LightcastData"</span>).getOrCreate()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>spark.sparkContext.setLogLevel(<span class="st">"ERROR"</span>)</span>
@@ -206,77 +206,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-25/04/22 13:06:04 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-[Stage 0:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 1:&gt;                                                          (0 + 1) / 1]                                                                                </code></pre>
+25/04/27 16:34:14 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 1:&gt;                                                          (0 + 1) / 1]                                                                                </code></pre>
 </div>
 </div>
 <p>Step 3: Clean Dataload data</p>
-<div id="0cea2e8a" class="cell" data-execution_count="3">
+<div id="92e79037" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> trim,col</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.dropna(subset<span class="op">=</span>[<span class="st">"TITLE_RAW"</span>, <span class="st">"SKILLS_NAME"</span>, <span class="st">"SALARY"</span>])</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.<span class="bu">filter</span>(trim(col(<span class="st">"TITLE_RAW"</span>)) <span class="op">!=</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Step 4:Encode Job Titles (StringIndexer + OneHotEncoder)</p>
-<div id="11b752f7" class="cell" data-execution_count="4">
+<div id="c3fb5ed8" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.feature <span class="im">import</span> StringIndexer, OneHotEncoder</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>title_indexer <span class="op">=</span> StringIndexer(inputCol<span class="op">=</span><span class="st">"TITLE_RAW"</span>, outputCol<span class="op">=</span><span class="st">"TITLE_IDX"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>title_encoder <span class="op">=</span> OneHotEncoder(inputCol<span class="op">=</span><span class="st">"TITLE_IDX"</span>, outputCol<span class="op">=</span><span class="st">"TITLE_VEC"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Step 5: Extract Key Skills into Binary Flags</p>
-<div id="44abdffe" class="cell" data-execution_count="5">
+<div id="2c6cbd77" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> col</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>common_skills <span class="op">=</span> [<span class="st">"SQL"</span>, <span class="st">"Python"</span>, <span class="st">"Excel"</span>, <span class="st">"Tableau"</span>, <span class="st">"Communication"</span>]</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> skill <span class="kw">in</span> common_skills:</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.withColumn(<span class="ss">f"SKILL_</span><span class="sc">{</span>skill<span class="sc">}</span><span class="ss">"</span>, col(<span class="st">"SKILLS_NAME"</span>).contains(skill).cast(<span class="st">"int"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Step 6: Assemble Features for Clustering</p>
-<div id="4f80a135" class="cell" data-execution_count="6">
+<div id="35939df8" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>assembler <span class="op">=</span> VectorAssembler(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    inputCols<span class="op">=</span>[<span class="st">"SALARY"</span>, <span class="st">"TITLE_VEC"</span>] <span class="op">+</span> [<span class="ss">f"SKILL_</span><span class="sc">{</span>s<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> s <span class="kw">in</span> common_skills],</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    outputCol<span class="op">=</span><span class="st">"features"</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Step 7: Run KMeans Clustering Pipeline</p>
-<div id="71daf26a" class="cell" data-execution_count="7">
+<div id="e1137a75" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(k<span class="op">=</span><span class="dv">3</span>, featuresCol<span class="op">=</span><span class="st">"features"</span>, predictionCol<span class="op">=</span><span class="st">"cluster"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">=</span> Pipeline(stages<span class="op">=</span>[title_indexer, title_encoder, assembler, kmeans])</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> pipeline.fit(df)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>df_clustered <span class="op">=</span> model.transform(df)</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>df_clustered.select(<span class="st">"TITLE_RAW"</span>, <span class="st">"SALARY"</span>, <span class="st">"SKILLS_NAME"</span>, <span class="st">"cluster"</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>[Stage 2:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 5:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 8:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 36:&gt;                                                         (0 + 1) / 1]                                                                                </code></pre>
+<pre><code>[Stage 2:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 5:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 8:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 42:&gt;                                                         (0 + 1) / 1]                                                                                </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>+--------------------+------+--------------------+-------+
 |           TITLE_RAW|SALARY|         SKILLS_NAME|cluster|
 +--------------------+------+--------------------+-------+
-|Comisiones de $10...| 92500|                  []|      1|
-|SR Lead Data Analyst|110155|[\n  "Power BI",\...|      0|
-|Sr. Marketing Ana...| 92962|[\n  "Salesforce"...|      1|
-|        Data Analyst|107645|[\n  "Regression ...|      0|
-|Power, Utilities ...|192800|[\n  "Design Spec...|      2|
-|Sr. Enterprise Da...| 81286|[\n  "Data Archit...|      1|
-| SAP FSCM Consultant|125900|[\n  "Profit Cent...|      0|
-|Principal growth ...|170000|[\n  "Curiosity",...|      2|
-|SR Lead Data Analyst|110155|[\n  "Power BI",\...|      0|
-|Senior Enterprise...|136950|[\n  "Wireless Co...|      0|
-|      DATA ANALYTICS|118560|[\n  "Databricks"...|      0|
-|Security Enterpri...| 79000|[\n  "Cryptograph...|      1|
-|Sr BI Analyst/Dat...|140756|[\n  "Detail Orie...|      0|
-|Power, Utilities ...|192800|[\n  "Design Spec...|      2|
-|Oracle Consultant...| 75026|[\n  "Valid Drive...|      1|
-|  SAP BTP Consultant|116500|[\n  "Digitizatio...|      0|
-|Oracle HCM Cloud ...|166500|[\n  "Gap Analysi...|      2|
-|Data Analyst, Dev...|156038|[\n  "Relational ...|      0|
-|   Product Architect|149695|[\n  "Project Por...|      0|
-|RESEARCH DATA ANA...| 84678|[\n  "Research",\...|      1|
+|Comisiones de $10...| 92500|                  []|      0|
+|SR Lead Data Analyst|110155|[\n  "Power BI",\...|      2|
+|Sr. Marketing Ana...| 92962|[\n  "Salesforce"...|      0|
+|        Data Analyst|107645|[\n  "Regression ...|      2|
+|Power, Utilities ...|192800|[\n  "Design Spec...|      1|
+|Sr. Enterprise Da...| 81286|[\n  "Data Archit...|      0|
+| SAP FSCM Consultant|125900|[\n  "Profit Cent...|      2|
+|Principal growth ...|170000|[\n  "Curiosity",...|      1|
+|SR Lead Data Analyst|110155|[\n  "Power BI",\...|      2|
+|Senior Enterprise...|136950|[\n  "Wireless Co...|      2|
+|      DATA ANALYTICS|118560|[\n  "Databricks"...|      2|
+|Security Enterpri...| 79000|[\n  "Cryptograph...|      0|
+|Sr BI Analyst/Dat...|140756|[\n  "Detail Orie...|      2|
+|Power, Utilities ...|192800|[\n  "Design Spec...|      1|
+|Oracle Consultant...| 75026|[\n  "Valid Drive...|      0|
+|  SAP BTP Consultant|116500|[\n  "Digitizatio...|      2|
+|Oracle HCM Cloud ...|166500|[\n  "Gap Analysi...|      1|
+|Data Analyst, Dev...|156038|[\n  "Relational ...|      2|
+|   Product Architect|149695|[\n  "Project Por...|      2|
+|RESEARCH DATA ANA...| 84678|[\n  "Research",\...|      0|
 +--------------------+------+--------------------+-------+
 only showing top 20 rows
 </code></pre>
 </div>
 </div>
 <p>Step 8: Visualize Salary Distribution by Cluster</p>
-<div id="46f0a583" class="cell" data-execution_count="8">
+<div id="fdaf2d4f" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -285,10 +285,17 @@ only showing top 20 rows
 </figure>
 </div>
 </div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
+</div>
 </div>
 <p>Cluster 0 represents the highest-paying group among the three clusters. The median salary is around $180,000, and most values fall between $160,000 and $200,000. There are also several high outliers, with some positions exceeding $300,000. This cluster likely includes executive-level or highly technical roles, such as senior data scientists, lead data analysts, or enterprise architects, where specialized skills and extensive experience are required.</p>
 <p>Cluster 1 is the lowest-paying group, with salaries concentrated between $60,000 and $100,000. The median is around $80,000, and the distribution is relatively tight compared to the other clusters. This group probably corresponds to entry-level or support roles, such as junior analysts, administrative data roles, or positions that require fewer years of experience and basic technical skills.</p>
 <p>Cluster 2 falls between the other two in terms of salary, with most values ranging from $110,000 to $150,000. The median salary is approximately $130,000. This group likely represents mid-level professionals — positions requiring a balance of technical proficiency and industry experience. Common roles in this cluster might include mid-level data analysts, business intelligence specialists, or consultants with niche skill sets.</p>
+<p><strong>Key Insights</strong></p>
+<p>The salary clustering reveals three distinct tiers that correspond closely to career progression in business analytics and data science. The entry-level cluster (Cluster 1) shows a tight salary range of $60 K–$100 K (median ≈$80 K), indicating homogeneous roles with similar skill requirements. The mid-level cluster (Cluster 2) spans $110 K–$150 K (median ≈$130 K), reflecting professionals who combine technical proficiency with domain experience. The senior/executive cluster (Cluster 0) has a median around $180 K and a wide interquartile range, with outliers above $300 K—highlighting the premium placed on leadership, specialized machine-learning expertise, and high-impact strategic roles. Increasing dispersion at higher levels underscores that advanced specializations and demonstrated impact drive outsized compensation in this field.</p>
+<p><strong>Recommendations</strong></p>
+<p>For those entering the field, focus on mastering core tools (Python/R, SQL) and building a portfolio of projects—internships, Kaggle competitions, or open-source contributions—to stand out within the $60 K–$100 K band. Mid-career professionals should deepen domain knowledge (e.g., finance, healthcare, supply chain) and acquire advanced ML and MLOps skills to advance into the $110 K–$150 K range. Aspiring senior leaders must cultivate niche expertise (deep learning architectures, AI ethics, data engineering at scale) and demonstrate leadership through cross-functional project ownership or team management to access the high-variance $160 K+ opportunities. Earning recognized certifications (AWS/GCP ML, CAP) and staying current with emerging trends will further accelerate progression across these clusters.</p>
 
 
 
