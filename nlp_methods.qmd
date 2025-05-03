@@ -5,183 +5,272 @@ format: html
 
 ## 🧹 Extracting Insights from Job Descriptions Using NLP Methods
 
-### 📊 Most In-Demand Technical Skills in Data Science and AI Roles
-The chart below, based on NLP analysis of job descriptions, highlights the most frequently requested technical skills. **SQL** dominates as the top-mentioned skill, appearing in over 42,000 postings, followed by **AI**, **Excel**, **Python**, and **Tableau**.
 
-Foundational tools like SQL and Excel remain essential across data roles, while programming languages such as Python and R offer flexibility for data manipulation and modeling. Visualization tools like Tableau and Power BI are increasingly valued. Advanced AI tools such as TensorFlow, PyTorch, and NLP appear less often, indicating their growing relevance in specialized roles.
+```{python}
+import pandas as pd
+import missingno as msno
+import matplotlib.pyplot as plt
+import warnings
+import numpy as np
+import warnings
+import plotly.express as px
+from collections import Counter
+import re
+import plotly.io as pio
+import plotly.graph_objects as go
+from ipywidgets import Dropdown, VBox, Output
+```
+
+```{python}
+lightcast_data = pd.read_csv("lightcast_job_postings.csv")
+columns_to_drop = [
+    "ID", "URL", "ACTIVE_URLS", "DUPLICATES", "LAST_UPDATED_TIMESTAMP",
+    "NAICS2", "NAICS3", "NAICS4", "NAICS5", "NAICS6",
+    "SOC_2", "SOC_3", "SOC_5"]
+lightcast_data.drop(columns=columns_to_drop, inplace=True)
+```
+
+```{python}
+import nltk
+from nltk.corpus import stopwords
+import re
+
+nltk.download('stopwords')
+stop_words = set(stopwords.words('english'))
+
+def clean_text(text):
+    if pd.isna(text):
+        return ""
+    text = re.sub(r'\W+', ' ', text)
+    words = text.lower().split()
+    return ' '.join([word for word in words if word not in stop_words])
+
+lightcast_data['cleaned_body'] = lightcast_data['BODY'].apply(clean_text)
+```
+
 
-**Key Takeaways:**
+```{python}
+custom_stopwords = set(stopwords.words('english')).union({
+    'job', 'position', 'requirements', 'including', 'us', 'may',
+    'role', 'description', 'status', 'new', 'full', 'provide',
+    'opportunity', 'related', 'strong', 'working', 'time', 'knowledge',
+    'degree', 'skills', 'team', 'years', 'status', 'employment'
+})
 
-- **Foundational:** SQL, Excel, and AI are baseline requirements.
+def clean_text(text):
+    text = re.sub(r'\W+', ' ', str(text).lower())
+    words = [w for w in text.split() if w not in custom_stopwords]
+    return ' '.join(words)
+
+lightcast_data['cleaned_body'] = lightcast_data['BODY'].apply(clean_text)
+```
+
+```{python}
+from sklearn.feature_extraction.text import CountVectorizer
+
+vectorizer = CountVectorizer(max_features=50)
+X = vectorizer.fit_transform(lightcast_data['cleaned_body'])
+
+word_counts = pd.DataFrame(X.toarray(), columns=vectorizer.get_feature_names_out())
+top_words = word_counts.sum().sort_values(ascending=False)
+print(top_words.head(10))
+```
+
+
+
+```{python}
+import matplotlib.pyplot as plt
+
+# Plot top 20 words
+plt.figure(figsize=(10, 6))
+top_words.head(20).sort_values().plot(kind='barh', color='cornflowerblue')
+
+plt.title('🔍 Top 20 Most Frequent Words in Job Descriptions', fontsize=14, weight='bold')
+plt.xlabel('Word Frequency', fontsize=12)
+plt.ylabel('Words', fontsize=12)
+plt.xticks(fontsize=10)
+plt.yticks(fontsize=10)
+plt.grid(axis='x', linestyle='--', alpha=0.7)
 
-- **Versatile Skills:** Python and Tableau support a range of data workflows.
+plt.tight_layout()
+plt.show()
 
-- **Backend/Technical Tools:** R, Java, Hadoop are critical for infrastructure-heavy roles.
+```
 
-- **Emerging Specializations:** Low mentions of TensorFlow, PyTorch, and NLP suggest niche applications or advanced role targeting.
 
----
+**Wordcloud**
+```{python}
+from collections import Counter
+import ast
 
-### 🌎 AI Job Market Trends Across U.S. States
+# Combine all parsed skill lists into one flat list
+def safe_parse(x):
+    try:
+        return ast.literal_eval(x) if isinstance(x, str) else []
+    except:
+        return []
 
-A geographic heatmap of AI-related job postings reveals major hubs in **California**, **Texas**, and **New York**—driven by the influence of tech ecosystems, fintech, and innovation centers. **Massachusetts**, **Illinois**, and **Washington** also show strong demand due to their leadership in healthcare analytics, research, and enterprise AI adoption.
+lightcast_data['COMMON_SKILLS_NAME'] = lightcast_data['COMMON_SKILLS_NAME'].apply(safe_parse)
+lightcast_data['SOFTWARE_SKILLS_NAME'] = lightcast_data['SOFTWARE_SKILLS_NAME'].apply(safe_parse)
 
-**Regional Insights:**
+all_skills = [
+    skill for sublist in lightcast_data['COMMON_SKILLS_NAME'] + lightcast_data['SOFTWARE_SKILLS_NAME']
+    for skill in sublist
+]
 
-- **Top States:** California, Texas, New York
+# Count and visualize
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
 
-- **Emerging Hubs:** Massachusetts, Florida, Illinois, Washington
+skill_freq = Counter(all_skills)
+wordcloud = WordCloud(width=1000, height=500, background_color='white', colormap='viridis')\
+    .generate_from_frequencies(skill_freq)
 
-- **Low Activity:** Central/rural states, though remote AI opportunities still exist
+plt.figure(figsize=(12, 6))
+plt.imshow(wordcloud, interpolation='bilinear')
+plt.axis('off')
+plt.title('Top Mentioned Skills from Job Descriptions', fontsize=14, weight='bold')
+plt.tight_layout()
+plt.show()
+```
 
-These insights guide professionals on where to concentrate job searches or remote networking efforts.
+## 🧠 Top Job Skills Revealed by NLP
 
----
+We used natural language processing (NLP) to analyze thousands of job descriptions and extract the most frequently mentioned skills.
 
-### 💡 Career Pathway: From Fundamentals to Specialization
+- **Technical tools** like `Excel`, `SQL`, `Python`, and `Tableau` stand out
 
-Based on job descriptions analyzed through NLP, we outline a growth-oriented learning track:
+- **Soft skills** such as `Communication`, `Leadership`, and `Problem Solving` are highly valued
 
-**1. Foundational Skills (Beginner)**
+- `Microsoft Office`, `PowerPoint`, and `Operations` are frequently requested
 
-- Tools: SQL, Excel, Python
+- Business intelligence tools like `Power BI` and `SAP` appear consistently
 
-- Goal: Build core competency in data querying, spreadsheets, and scripting
+This word cloud reveals the hybrid nature of modern roles—blending tech skills with business and communication strength.
 
-**2. Versatility & Visualization (Intermediate)**
 
-- Tools: Tableau, Power BI, R
+```{python}
+import ast
 
-- Certifications: Google Data Analytics, Microsoft Power BI
+def safe_parse_skills(x):
+    if isinstance(x, list):  # Already a list
+        return x
+    elif isinstance(x, str):
+        try:
+            return ast.literal_eval(x)
+        except:
+            return []
+    else:
+        return []
 
-- Goal: Explore analytics and visualization workflows
+lightcast_data['SKILLS_NAME'] = lightcast_data['SKILLS_NAME'].apply(safe_parse_skills)
+```
 
-**3. AI/ML Specialization (Advanced)**
+**Visualize Top 20 Skills**
+```{python}
+from collections import Counter
+import matplotlib.pyplot as plt
+import pandas as pd
 
-- Skills: TensorFlow, PyTorch, NLP, Big Data (Hadoop, Spark)
+all_skills = [skill for sublist in lightcast_data['SKILLS_NAME'] for skill in sublist]
+top_skills = pd.Series(Counter(all_skills)).sort_values(ascending=False).head(20)
 
-- Certifications: AWS AI/ML, TensorFlow Developer, Microsoft AI Engineer
+top_skills.plot(kind='barh', figsize=(10, 6))
+plt.title('Top 20 Most Mentioned Skills')
+plt.xlabel('Count')
+plt.gca().invert_yaxis()
+plt.tight_layout()
+plt.show()
+```
 
-- Goal: Focus on automation, predictive modeling, and cloud AI platforms
+### 🧠 Top Skills Uncovered with NLP
 
-**Career Roles by Level:**
+We analyzed thousands of job descriptions using Natural Language Processing (NLP).
 
-- **Entry-Level:** Data Analyst, BI Specialist, Junior ML Engineer
+**Most mentioned skills include:**
 
-- **Mid-Level:** NLP Engineer, AI Product Manager
+- Communication  
 
-- **Advanced:** AI Research Scientist, Lead Data Scientist, Automation Consultant
+- Data Analysis  
 
-**High-Demand Industries:** Finance, Healthcare, E-commerce, Cloud Tech
+- SQL & Python  
 
----
+- Leadership and Problem Solving  
 
-### 🧭 Strategic Takeaway
+A mix of technical tools (like Excel, Tableau, and SAP) and soft skills shows what employers truly value.  
 
-To align with market demands:
+These insights help job-seekers focus their learning and stay competitive in the evolving job market.
 
-- Focus learning on **SQL, Python, and Excel** early.
 
-- Target **AI job hubs** or seek remote roles in active states.
+```{python}
+import ast
 
-- Build a portfolio with **projects**, **internships**, or **competitions**.
+def safe_parse(x):
+    try:
+        return ast.literal_eval(x) if isinstance(x, str) else []
+    except:
+        return []
 
-- Earn certifications to validate expertise in cloud, analytics, and AI.
+lightcast_data['COMMON_SKILLS_NAME'] = lightcast_data['COMMON_SKILLS_NAME'].apply(safe_parse)
+lightcast_data['SOFTWARE_SKILLS_NAME'] = lightcast_data['SOFTWARE_SKILLS_NAME'].apply(safe_parse)
+```
 
-These steps can help aspiring professionals or career switchers navigate toward high-growth opportunities in the AI and data analytics landscape.
+```{python}
+from collections import Counter
+import pandas as pd
 
-### 🤖 AI Impact on Jobs by Industry
+# Combine both sets of skills into one counter
+all_common = [skill for sublist in lightcast_data['COMMON_SKILLS_NAME'] for skill in sublist]
+all_software = [skill for sublist in lightcast_data['SOFTWARE_SKILLS_NAME'] for skill in sublist]
 
-Using Natural Language Processing (NLP) to analyze job descriptions and industry narratives, we can extract clear trends on how AI is both creating and displacing jobs across different sectors.
+common_counter = pd.Series(Counter(all_common)).sort_values(ascending=False).head(20)
+software_counter = pd.Series(Counter(all_software)).sort_values(ascending=False).head(20)
+```
 
----
+### 📊 Top Job Titles in Data & Analytics
 
-### 📈 AI-Driven Job Growth
+This chart shows the most frequently posted job titles across our dataset.
+```{python}
+top_titles = lightcast_data['TITLE_NAME'].value_counts().head(15)
 
-Industries such as **Finance**, **Healthcare**, and **Information Technology** are experiencing strong AI-fueled growth. AI enables **automation**, **predictive analytics**, and **smart decision-making**, increasing demand for:
+top_titles.plot(kind='barh', figsize=(10, 6))
+plt.title('Top 15 Job Titles')
+plt.xlabel('Postings')
+plt.gca().invert_yaxis()
+plt.tight_layout()
+plt.show()
+```
 
-- **Machine Learning**
+- **Data Analysts** dominate the landscape by a wide margin  
 
-- **AI-enhanced analytics**
+- Other popular roles include **Business Intelligence Analysts**, **Enterprise Architects**, and **Data Engineers**  
 
-- **Data science and business intelligence roles**
+- Specialized titles like **Oracle Consultants**, **ERP Analysts**, and **Solutions Architects** highlight demand in cloud and enterprise systems  
 
-**Top Skills Identified:**
-- Python
+These results confirm that **data-driven roles** are central to today’s hiring trends—with opportunities spanning both technical and strategic domains.
 
-- SQL
+### 📍 Where the Jobs Are: Top Hiring States
 
-- TensorFlow
+This bar chart highlights the top 15 U.S. states by number of job postings in our dataset.
 
-- Power BI
+```{python}
+top_areas = lightcast_data['STATE_NAME'].value_counts().head(15)
+top_areas.plot(kind='barh', figsize=(10, 6), color='skyblue')
+plt.title('Top 15 Career Areas in Job Postings')
+plt.xlabel('Number of Postings')
+plt.gca().invert_yaxis()
+plt.tight_layout()
+plt.show()
+```
 
-- Data Analytics
+### 📍 Where the Jobs Are: Top Hiring States
 
-**Recommended Certifications:**
+This bar chart highlights the top 15 U.S. states by number of job postings in our dataset.
 
-- Google Data Analytics
+- **Texas** and **California** lead the nation in job opportunities
 
-- AWS AI/ML
+- Other strong markets include **Florida**, **New York**, **Illinois**, and **Virginia**
 
-- Microsoft AI Engineer
+- States like **North Carolina**, **Massachusetts**, and **Georgia** also show solid demand
 
-**Career Trajectory:**
-
-- Entry-level: Practical experience via internships or Kaggle
-
-- Mid-level: Specialization in AI-finance, healthcare analytics, cybersecurity
-
-- Senior roles: AI Researcher, Data Scientist, AI Product Manager
-
----
-
-### ⚠️ AI-Driven Job Displacement
-
-Sectors such as **Manufacturing** and **Retail** are undergoing significant transformation. Repetitive jobs are increasingly being replaced by **AI-powered automation** and **robotic systems**.
-
-**Risks Identified:**
-
-- Workforce displacement in traditional, process-heavy roles
-
-**Adaptive Strategies (via NLP-extracted keywords):**
-
-- Upskilling in RPA tools (e.g., UiPath)
-
-- Cloud computing platforms
-
-- AI-driven logistics and supply chains
-
-**Mid-Term Transitions:**
-
-- AI-Augmented Supply Chain Manager
-
-- AI-Enhanced Customer Experience Analyst
-
-**Long-Term Strategies:**
-
-- Develop leadership in AI-augmented operations and strategy
-
-- Credentials: AI Strategy, Digital Leadership, Intelligent Automation
-
-**AI-Resilient Career Paths:**
-
-- Robotics Engineer
-
-- Automation Consultant
-
-- AI-Powered Marketing Analyst
-
-- AI-Driven Logistics Specialist
-
----
-
-### 🔍 NLP Takeaway
-NLP techniques revealed strong emphasis on:
-
-- AI + industry-specific expertise
-
-- Certifiable skills
-
-- Experience-driven learning (e.g., internships, competitions)
-
-The AI transformation isn't just technical—it's strategic. Professionals must align their learning paths with evolving AI trends to secure long-term relevance.
+For job-seekers, these locations represent high-activity hubs worth targeting—whether relocating or applying remotely.
