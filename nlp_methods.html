@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -131,16 +165,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#extracting-insights-from-job-descriptions-using-nlp-methods" id="toc-extracting-insights-from-job-descriptions-using-nlp-methods" class="nav-link active" data-scroll-target="#extracting-insights-from-job-descriptions-using-nlp-methods">🧹 Extracting Insights from Job Descriptions Using NLP Methods</a>
+  <li><a href="#extracting-insights-from-job-descriptions-using-nlp-methods" id="toc-extracting-insights-from-job-descriptions-using-nlp-methods" class="nav-link active" data-scroll-target="#extracting-insights-from-job-descriptions-using-nlp-methods">🧹 Extracting Insights from Job Descriptions Using NLP Methods</a></li>
+  <li><a href="#top-job-skills-revealed-by-nlp" id="toc-top-job-skills-revealed-by-nlp" class="nav-link" data-scroll-target="#top-job-skills-revealed-by-nlp">🧠 Top Job Skills Revealed by NLP</a>
   <ul class="collapse">
-  <li><a href="#most-in-demand-technical-skills-in-data-science-and-ai-roles" id="toc-most-in-demand-technical-skills-in-data-science-and-ai-roles" class="nav-link" data-scroll-target="#most-in-demand-technical-skills-in-data-science-and-ai-roles">📊 Most In-Demand Technical Skills in Data Science and AI Roles</a></li>
-  <li><a href="#ai-job-market-trends-across-u.s.-states" id="toc-ai-job-market-trends-across-u.s.-states" class="nav-link" data-scroll-target="#ai-job-market-trends-across-u.s.-states">🌎 AI Job Market Trends Across U.S. States</a></li>
-  <li><a href="#career-pathway-from-fundamentals-to-specialization" id="toc-career-pathway-from-fundamentals-to-specialization" class="nav-link" data-scroll-target="#career-pathway-from-fundamentals-to-specialization">💡 Career Pathway: From Fundamentals to Specialization</a></li>
-  <li><a href="#strategic-takeaway" id="toc-strategic-takeaway" class="nav-link" data-scroll-target="#strategic-takeaway">🧭 Strategic Takeaway</a></li>
-  <li><a href="#ai-impact-on-jobs-by-industry" id="toc-ai-impact-on-jobs-by-industry" class="nav-link" data-scroll-target="#ai-impact-on-jobs-by-industry">🤖 AI Impact on Jobs by Industry</a></li>
-  <li><a href="#ai-driven-job-growth" id="toc-ai-driven-job-growth" class="nav-link" data-scroll-target="#ai-driven-job-growth">📈 AI-Driven Job Growth</a></li>
-  <li><a href="#ai-driven-job-displacement" id="toc-ai-driven-job-displacement" class="nav-link" data-scroll-target="#ai-driven-job-displacement">⚠️ AI-Driven Job Displacement</a></li>
-  <li><a href="#nlp-takeaway" id="toc-nlp-takeaway" class="nav-link" data-scroll-target="#nlp-takeaway">🔍 NLP Takeaway</a></li>
+  <li><a href="#top-skills-uncovered-with-nlp" id="toc-top-skills-uncovered-with-nlp" class="nav-link" data-scroll-target="#top-skills-uncovered-with-nlp">🧠 Top Skills Uncovered with NLP</a></li>
+  <li><a href="#top-job-titles-in-data-analytics" id="toc-top-job-titles-in-data-analytics" class="nav-link" data-scroll-target="#top-job-titles-in-data-analytics">📊 Top Job Titles in Data &amp; Analytics</a></li>
+  <li><a href="#where-the-jobs-are-top-hiring-states" id="toc-where-the-jobs-are-top-hiring-states" class="nav-link" data-scroll-target="#where-the-jobs-are-top-hiring-states">📍 Where the Jobs Are: Top Hiring States</a></li>
+  <li><a href="#where-the-jobs-are-top-hiring-states-1" id="toc-where-the-jobs-are-top-hiring-states-1" class="nav-link" data-scroll-target="#where-the-jobs-are-top-hiring-states-1">📍 Where the Jobs Are: Top Hiring States</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -169,146 +200,321 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="extracting-insights-from-job-descriptions-using-nlp-methods" class="level2">
 <h2 class="anchored" data-anchor-id="extracting-insights-from-job-descriptions-using-nlp-methods">🧹 Extracting Insights from Job Descriptions Using NLP Methods</h2>
-<section id="most-in-demand-technical-skills-in-data-science-and-ai-roles" class="level3">
-<h3 class="anchored" data-anchor-id="most-in-demand-technical-skills-in-data-science-and-ai-roles">📊 Most In-Demand Technical Skills in Data Science and AI Roles</h3>
-<p>The chart below, based on NLP analysis of job descriptions, highlights the most frequently requested technical skills. <strong>SQL</strong> dominates as the top-mentioned skill, appearing in over 42,000 postings, followed by <strong>AI</strong>, <strong>Excel</strong>, <strong>Python</strong>, and <strong>Tableau</strong>.</p>
-<p>Foundational tools like SQL and Excel remain essential across data roles, while programming languages such as Python and R offer flexibility for data manipulation and modeling. Visualization tools like Tableau and Power BI are increasingly valued. Advanced AI tools such as TensorFlow, PyTorch, and NLP appear less often, indicating their growing relevance in specialized roles.</p>
-<p><strong>Key Takeaways:</strong></p>
-<ul>
-<li><p><strong>Foundational:</strong> SQL, Excel, and AI are baseline requirements.</p></li>
-<li><p><strong>Versatile Skills:</strong> Python and Tableau support a range of data workflows.</p></li>
-<li><p><strong>Backend/Technical Tools:</strong> R, Java, Hadoop are critical for infrastructure-heavy roles.</p></li>
-<li><p><strong>Emerging Specializations:</strong> Low mentions of TensorFlow, PyTorch, and NLP suggest niche applications or advanced role targeting.</p></li>
-</ul>
-<hr>
+<div id="eae3a028" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> missingno <span class="im">as</span> msno</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> ipywidgets <span class="im">import</span> Dropdown, VBox, Output</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="67b9b1f1" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lightcast_data <span class="op">=</span> pd.read_csv(<span class="st">"lightcast_job_postings.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ID"</span>, <span class="st">"URL"</span>, <span class="st">"ACTIVE_URLS"</span>, <span class="st">"DUPLICATES"</span>, <span class="st">"LAST_UPDATED_TIMESTAMP"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NAICS2"</span>, <span class="st">"NAICS3"</span>, <span class="st">"NAICS4"</span>, <span class="st">"NAICS5"</span>, <span class="st">"NAICS6"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SOC_2"</span>, <span class="st">"SOC_3"</span>, <span class="st">"SOC_5"</span>]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>lightcast_data.drop(columns<span class="op">=</span>columns_to_drop, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/1s/0kz43lv50zzcywvpxqbzqz380000gn/T/ipykernel_62422/2868506846.py:1: DtypeWarning:
+
+Columns (19,30) have mixed types. Specify dtype option on import or set low_memory=False.
+</code></pre>
+</div>
+</div>
+<div id="a4d1489d" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> nltk</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> nltk.corpus <span class="im">import</span> stopwords</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>nltk.download(<span class="st">'stopwords'</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>stop_words <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_text(text):</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> pd.isna(text):</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">""</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> re.sub(<span class="vs">r'\W+'</span>, <span class="st">' '</span>, text)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    words <span class="op">=</span> text.lower().split()</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">' '</span>.join([word <span class="cf">for</span> word <span class="kw">in</span> words <span class="cf">if</span> word <span class="kw">not</span> <span class="kw">in</span> stop_words])</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>lightcast_data[<span class="st">'cleaned_body'</span>] <span class="op">=</span> lightcast_data[<span class="st">'BODY'</span>].<span class="bu">apply</span>(clean_text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[nltk_data] Downloading package stopwords to /Users/psy/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!</code></pre>
+</div>
+</div>
+<div id="640e9c78" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>custom_stopwords <span class="op">=</span> <span class="bu">set</span>(stopwords.words(<span class="st">'english'</span>)).union({</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">'job'</span>, <span class="st">'position'</span>, <span class="st">'requirements'</span>, <span class="st">'including'</span>, <span class="st">'us'</span>, <span class="st">'may'</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'role'</span>, <span class="st">'description'</span>, <span class="st">'status'</span>, <span class="st">'new'</span>, <span class="st">'full'</span>, <span class="st">'provide'</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'opportunity'</span>, <span class="st">'related'</span>, <span class="st">'strong'</span>, <span class="st">'working'</span>, <span class="st">'time'</span>, <span class="st">'knowledge'</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'degree'</span>, <span class="st">'skills'</span>, <span class="st">'team'</span>, <span class="st">'years'</span>, <span class="st">'status'</span>, <span class="st">'employment'</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> clean_text(text):</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    text <span class="op">=</span> re.sub(<span class="vs">r'\W+'</span>, <span class="st">' '</span>, <span class="bu">str</span>(text).lower())</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    words <span class="op">=</span> [w <span class="cf">for</span> w <span class="kw">in</span> text.split() <span class="cf">if</span> w <span class="kw">not</span> <span class="kw">in</span> custom_stopwords]</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="st">' '</span>.join(words)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>lightcast_data[<span class="st">'cleaned_body'</span>] <span class="op">=</span> lightcast_data[<span class="st">'BODY'</span>].<span class="bu">apply</span>(clean_text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="4dd3c042" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>vectorizer <span class="op">=</span> CountVectorizer(max_features<span class="op">=</span><span class="dv">50</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> vectorizer.fit_transform(lightcast_data[<span class="st">'cleaned_body'</span>])</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>word_counts <span class="op">=</span> pd.DataFrame(X.toarray(), columns<span class="op">=</span>vectorizer.get_feature_names_out())</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>top_words <span class="op">=</span> word_counts.<span class="bu">sum</span>().sort_values(ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(top_words.head(<span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>data           536799
+experience     381282
+business       319096
+work           245731
+management     165051
+information    132621
+support        132049
+solutions      128909
+ability        122677
+sap            121440
+dtype: int64</code></pre>
+</div>
+</div>
+<div id="4200a750" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot top 20 words</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>top_words.head(<span class="dv">20</span>).sort_values().plot(kind<span class="op">=</span><span class="st">'barh'</span>, color<span class="op">=</span><span class="st">'cornflowerblue'</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'🔍 Top 20 Most Frequent Words in Job Descriptions'</span>, fontsize<span class="op">=</span><span class="dv">14</span>, weight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Word Frequency'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Words'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>plt.grid(axis<span class="op">=</span><span class="st">'x'</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/1s/0kz43lv50zzcywvpxqbzqz380000gn/T/ipykernel_62422/4139231888.py:14: UserWarning:
+
+Glyph 128269 (\N{LEFT-POINTING MAGNIFYING GLASS}) missing from current font.
+
+/Users/psy/Desktop/BU/2025_Spring/AD_688/Project/ad688-employability-sp25A1-group7.io/.venv/lib/python3.8/site-packages/IPython/core/pylabtools.py:152: UserWarning:
+
+Glyph 128269 (\N{LEFT-POINTING MAGNIFYING GLASS}) missing from current font.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="nlp_methods_files/figure-html/cell-7-output-2.png" width="950" height="566" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Wordcloud</strong></p>
+<div id="6f72935f" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine all parsed skill lists into one flat list</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_parse(x):</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ast.literal_eval(x) <span class="cf">if</span> <span class="bu">isinstance</span>(x, <span class="bu">str</span>) <span class="cf">else</span> []</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>lightcast_data[<span class="st">'COMMON_SKILLS_NAME'</span>] <span class="op">=</span> lightcast_data[<span class="st">'COMMON_SKILLS_NAME'</span>].<span class="bu">apply</span>(safe_parse)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>lightcast_data[<span class="st">'SOFTWARE_SKILLS_NAME'</span>] <span class="op">=</span> lightcast_data[<span class="st">'SOFTWARE_SKILLS_NAME'</span>].<span class="bu">apply</span>(safe_parse)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>all_skills <span class="op">=</span> [</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    skill <span class="cf">for</span> sublist <span class="kw">in</span> lightcast_data[<span class="st">'COMMON_SKILLS_NAME'</span>] <span class="op">+</span> lightcast_data[<span class="st">'SOFTWARE_SKILLS_NAME'</span>]</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> skill <span class="kw">in</span> sublist</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Count and visualize</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>skill_freq <span class="op">=</span> Counter(all_skills)</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>wordcloud <span class="op">=</span> WordCloud(width<span class="op">=</span><span class="dv">1000</span>, height<span class="op">=</span><span class="dv">500</span>, background_color<span class="op">=</span><span class="st">'white'</span>, colormap<span class="op">=</span><span class="st">'viridis'</span>)<span class="op">\</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    .generate_from_frequencies(skill_freq)</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>plt.imshow(wordcloud, interpolation<span class="op">=</span><span class="st">'bilinear'</span>)</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Top Mentioned Skills from Job Descriptions'</span>, fontsize<span class="op">=</span><span class="dv">14</span>, weight<span class="op">=</span><span class="st">'bold'</span>)</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="nlp_methods_files/figure-html/cell-8-output-1.png" width="1068" height="566" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="ai-job-market-trends-across-u.s.-states" class="level3">
-<h3 class="anchored" data-anchor-id="ai-job-market-trends-across-u.s.-states">🌎 AI Job Market Trends Across U.S. States</h3>
-<p>A geographic heatmap of AI-related job postings reveals major hubs in <strong>California</strong>, <strong>Texas</strong>, and <strong>New York</strong>—driven by the influence of tech ecosystems, fintech, and innovation centers. <strong>Massachusetts</strong>, <strong>Illinois</strong>, and <strong>Washington</strong> also show strong demand due to their leadership in healthcare analytics, research, and enterprise AI adoption.</p>
-<p><strong>Regional Insights:</strong></p>
+<section id="top-job-skills-revealed-by-nlp" class="level2">
+<h2 class="anchored" data-anchor-id="top-job-skills-revealed-by-nlp">🧠 Top Job Skills Revealed by NLP</h2>
+<p>We used natural language processing (NLP) to analyze thousands of job descriptions and extract the most frequently mentioned skills.</p>
 <ul>
-<li><p><strong>Top States:</strong> California, Texas, New York</p></li>
-<li><p><strong>Emerging Hubs:</strong> Massachusetts, Florida, Illinois, Washington</p></li>
-<li><p><strong>Low Activity:</strong> Central/rural states, though remote AI opportunities still exist</p></li>
+<li><p><strong>Technical tools</strong> like <code>Excel</code>, <code>SQL</code>, <code>Python</code>, and <code>Tableau</code> stand out</p></li>
+<li><p><strong>Soft skills</strong> such as <code>Communication</code>, <code>Leadership</code>, and <code>Problem Solving</code> are highly valued</p></li>
+<li><p><code>Microsoft Office</code>, <code>PowerPoint</code>, and <code>Operations</code> are frequently requested</p></li>
+<li><p>Business intelligence tools like <code>Power BI</code> and <code>SAP</code> appear consistently</p></li>
 </ul>
-<p>These insights guide professionals on where to concentrate job searches or remote networking efforts.</p>
-<hr>
+<p>This word cloud reveals the hybrid nature of modern roles—blending tech skills with business and communication strength.</p>
+<div id="827d9b70" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_parse_skills(x):</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(x, <span class="bu">list</span>):  <span class="co"># Already a list</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> x</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> <span class="bu">isinstance</span>(x, <span class="bu">str</span>):</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> ast.literal_eval(x)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span>:</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> []</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>lightcast_data[<span class="st">'SKILLS_NAME'</span>] <span class="op">=</span> lightcast_data[<span class="st">'SKILLS_NAME'</span>].<span class="bu">apply</span>(safe_parse_skills)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Visualize Top 20 Skills</strong></p>
+<div id="041d62bc" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>all_skills <span class="op">=</span> [skill <span class="cf">for</span> sublist <span class="kw">in</span> lightcast_data[<span class="st">'SKILLS_NAME'</span>] <span class="cf">for</span> skill <span class="kw">in</span> sublist]</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>top_skills <span class="op">=</span> pd.Series(Counter(all_skills)).sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">20</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>top_skills.plot(kind<span class="op">=</span><span class="st">'barh'</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Top 20 Most Mentioned Skills'</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Count'</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>plt.gca().invert_yaxis()</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="nlp_methods_files/figure-html/cell-10-output-1.png" width="948" height="566" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="top-skills-uncovered-with-nlp" class="level3">
+<h3 class="anchored" data-anchor-id="top-skills-uncovered-with-nlp">🧠 Top Skills Uncovered with NLP</h3>
+<p>We analyzed thousands of job descriptions using Natural Language Processing (NLP).</p>
+<p><strong>Most mentioned skills include:</strong></p>
+<ul>
+<li><p>Communication</p></li>
+<li><p>Data Analysis</p></li>
+<li><p>SQL &amp; Python</p></li>
+<li><p>Leadership and Problem Solving</p></li>
+</ul>
+<p>A mix of technical tools (like Excel, Tableau, and SAP) and soft skills shows what employers truly value.</p>
+<p>These insights help job-seekers focus their learning and stay competitive in the evolving job market.</p>
+<div id="bab58c24" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> safe_parse(x):</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> ast.literal_eval(x) <span class="cf">if</span> <span class="bu">isinstance</span>(x, <span class="bu">str</span>) <span class="cf">else</span> []</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> []</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>lightcast_data[<span class="st">'COMMON_SKILLS_NAME'</span>] <span class="op">=</span> lightcast_data[<span class="st">'COMMON_SKILLS_NAME'</span>].<span class="bu">apply</span>(safe_parse)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>lightcast_data[<span class="st">'SOFTWARE_SKILLS_NAME'</span>] <span class="op">=</span> lightcast_data[<span class="st">'SOFTWARE_SKILLS_NAME'</span>].<span class="bu">apply</span>(safe_parse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="bdb0cdab" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine both sets of skills into one counter</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>all_common <span class="op">=</span> [skill <span class="cf">for</span> sublist <span class="kw">in</span> lightcast_data[<span class="st">'COMMON_SKILLS_NAME'</span>] <span class="cf">for</span> skill <span class="kw">in</span> sublist]</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>all_software <span class="op">=</span> [skill <span class="cf">for</span> sublist <span class="kw">in</span> lightcast_data[<span class="st">'SOFTWARE_SKILLS_NAME'</span>] <span class="cf">for</span> skill <span class="kw">in</span> sublist]</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>common_counter <span class="op">=</span> pd.Series(Counter(all_common)).sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">20</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>software_counter <span class="op">=</span> pd.Series(Counter(all_software)).sort_values(ascending<span class="op">=</span><span class="va">False</span>).head(<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/1s/0kz43lv50zzcywvpxqbzqz380000gn/T/ipykernel_62422/3101464156.py:8: FutureWarning:
+
+The default dtype for empty Series will be 'object' instead of 'float64' in a future version. Specify a dtype explicitly to silence this warning.
+
+/var/folders/1s/0kz43lv50zzcywvpxqbzqz380000gn/T/ipykernel_62422/3101464156.py:9: FutureWarning:
+
+The default dtype for empty Series will be 'object' instead of 'float64' in a future version. Specify a dtype explicitly to silence this warning.
+</code></pre>
+</div>
+</div>
 </section>
-<section id="career-pathway-from-fundamentals-to-specialization" class="level3">
-<h3 class="anchored" data-anchor-id="career-pathway-from-fundamentals-to-specialization">💡 Career Pathway: From Fundamentals to Specialization</h3>
-<p>Based on job descriptions analyzed through NLP, we outline a growth-oriented learning track:</p>
-<p><strong>1. Foundational Skills (Beginner)</strong></p>
+<section id="top-job-titles-in-data-analytics" class="level3">
+<h3 class="anchored" data-anchor-id="top-job-titles-in-data-analytics">📊 Top Job Titles in Data &amp; Analytics</h3>
+<p>This chart shows the most frequently posted job titles across our dataset.</p>
+<div id="5e8b90aa" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>top_titles <span class="op">=</span> lightcast_data[<span class="st">'TITLE_NAME'</span>].value_counts().head(<span class="dv">15</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>top_titles.plot(kind<span class="op">=</span><span class="st">'barh'</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Top 15 Job Titles'</span>)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Postings'</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>plt.gca().invert_yaxis()</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="nlp_methods_files/figure-html/cell-13-output-1.png" width="948" height="566" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 <ul>
-<li><p>Tools: SQL, Excel, Python</p></li>
-<li><p>Goal: Build core competency in data querying, spreadsheets, and scripting</p></li>
+<li><p><strong>Data Analysts</strong> dominate the landscape by a wide margin</p></li>
+<li><p>Other popular roles include <strong>Business Intelligence Analysts</strong>, <strong>Enterprise Architects</strong>, and <strong>Data Engineers</strong></p></li>
+<li><p>Specialized titles like <strong>Oracle Consultants</strong>, <strong>ERP Analysts</strong>, and <strong>Solutions Architects</strong> highlight demand in cloud and enterprise systems</p></li>
 </ul>
-<p><strong>2. Versatility &amp; Visualization (Intermediate)</strong></p>
-<ul>
-<li><p>Tools: Tableau, Power BI, R</p></li>
-<li><p>Certifications: Google Data Analytics, Microsoft Power BI</p></li>
-<li><p>Goal: Explore analytics and visualization workflows</p></li>
-</ul>
-<p><strong>3. AI/ML Specialization (Advanced)</strong></p>
-<ul>
-<li><p>Skills: TensorFlow, PyTorch, NLP, Big Data (Hadoop, Spark)</p></li>
-<li><p>Certifications: AWS AI/ML, TensorFlow Developer, Microsoft AI Engineer</p></li>
-<li><p>Goal: Focus on automation, predictive modeling, and cloud AI platforms</p></li>
-</ul>
-<p><strong>Career Roles by Level:</strong></p>
-<ul>
-<li><p><strong>Entry-Level:</strong> Data Analyst, BI Specialist, Junior ML Engineer</p></li>
-<li><p><strong>Mid-Level:</strong> NLP Engineer, AI Product Manager</p></li>
-<li><p><strong>Advanced:</strong> AI Research Scientist, Lead Data Scientist, Automation Consultant</p></li>
-</ul>
-<p><strong>High-Demand Industries:</strong> Finance, Healthcare, E-commerce, Cloud Tech</p>
-<hr>
+<p>These results confirm that <strong>data-driven roles</strong> are central to today’s hiring trends—with opportunities spanning both technical and strategic domains.</p>
 </section>
-<section id="strategic-takeaway" class="level3">
-<h3 class="anchored" data-anchor-id="strategic-takeaway">🧭 Strategic Takeaway</h3>
-<p>To align with market demands:</p>
-<ul>
-<li><p>Focus learning on <strong>SQL, Python, and Excel</strong> early.</p></li>
-<li><p>Target <strong>AI job hubs</strong> or seek remote roles in active states.</p></li>
-<li><p>Build a portfolio with <strong>projects</strong>, <strong>internships</strong>, or <strong>competitions</strong>.</p></li>
-<li><p>Earn certifications to validate expertise in cloud, analytics, and AI.</p></li>
-</ul>
-<p>These steps can help aspiring professionals or career switchers navigate toward high-growth opportunities in the AI and data analytics landscape.</p>
+<section id="where-the-jobs-are-top-hiring-states" class="level3">
+<h3 class="anchored" data-anchor-id="where-the-jobs-are-top-hiring-states">📍 Where the Jobs Are: Top Hiring States</h3>
+<p>This bar chart highlights the top 15 U.S. states by number of job postings in our dataset.</p>
+<div id="9f2042ec" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>top_areas <span class="op">=</span> lightcast_data[<span class="st">'STATE_NAME'</span>].value_counts().head(<span class="dv">15</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>top_areas.plot(kind<span class="op">=</span><span class="st">'barh'</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>), color<span class="op">=</span><span class="st">'skyblue'</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Top 15 Career Areas in Job Postings'</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Number of Postings'</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>plt.gca().invert_yaxis()</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="nlp_methods_files/figure-html/cell-14-output-1.png" width="950" height="566" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="ai-impact-on-jobs-by-industry" class="level3">
-<h3 class="anchored" data-anchor-id="ai-impact-on-jobs-by-industry">🤖 AI Impact on Jobs by Industry</h3>
-<p>Using Natural Language Processing (NLP) to analyze job descriptions and industry narratives, we can extract clear trends on how AI is both creating and displacing jobs across different sectors.</p>
-<hr>
-</section>
-<section id="ai-driven-job-growth" class="level3">
-<h3 class="anchored" data-anchor-id="ai-driven-job-growth">📈 AI-Driven Job Growth</h3>
-<p>Industries such as <strong>Finance</strong>, <strong>Healthcare</strong>, and <strong>Information Technology</strong> are experiencing strong AI-fueled growth. AI enables <strong>automation</strong>, <strong>predictive analytics</strong>, and <strong>smart decision-making</strong>, increasing demand for:</p>
+<section id="where-the-jobs-are-top-hiring-states-1" class="level3">
+<h3 class="anchored" data-anchor-id="where-the-jobs-are-top-hiring-states-1">📍 Where the Jobs Are: Top Hiring States</h3>
+<p>This bar chart highlights the top 15 U.S. states by number of job postings in our dataset.</p>
 <ul>
-<li><p><strong>Machine Learning</strong></p></li>
-<li><p><strong>AI-enhanced analytics</strong></p></li>
-<li><p><strong>Data science and business intelligence roles</strong></p></li>
+<li><p><strong>Texas</strong> and <strong>California</strong> lead the nation in job opportunities</p></li>
+<li><p>Other strong markets include <strong>Florida</strong>, <strong>New York</strong>, <strong>Illinois</strong>, and <strong>Virginia</strong></p></li>
+<li><p>States like <strong>North Carolina</strong>, <strong>Massachusetts</strong>, and <strong>Georgia</strong> also show solid demand</p></li>
 </ul>
-<p><strong>Top Skills Identified:</strong> - Python</p>
-<ul>
-<li><p>SQL</p></li>
-<li><p>TensorFlow</p></li>
-<li><p>Power BI</p></li>
-<li><p>Data Analytics</p></li>
-</ul>
-<p><strong>Recommended Certifications:</strong></p>
-<ul>
-<li><p>Google Data Analytics</p></li>
-<li><p>AWS AI/ML</p></li>
-<li><p>Microsoft AI Engineer</p></li>
-</ul>
-<p><strong>Career Trajectory:</strong></p>
-<ul>
-<li><p>Entry-level: Practical experience via internships or Kaggle</p></li>
-<li><p>Mid-level: Specialization in AI-finance, healthcare analytics, cybersecurity</p></li>
-<li><p>Senior roles: AI Researcher, Data Scientist, AI Product Manager</p></li>
-</ul>
-<hr>
-</section>
-<section id="ai-driven-job-displacement" class="level3">
-<h3 class="anchored" data-anchor-id="ai-driven-job-displacement">⚠️ AI-Driven Job Displacement</h3>
-<p>Sectors such as <strong>Manufacturing</strong> and <strong>Retail</strong> are undergoing significant transformation. Repetitive jobs are increasingly being replaced by <strong>AI-powered automation</strong> and <strong>robotic systems</strong>.</p>
-<p><strong>Risks Identified:</strong></p>
-<ul>
-<li>Workforce displacement in traditional, process-heavy roles</li>
-</ul>
-<p><strong>Adaptive Strategies (via NLP-extracted keywords):</strong></p>
-<ul>
-<li><p>Upskilling in RPA tools (e.g., UiPath)</p></li>
-<li><p>Cloud computing platforms</p></li>
-<li><p>AI-driven logistics and supply chains</p></li>
-</ul>
-<p><strong>Mid-Term Transitions:</strong></p>
-<ul>
-<li><p>AI-Augmented Supply Chain Manager</p></li>
-<li><p>AI-Enhanced Customer Experience Analyst</p></li>
-</ul>
-<p><strong>Long-Term Strategies:</strong></p>
-<ul>
-<li><p>Develop leadership in AI-augmented operations and strategy</p></li>
-<li><p>Credentials: AI Strategy, Digital Leadership, Intelligent Automation</p></li>
-</ul>
-<p><strong>AI-Resilient Career Paths:</strong></p>
-<ul>
-<li><p>Robotics Engineer</p></li>
-<li><p>Automation Consultant</p></li>
-<li><p>AI-Powered Marketing Analyst</p></li>
-<li><p>AI-Driven Logistics Specialist</p></li>
-</ul>
-<hr>
-</section>
-<section id="nlp-takeaway" class="level3">
-<h3 class="anchored" data-anchor-id="nlp-takeaway">🔍 NLP Takeaway</h3>
-<p>NLP techniques revealed strong emphasis on:</p>
-<ul>
-<li><p>AI + industry-specific expertise</p></li>
-<li><p>Certifiable skills</p></li>
-<li><p>Experience-driven learning (e.g., internships, competitions)</p></li>
-</ul>
-<p>The AI transformation isn’t just technical—it’s strategic. Professionals must align their learning paths with evolving AI trends to secure long-term relevance.</p>
+<p>For job-seekers, these locations represent high-activity hubs worth targeting—whether relocating or applying remotely.</p>
 
 
 </section>

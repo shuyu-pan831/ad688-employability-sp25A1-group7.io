@@ -186,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Goal: Use unsupervised machine learning (clustering) to identify patterns or groupings in the job postings dataset, based on variables such as required skills,job tittle, and salary.</p>
-<div id="0a19b286" class="cell" data-execution_count="1">
+<div id="c580e5b0" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.clustering <span class="im">import</span> KMeans</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.feature <span class="im">import</span> VectorAssembler, StandardScaler</span>
@@ -197,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>##Step 1: Load Data and Select Features</p>
-<div id="36f52b3f" class="cell" data-execution_count="2">
+<div id="16124086" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize Spark Session</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>spark <span class="op">=</span> SparkSession.builder.appName(<span class="st">"LightcastData"</span>).getOrCreate()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>spark.sparkContext.setLogLevel(<span class="st">"ERROR"</span>)</span>
@@ -206,45 +206,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-25/04/27 16:34:14 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-[Stage 1:&gt;                                                          (0 + 1) / 1]                                                                                </code></pre>
+25/05/03 00:18:38 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[Stage 0:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 1:&gt;                                                          (0 + 1) / 1]                                                                                </code></pre>
 </div>
 </div>
 <p>Step 3: Clean Dataload data</p>
-<div id="92e79037" class="cell" data-execution_count="3">
+<div id="07cd9ebb" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> trim,col</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.dropna(subset<span class="op">=</span>[<span class="st">"TITLE_RAW"</span>, <span class="st">"SKILLS_NAME"</span>, <span class="st">"SALARY"</span>])</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.<span class="bu">filter</span>(trim(col(<span class="st">"TITLE_RAW"</span>)) <span class="op">!=</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Step 4:Encode Job Titles (StringIndexer + OneHotEncoder)</p>
-<div id="c3fb5ed8" class="cell" data-execution_count="4">
+<div id="cf51db4a" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.ml.feature <span class="im">import</span> StringIndexer, OneHotEncoder</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>title_indexer <span class="op">=</span> StringIndexer(inputCol<span class="op">=</span><span class="st">"TITLE_RAW"</span>, outputCol<span class="op">=</span><span class="st">"TITLE_IDX"</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>title_encoder <span class="op">=</span> OneHotEncoder(inputCol<span class="op">=</span><span class="st">"TITLE_IDX"</span>, outputCol<span class="op">=</span><span class="st">"TITLE_VEC"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Step 5: Extract Key Skills into Binary Flags</p>
-<div id="2c6cbd77" class="cell" data-execution_count="5">
+<div id="253b9849" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> col</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>common_skills <span class="op">=</span> [<span class="st">"SQL"</span>, <span class="st">"Python"</span>, <span class="st">"Excel"</span>, <span class="st">"Tableau"</span>, <span class="st">"Communication"</span>]</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> skill <span class="kw">in</span> common_skills:</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.withColumn(<span class="ss">f"SKILL_</span><span class="sc">{</span>skill<span class="sc">}</span><span class="ss">"</span>, col(<span class="st">"SKILLS_NAME"</span>).contains(skill).cast(<span class="st">"int"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Step 6: Assemble Features for Clustering</p>
-<div id="35939df8" class="cell" data-execution_count="6">
+<div id="f7337f33" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>assembler <span class="op">=</span> VectorAssembler(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    inputCols<span class="op">=</span>[<span class="st">"SALARY"</span>, <span class="st">"TITLE_VEC"</span>] <span class="op">+</span> [<span class="ss">f"SKILL_</span><span class="sc">{</span>s<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> s <span class="kw">in</span> common_skills],</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    outputCol<span class="op">=</span><span class="st">"features"</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Step 7: Run KMeans Clustering Pipeline</p>
-<div id="e1137a75" class="cell" data-execution_count="7">
+<div id="99c50f17" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(k<span class="op">=</span><span class="dv">3</span>, featuresCol<span class="op">=</span><span class="st">"features"</span>, predictionCol<span class="op">=</span><span class="st">"cluster"</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pipeline <span class="op">=</span> Pipeline(stages<span class="op">=</span>[title_indexer, title_encoder, assembler, kmeans])</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> pipeline.fit(df)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>df_clustered <span class="op">=</span> model.transform(df)</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>df_clustered.select(<span class="st">"TITLE_RAW"</span>, <span class="st">"SALARY"</span>, <span class="st">"SKILLS_NAME"</span>, <span class="st">"cluster"</span>).show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>[Stage 2:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 5:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 8:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 42:&gt;                                                         (0 + 1) / 1]                                                                                </code></pre>
+<pre><code>[Stage 2:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 5:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 8:&gt;                                                          (0 + 1) / 1]                                                                                [Stage 38:&gt;                                                         (0 + 1) / 1]                                                                                </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>+--------------------+------+--------------------+-------+
@@ -276,7 +276,7 @@ only showing top 20 rows
 </div>
 </div>
 <p>Step 8: Visualize Salary Distribution by Cluster</p>
-<div id="fdaf2d4f" class="cell" data-execution_count="8">
+<div id="c088c3fe" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
